@@ -1,0 +1,54 @@
+[
+    {
+        "itemId": "I000001",
+        "catCode1": "SOUP",
+        "catCode2": "CHINESE",
+        "catCode3": "APPETIZER",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Mung Chow soup",
+        "itemDescription": "Mung Chow Soup with Bamboo shoots",
+        "categoryTag": ["Soups", "Eggless"],
+        "priceCat": [{"catCode": "VEG", "basicRate": 100, "discount": 0, "tax": 0},
+                     {"catCode": "CHICKEN", "basicRate": 120, "discount": 0, "tax": 0}]
+    },
+    {
+        "itemId": "I000002",
+        "catCode1": "SOUP",
+        "catCode2": "CHINESE",
+        "catCode3": "APPETIZER",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Tomato clear soup",
+        "itemDescription": "Tomato clear soup with fresh tomatoes",
+        "categoryTag": ["Soups", "Eggless"],
+        "priceCat": [{"catCode": "VEG", "basicRate": 100, "discount": 0, "tax": 0}]
+    },
+    {
+        "itemId": "I000002",
+        "catCode1": "RICE",
+        "catCode2": "CHINESE",
+        "catCode3": "MAINCOURSE",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Fried Rice",
+        "itemDescription": "Fried rice - Chinese style",
+        "categoryTag": ["Rice", "Egg"],
+        "priceCat": [{"catCode": "VEG", "basicRate": 150, "discount": 0, "tax": 0},
+                     {"catCode": "CHICKEN", "basicRate": 170, "discount": 0, "tax": 0}]
+    },
+    {
+        "itemId": "I000002",
+        "catCode1": "RICE",
+        "catCode2": "MOGHLAI",
+        "catCode3": "MAINCOURSE",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Hyderabadi Dum Biryani",
+        "itemDescription": "Hyderabadi Dum biryani",
+        "categoryTag": ["Rice", "Biryani", "Moghlai"],
+        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0},
+                     {"catCode": "CHICKEN", "basicRate": 220, "discount": 0, "tax": 0},
+                     {"catCode": "MUTTON", "basicRate": 250, "discount": 0, "tax": 0}]
+    }
+]
