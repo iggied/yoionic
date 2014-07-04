@@ -59,5 +59,15 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
+    <script id="menus.html" type="text/ng-template">
+        <ion-view title="Restaurant menu">
+            <ion-content>
+                <div ng-repeat="menu in menus">
+                    {{menu.itemName}}
+                </div>
+            </ion-content>
+        </ion-view>
+    </script>
+
   </body>
 </html>

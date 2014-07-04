@@ -74,6 +74,18 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
+    .state('menus', {
+      url: '/menus',
+      views: {
+          '@': {
+              templateUrl: 'menus.html',
+              controller: 'MenusCtrl'
+          }
+      }
+    })
+
+
+
     .state('tab.about', {
       url: '/about',
       views: {

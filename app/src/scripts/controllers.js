@@ -19,9 +19,14 @@ angular.module('RestaurantApp.controllers', [])
     $scope.tables = Tables.query();
 
     $scope.TableSelected = function(tableIndex) {
-        $window.location.href = 'main.html#/tab/pets';
+        $window.location.href = 'main.html#/menus';
     };
 }])
+
+.controller('MenusCtrl', ['$scope', 'Menus', function($scope, Menus) {
+    $scope.menus = Menus.query();
+}])
+
 
 
 
