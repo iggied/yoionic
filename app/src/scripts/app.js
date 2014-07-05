@@ -84,8 +84,6 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
-
-
     .state('tab.about', {
       url: '/about',
       views: {
@@ -98,5 +96,13 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
-});
+})
 
+.run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
+        if(window.StatusBar) {
+            StatusBar.styleDefault();
+            //StatusBar.show();
+        }
+    });
+});

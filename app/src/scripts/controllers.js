@@ -24,7 +24,12 @@ angular.module('RestaurantApp.controllers', [])
 }])
 
 .controller('MenusCtrl', ['$scope', 'Menus', function($scope, Menus) {
-    $scope.menus = Menus.query();
+    $scope.menuCat = {};
+
+    $scope.menus = Menus.query( function(data) {
+        $scope.menuCat = _.groupBy(data, 'catCode1');
+    });
+
 }])
 
 
