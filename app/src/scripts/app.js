@@ -74,6 +74,16 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
+    .state('firstpage', {
+      url: '/firstpage/:tableNumber',
+      views: {
+          '@': {
+              templateUrl: 'firstpage.html',
+              controller: 'FirstPageCtrl'
+          }
+      }
+    })
+
     .state('menus', {
       url: '/menus',
       views: {

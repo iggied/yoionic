@@ -19,7 +19,7 @@ angular.module('RestaurantApp.controllers', [])
     $scope.tables = Tables.query();
 
     $scope.TableSelected = function(tableIndex) {
-        $window.location.href = 'main.html#/menus';
+        $window.location.href = 'main.html#/firstpage/'+tableIndex;
     };
 }])
 
@@ -32,7 +32,10 @@ angular.module('RestaurantApp.controllers', [])
 
 }])
 
+.controller('FirstPageCtrl', ['$scope', function($scope) {
 
+
+}])
 
 
 // A simple controller that fetches a list of data from a service
