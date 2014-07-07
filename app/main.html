@@ -23,25 +23,8 @@
 
   <body ng-app="RestaurantApp" animation="slide-left-right-ios7">
 
-    <!--
-      The nav bar that will be updated as we navigate between views
-      Additional attributes set its look, ion-nav-bar animation and icons
-      Icons provided by Ionicons: http://ionicons.com/
-    -->
-    <!--   <ion-nav-bar class="bar bar-header bar-positive">
-           <div class="bar bar-header bar-stable">  -->
- <!--           <h1 class="title">bar-stable</h1>  -->
- <!--       </div>
-    </ion-nav-bar> -->
+    <ion-nav-bar class="bar-header bar-positive">    </ion-nav-bar>
 
-    <ion-nav-bar class="bar-header bar-positive">
-    </ion-nav-bar>
-
-        <!--
-          The views will be rendered in the <ion-nav-view> directive below
-          Templates are in the /templates folder (but you could also
-          have templates inline in this html file if you'd like).
-        -->
     <ion-nav-view> <i>Loading...</i> </ion-nav-view>
 
     <ion-footer-bar align-title="left" class="bar-balanced">
@@ -73,38 +56,34 @@
 
 
 
-
     <script id="firstpage.html" type="text/ng-template">
-        <ion-view title="Welcome to {{programName}}. You are served by {{staffId}} on {{tableNumber}}">
+        <ion-view title="Welcome to {{programName}}. You are being served by {{staffId}} on {{tableNumber}}">
             <ion-content>
 
                 <div class="row">
                     <div class="col col-67">
                         <div class="row">
                             <div class="col-75">
-<p style="text-align:center;height:100px">Logo section</p>
+                                <p style="text-align:center;height:100px">Logo section</p>
                             </div>
                         </div>
-                        <br/>
                         <div class="row">
-                            <div class="col-75">
-                                <button class="col button button-positive">
+                            <div class="col col-75">
+                                <button class="button button-full button-positive">
                                     Login
                                 </button>
                             </div>
                         </div>
-                        <br/>
                         <div class="row">
-                            <div class="col-75">
-                                <button class="col button button-positive">
-                                    Register to i benifit
+                            <div class="col col-75">
+                                <button class="button button-full button-positive">
+                                    Register to i benefit
                                 </button>
                             </div>
                         </div>
-                        <br/>
                         <div class="row">
-                            <div class="col-75">
-                                <button class="col button button-positive">
+                            <div class="col col-75">
+                                <button class="button button-full button-positive">
                                     Skip to Menu
                                 </button>
                             </div>
@@ -112,9 +91,7 @@
                     </div>
 
                     <div class="col col-33">
-
-                            <ibenefit-savings></ibenefit-savings>
-
+                         <ibenefit-savings/>
                     </div>
                 </div>
             </ion-content>
@@ -132,52 +109,52 @@
                 <div ng-repeat="(catCode, menu) in menuCat">
                     {{catCode}}
                 </div>
-
             </ion-content>
         </ion-view>
     </script>
 
+
     <script id="ibenefit-savings.html" type="text/ng-template">
-        <div class="row">
-            <div class="col col-80">
-                <label class="item item-input">Average spends at restaurants</label>
+        <div>
+            <div class="row">
+                <div class="col col-80 item item-royal">
+                    Average spends at restaurants
+                </div>
+                <div class="col col-20 item item-royal">
+                    <input type="number" style="text-align:right" ng-model="avgSpendsAtRestaurants" min="100" max="50000" step="100">
+                </div>
             </div>
-            <div class="col col-20">
-                <input type="number" style="text-align:right" ng-model="avgSpendsAtRestaurants" ngMaxLength="5" value="100" min="100" max="50000" step="100">
+            <div class="row">
+                <div class="col col-80 item item-royal">
+                    Restaurants visits per month
+                </div>
+                <div class="col col-20 item item-royal">
+                    <input type="number" style="text-align:right" ng-model="noOfVisits" min="0" max="30">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col col-80">
-                <label class="item item-input">Restaurants visits per month</label>
+            <div class="row">
+                <div class="col col-80 item item-calm">
+                    Average spends on home order
+                </div>
+                <div class="col col-20 item item-calm">
+                    <input type="number" style="text-align:right" ng-model="avgSpendsOnHomeOrder"  min="100" max="50000" step="100">
+                </div>
             </div>
-            <div class="col col-20">
-                <input type="number" style="text-align:right" ng-model="noOfVisits" min="0" max="30">
+            <div class="row">
+                <div class="col col-80 item item-calm">
+                    Home orders per month
+                </div>
+                <div class="col col-20 item item-calm">
+                    <input type="number" style="text-align:right" ng-model="noOfHomeOrders" min="0" max="30">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col col-80">
-                <label class="item item-input">Average spends on home order</label>
-            </div>
-            <div class="col col-20">
-                <input type="number" style="text-align:right" ng-model="avgSpendsOnHomeOrder" ngMaxLength="5" value="100" min="100" max="50000" step="100">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col col-80">
-                <label class="item item-input">Home orders per month</label>
-            </div>
-            <div class="col col-20">
-                <input type="number" style="text-align:right" ng-model="noOfHomeOrders" min="0" max="30">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col col-80">
-                <span class="item item-input">Savings in one year</span>
-            </div>
-            <div class="col col-20">
-               <span style="text-align:right">
-                   {{((avgSpendsAtRestaurants * noOfVisits)*12 + (avgSpendsOnHomeOrder * noOfHomeOrders)*12)*.1 | currency:"Rs"}}
-               </span>
+            <div class="row">
+                <div class="col col-80 item item-energized">
+                    Approximate savings in a year
+                </div>
+                <div class="col col-20 item item-energized">
+                     <input type="number" style="text-align:right" readonly value="{{totalSavings()}}">
+                </div>
             </div>
         </div>
     </script>

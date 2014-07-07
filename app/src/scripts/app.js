@@ -122,7 +122,15 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
         return {
             restrict: 'E',
             scope: {},
-            templateUrl: 'ibenefit-savings.html'
+            templateUrl: 'ibenefit-savings.html',
+            link: function(scope) {
+                scope.totalSavings = function () {
+                    var restTotal = scope.avgSpendsAtRestaurants * scope.noOfVisits * 12;
+                    var homeTotal = scope.avgSpendsOnHomeOrder * scope.noOfHomeOrders * 12;
+
+                    return ((isNaN(restTotal)?0:restTotal) + (isNaN(homeTotal)?0:homeTotal)) * .1;
+                }
+            }
         };
     }
 );
