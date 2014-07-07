@@ -75,7 +75,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     })
 
     .state('firstpage', {
-      url: '/firstpage/:tableNumber',
+      url: '/firstpage/:staffId/:selectedTable/:tableNumber',
       views: {
           '@': {
               templateUrl: 'firstpage.html',
@@ -108,7 +108,8 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 
 })
 
-.run(function($ionicPlatform) {
+.run(function($rootScope, $ionicPlatform) {
+    $rootScope.programName = 'i benefit';
     $ionicPlatform.ready(function() {
         if(window.StatusBar) {
             StatusBar.styleDefault();

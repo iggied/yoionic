@@ -71,31 +71,47 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
+
+
+
     <script id="firstpage.html" type="text/ng-template">
-        <ion-view title="Welcome to {{programName}}">
+        <ion-view title="Welcome to {{programName}}. You are served by {{staffId}} on {{tableNumber}}">
             <ion-content>
-First Page
+
                 <div class="row">
-                    <div class="col-25 col-offset-10">
-                        <button class="col button button-large button-positive">
-                            Login
-                        </button>
+                    <div class="col col-75">
+                        <div class="row">
+                            <div class="col-50 col-offset-10">
+<p style="padding-top:50px;text-align:center;font-size:48px;height:200px">Logo section</p>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-50 col-offset-10">
+                                <button class="col button button-large button-positive">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-50 col-offset-10">
+                                <button class="col button button-large button-positive">
+                                    Register to i benifit
+                                </button>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-50 col-offset-10">
+                                <button class="col button button-large button-positive">
+                                    Skip to Menu
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-25 col-offset-10">
-                        <button class="col button button-large button-positive">
-                            Register to i benifit
-                        </button>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-25 col-offset-10">
-                        <button class="col button button-large button-positive">
-                            Skip to Menu
-                        </button>
+
+                    <div class="col col-25">
                     </div>
                 </div>
             </ion-content>
@@ -109,7 +125,7 @@ First Page
                 <div ng-repeat="menu in menus">
                     {{menu.itemName}}
                 </div>
-<br/>
+                <br/>
                 <div ng-repeat="(catCode, menu) in menuCat">
                     {{catCode}}
                 </div>
