@@ -79,39 +79,42 @@
             <ion-content>
 
                 <div class="row">
-                    <div class="col col-75">
+                    <div class="col col-67">
                         <div class="row">
-                            <div class="col-50 col-offset-10">
-<p style="padding-top:50px;text-align:center;font-size:48px;height:200px">Logo section</p>
+                            <div class="col-75">
+<p style="text-align:center;height:100px">Logo section</p>
                             </div>
                         </div>
                         <br/>
                         <div class="row">
-                            <div class="col-50 col-offset-10">
-                                <button class="col button button-large button-positive">
+                            <div class="col-75">
+                                <button class="col button button-positive">
                                     Login
                                 </button>
                             </div>
                         </div>
                         <br/>
                         <div class="row">
-                            <div class="col-50 col-offset-10">
-                                <button class="col button button-large button-positive">
+                            <div class="col-75">
+                                <button class="col button button-positive">
                                     Register to i benifit
                                 </button>
                             </div>
                         </div>
                         <br/>
                         <div class="row">
-                            <div class="col-50 col-offset-10">
-                                <button class="col button button-large button-positive">
+                            <div class="col-75">
+                                <button class="col button button-positive">
                                     Skip to Menu
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col col-25">
+                    <div class="col col-33">
+
+                            <ibenefit-savings></ibenefit-savings>
+
                     </div>
                 </div>
             </ion-content>
@@ -132,6 +135,51 @@
 
             </ion-content>
         </ion-view>
+    </script>
+
+    <script id="ibenefit-savings.html" type="text/ng-template">
+        <div class="row">
+            <div class="col col-80">
+                <label class="item item-input">Average spends at restaurants</label>
+            </div>
+            <div class="col col-20">
+                <input type="number" style="text-align:right" ng-model="avgSpendsAtRestaurants" ngMaxLength="5" value="100" min="100" max="50000" step="100">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-80">
+                <label class="item item-input">Restaurants visits per month</label>
+            </div>
+            <div class="col col-20">
+                <input type="number" style="text-align:right" ng-model="noOfVisits" min="0" max="30">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-80">
+                <label class="item item-input">Average spends on home order</label>
+            </div>
+            <div class="col col-20">
+                <input type="number" style="text-align:right" ng-model="avgSpendsOnHomeOrder" ngMaxLength="5" value="100" min="100" max="50000" step="100">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-80">
+                <label class="item item-input">Home orders per month</label>
+            </div>
+            <div class="col col-20">
+                <input type="number" style="text-align:right" ng-model="noOfHomeOrders" min="0" max="30">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-80">
+                <span class="item item-input">Savings in one year</span>
+            </div>
+            <div class="col col-20">
+               <span style="text-align:right">
+                   {{((avgSpendsAtRestaurants * noOfVisits)*12 + (avgSpendsOnHomeOrder * noOfHomeOrders)*12)*.1 | currency:"Rs"}}
+               </span>
+            </div>
+        </div>
     </script>
 
   </body>

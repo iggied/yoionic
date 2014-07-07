@@ -116,4 +116,13 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
             //StatusBar.show();
         }
     });
-});
+})
+
+.directive('ibenefitSavings', function() {
+        return {
+            restrict: 'E',
+            scope: {},
+            templateUrl: 'ibenefit-savings.html'
+        };
+    }
+);

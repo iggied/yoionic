@@ -1,31 +1,31 @@
 [
     {
-        "tableNumber": "Table 1",
+        "tableNumber": "Table-1",
         "tableXpos": "50px",
         "tableYpos": "10px"
     },
     {
-        "tableNumber": "Table 2",
+        "tableNumber": "Table-2",
         "tableXpos": "50px",
         "tableYpos": "210px"
     },
     {
-        "tableNumber": "Table 3",
+        "tableNumber": "Table-3",
         "tableXpos": "50px",
         "tableYpos": "410px"
     },
     {
-        "tableNumber": "Table 4",
+        "tableNumber": "Table-4",
         "tableXpos": "50px",
         "tableYpos": "610px"
     },
     {
-        "tableNumber": "Table 5",
+        "tableNumber": "Table-5",
         "tableXpos": "50px",
         "tableYpos": "810px"
     },
     {
-        "tableNumber": "Table 6",
+        "tableNumber": "Table-6",
         "tableXpos": "250px",
         "tableYpos": "10px"
     },
