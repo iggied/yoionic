@@ -57,14 +57,15 @@
 
 
     <script id="firstpage.html" type="text/ng-template">
-        <ion-view title="Welcome to {{programName}}. You are being served by {{staffId}} on {{tableNumber}}">
+        <ion-view title="You are being served by {{staffId}} on {{tableNumber}}">
             <ion-content>
 
                 <div class="row">
                     <div class="col col-67">
                         <div class="row">
                             <div class="col-75">
-                                <p style="text-align:center;height:100px">Logo section</p>
+                                <p style="text-align:center;font-size:36px">Welcome to {{programName}}</p>
+                                <img src="images/ibenefit.png"><img>
                             </div>
                         </div>
                         <div class="row">
@@ -83,7 +84,7 @@
                         </div>
                         <div class="row">
                             <div class="col col-75">
-                                <button class="button button-full button-positive">
+                                <button class="button button-full button-positive" ng-click="showTestMenu()">
                                     Skip to Menu
                                 </button>
                             </div>
@@ -102,12 +103,11 @@
     <script id="menus.html" type="text/ng-template">
         <ion-view title="Restaurant menu">
             <ion-content>
-                <div ng-repeat="menu in menus">
-                    {{menu.itemName}}
-                </div>
-                <br/>
-                <div ng-repeat="(catCode, menu) in menuCat">
-                    {{catCode}}
+<!-- <div ng-repeat="menu in menus">{{menu.itemName}}</div>   -->
+
+                <div class="button" ng-repeat="(catCode, menu) in menuCat" style="float:left;display:inline;margin:5px">
+                    <img src="images/{{catCode}}.png" style="margin-top:10px" height="110px" width="110px"></img>
+                    <p style="text-align:center;margin:0;line-height:24px">{{catCode | lowercase}}</p>
                 </div>
             </ion-content>
         </ion-view>

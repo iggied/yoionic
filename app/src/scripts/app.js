@@ -84,6 +84,16 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
+      .state('testmenu', {
+          url: '/testmenu',
+          views: {
+              '@': {
+                  templateUrl: 'test-menu.html'
+              }
+          }
+      })
+
+
     .state('menus', {
       url: '/menus',
       views: {

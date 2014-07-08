@@ -31,10 +31,14 @@ angular.module('RestaurantApp.controllers', [])
 
 }])
 
-.controller('FirstPageCtrl', ['$scope', '$stateParams', '$rootScope', function($scope, $stateParams, $rootScope) {
+.controller('FirstPageCtrl', ['$scope', '$state', '$stateParams', '$rootScope', function($scope, $state, $stateParams, $rootScope) {
     $rootScope.staffId = $stateParams.staffId;
     $rootScope.selectedTable = $stateParams.selectedTable;
     $rootScope.tableNumber = $stateParams.tableNumber;
+
+    $scope.showTestMenu = function() {
+        $state.go('menus');
+    };
 
 }])
 
