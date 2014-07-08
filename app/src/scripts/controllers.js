@@ -37,7 +37,7 @@ angular.module('RestaurantApp.controllers', [])
     $rootScope.tableNumber = $stateParams.tableNumber;
 
     $scope.showTestMenu = function() {
-        $state.go('menus');
+        $state.go('tab.menus');
     };
 
 }])
