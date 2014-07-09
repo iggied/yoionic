@@ -61,25 +61,25 @@
                     <div class="col col-67">
                         <div class="row">
                             <div class="col-75">
-                                <p style="text-align:center;font-size:36px">Welcome to {{programName}}</p>
-                                <img src="images/ibenefit.png"><img>
+                                <h2 style="text-align:center">Welcome to {{programName}}</h2>
+                                <img src="images/ibenefit.png"  style="display:block;margin-left:auto;margin-right:auto" ><img>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="height:70px">
                             <div class="col col-75">
-                                <button class="button button-full button-positive">
+                                <button class="button button-full button-positive" ng-click="openLoginModal()">
                                     Login
                                 </button>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="height:70px">
                             <div class="col col-75">
-                                <button class="button button-full button-positive">
-                                    Register to i benefit
+                                <button class="button button-full button-positive" ng-click="openRegisterModal()">
+                                    Register to {{programName}}
                                 </button>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="height:70px">
                             <div class="col col-75">
                                 <button class="button button-full button-positive" ng-click="showTestMenu()">
                                     Skip to Menu
@@ -113,6 +113,10 @@
 
     <script id="ibenefit-savings.html" type="text/ng-template">
         <div>
+            <div class="row">
+                <h3 class="col" style="text-align:center">My savings calculator</h3>
+            </div>
+
             <div class="row">
                 <div class="col col-80 item item-royal" style="padding-top:10px">
                     Average spends at restaurants
@@ -155,6 +159,86 @@
             </div>
         </div>
     </script>
+
+
+
+    <script id="login-modal.html" type="text/ng-template">
+        <div class="modal" style="height:100px">
+            <ion-header-bar>
+                <h1 class="title">Login to {{programName}}</h1>
+            </ion-header-bar>
+            <ion-content>
+                <form class="list list-inset">
+                    <label class="item item-input">
+                        <span class="input-label">Mobile Number</span>
+                        <input type="number" ng-model="custInput.mobileNo" placeholder="Type your mobile number" required autofocus>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input type="password" ng-model="custInput.Pin" placeholder="Type your password" required>
+                    </label>
+
+                    <button class="button button-positive button-block" ng-click="closeLoginModal()">Login</button>
+                </form>
+            </ion-content>
+        </div>
+    </script>
+
+    <script id="register-modal.html" type="text/ng-template">
+        <div class="modal" style="top:10%;bottom:10%">
+            <ion-header-bar>
+                <h1 class="title">Register to {{programName}}</h1>
+            </ion-header-bar>
+            <ion-content>
+                <form class="list list-inset">
+                    <label class="item item-input">
+                        <span class="input-label">Name</span>
+                        <input type="text" ng-model="customerInput.name" placeholder="Type your name" required autofocus>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Email</span>
+                        <input type="email" ng-model="customerInput.email" placeholder="Type your email" required>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Mobile</span>
+                        <input type="tel" ng-model="customerInput.mobile" placeholder="Type your mobile number" required>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">PIN code</span>
+                        <input type="tel" ng-model="customerInput.pinCode" placeholder="Type your PIN code" required>
+                    </label>
+                    <label class="item item-input">
+                        <label class="item item-radio">
+                            <input type="radio" name="group" ng-model="customerInput.gender" value="F">
+                            <div class="item-content">
+                                Female
+                            </div>
+                            <i class="radio-icon ion-checkmark-circled"></i>
+                        </label>
+                        <label class="item item-radio">
+                            <input type="radio" name="group" ng-model="customerInput.gender" value="M">
+                            <div class="item-content">
+                                Male
+                            </div>
+                            <i class="radio-icon ion-checkmark-circled"></i>
+                        </label>
+                        <label class="item item-radio">
+                            <input type="radio" name="group" ng-model="customerInput.gender" value="O">
+                            <div class="item-content">
+                                Other
+                            </div>
+                            <i class="radio-icon ion-checkmark-circled"></i>
+                        </label>
+                    </label>
+
+                    <button class="button button-positive button-block" ng-click="closeRegisterModal()">Register</button>
+                </form>
+
+            </ion-content>
+        </div>
+    </script>
+
+
 
   </body>
 </html>

@@ -31,7 +31,8 @@ angular.module('RestaurantApp.controllers', [])
 
 }])
 
-.controller('FirstPageCtrl', ['$scope', '$state', '$stateParams', '$rootScope', function($scope, $state, $stateParams, $rootScope) {
+.controller('FirstPageCtrl', ['$scope', '$state', '$stateParams', '$rootScope', '$ionicModal',
+                              function($scope, $state, $stateParams, $rootScope, $ionicModal) {
     $rootScope.staffId = $stateParams.staffId;
     $rootScope.selectedTable = $stateParams.selectedTable;
     $rootScope.tableNumber = $stateParams.tableNumber;
@@ -39,6 +40,66 @@ angular.module('RestaurantApp.controllers', [])
     $scope.showTestMenu = function() {
         $state.go('tab.menus');
     };
+
+    $scope.customerInput = {
+        name: '',
+        email: '',
+        mobile: '',
+        pinCode: '',
+        gender: '',
+    }
+
+    $ionicModal.fromTemplateUrl('login-modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        focusFirstInput: true
+    }).then(function(modal) {
+        $scope.loginModal = modal;
+    });
+    $scope.openLoginModal = function() {
+        $scope.loginModal.show();
+    };
+    $scope.closeLoginModal = function() {
+        $scope.loginModal.hide();
+    };
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.loginModal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+        // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+        // Execute action
+    });
+
+    $ionicModal.fromTemplateUrl('register-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+      focusFirstInput: true
+    }).then(function(modal) {
+      $scope.registerModal = modal;
+    });
+    $scope.openRegisterModal = function() {
+      $scope.registerModal.show();
+    };
+    $scope.closeRegisterModal = function() {
+      $scope.registerModal.hide();
+    };
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.registerModal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
 
 }])
 

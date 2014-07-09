@@ -6,3 +6,11 @@
   width: 96px;
   height: 96px;
 }
+
+.food-menu {
+    display: block;
+    margin: 15px auto;
+    width: 96px;
+    height: 96px;
+    background: url(../../images/foodmenu.png);
+}

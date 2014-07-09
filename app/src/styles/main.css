@@ -6,3 +6,26 @@
   width: 96px;
   height: 96px;
 }
+
+.foodmenu {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 144px 144px;
+    background-image: url("../../images/foodmenu.png");
+}
+
+.feetball {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 48px 48px;
+    background-image: url('../../images/feetball.png');
+}
+
+.tabs {
+    height: 100px;
+}
+
+.tab-item .icon {
+    height: 84px;
+}
+
