@@ -100,15 +100,63 @@
     <script id="menus.html" type="text/ng-template">
         <ion-view title="Restaurant menu">
             <ion-content>
-<!-- <div ng-repeat="menu in menus">{{menu.itemName}}</div>   -->
-
-                <div class="button" ng-repeat="(catCode, menu) in menuCat" style="float:left;display:inline;margin:5px">
-                    <img src="images/{{catCode}}.png" style="margin-top:10px" height="110px" width="110px"></img>
+                <div class="button" ng-repeat="(catCode, menu) in menuCat" style="float:left;display:inline;margin:5px" ng-click="selectMenuCategory('{{catCode}}')">
+                    <img src="images/{{catCode}}.png" style="margin-top:20px" height="110px" width="110px"></img>
                     <p style="text-align:center;margin:0;line-height:24px">{{catCode | lowercase}}</p>
                 </div>
             </ion-content>
         </ion-view>
     </script>
+
+    <script id="menu-itemlist.html" type="text/ng-template">
+        <ion-view title="{{selectedCatCode}}">
+            <ion-content>
+                <div ng-repeat="menuItem in menuItems">{{menuItem.itemName}}</div>
+            </ion-content>
+        </ion-view>
+    </script>
+
+
+
+
+    <script id="chefcorner.html" type="text/ng-template">
+        <ion-view title="Chef's corner">
+            <ion-content>
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script id="softdrinks.html" type="text/ng-template">
+        <ion-view title="Soft drinks">
+            <ion-content>
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script id="barcounter.html" type="text/ng-template">
+        <ion-view title="Bar Counter">
+            <ion-content>
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script id="specialoffer.html" type="text/ng-template">
+        <ion-view title="Special Offers">
+            <ion-content>
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script id="myfavourites.html" type="text/ng-template">
+        <ion-view title="My Favourites">
+            <ion-content>
+            </ion-content>
+        </ion-view>
+    </script>
+
+
+
+
 
 
     <script id="ibenefit-savings.html" type="text/ng-template">

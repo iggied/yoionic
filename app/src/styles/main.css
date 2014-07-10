@@ -7,22 +7,54 @@
   height: 96px;
 }
 
+.chefcorner {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 96px 96px;
+    background-image: url("../images/chefcorner.png");
+}
+
 .foodmenu {
     background-repeat: no-repeat;
     background-position:center;
-    background-size: 144px 144px;
-    background-image: url("../../images/foodmenu.png");
+    background-size: 96px 96px;
+    background-image: url("../images/foodmenu.png");
 }
 
-.feetball {
+.softdrinks {
     background-repeat: no-repeat;
     background-position:center;
-    background-size: 48px 48px;
-    background-image: url('../../images/feetball.png');
+    background-size: 96px 96px;
+    background-image: url("../images/softdrinks.png");
+}
+
+.barcounter {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 96px 96px;
+    background-image: url("../images/barcounter.png");
+}
+
+.specialoffer {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 96px 96px;
+    background-image: url("../images/specialoffer.png");
+}
+
+.favourites {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 96px 96px;
+    background-image: url("../images/myfavourites.png");
 }
 
 .tabs {
     height: 100px;
+}
+
+.has-tabs {
+    bottom: 100px;
 }
 
 .tab-item .icon {

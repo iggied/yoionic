@@ -21,38 +21,9 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     .state('tab', {
       url: '/tab',
       abstract: true,
-      templateUrl: 'src/templates/tabs.html'
+      templateUrl: 'src/tabs.html'
     })
 
-    // the pet tab has its own child nav-view and history
-    .state('tab.pet-index', {
-      url: '/pets',
-      views: {
-        'pets-tab': {
-          templateUrl: 'src/templates/pet-index.html',
-          controller: 'PetIndexCtrl'
-        }
-      }
-    })
-
-    .state('tab.pet-detail', {
-      url: '/pet/:petId',
-      views: {
-        'pets-tab': {
-          templateUrl: 'src/templates/pet-detail.html',
-          controller: 'PetDetailCtrl'
-        }
-      }
-    })
-
-    .state('tab.adopt', {
-      url: '/adopt',
-      views: {
-        'adopt-tab': {
-          templateUrl: 'src/templates/adopt.html'
-        }
-      }
-    })
 
     .state('login', {
       url: '/login',
@@ -84,16 +55,6 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
-      .state('testmenu', {
-          url: '/testmenu',
-          views: {
-              '@': {
-                  templateUrl: 'test-menu.html'
-              }
-          }
-      })
-
-
     .state('tab.menus', {
       url: '/menus',
       views: {
@@ -104,12 +65,70 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
+      .state('tab.itemlist', {
+          url: '/itemlist/:catCode',
+          views: {
+              'menu-tab': {
+                  templateUrl: 'menu-itemlist.html',
+                  controller: 'ItemListCtrl'
+              }
+          }
+      })
+
+
+
+      .state('tab.chefcorner', {
+      url: '/chefcorner',
+      views: {
+          'chef-corner': {
+              templateUrl: 'chefcorner.html'
+          }
+      }
+    })
+
+      .state('tab.softdrinks', {
+          url: '/softdrinks',
+          views: {
+              'soft-drinks': {
+                  templateUrl: 'softdrinks.html'
+              }
+          }
+      })
+
+      .state('tab.barcounter', {
+          url: '/barcounter',
+          views: {
+              'bar-counter': {
+                  templateUrl: 'barcounter.html'
+              }
+          }
+      })
+
+      .state('tab.specialoffer', {
+          url: '/specialoffer',
+          views: {
+              'special-offer': {
+                  templateUrl: 'specialoffer.html'
+              }
+          }
+      })
+
+      .state('tab.myfavourites', {
+          url: '/myfavourites',
+          views: {
+              'myfavourites': {
+                  templateUrl: 'myfavourites.html'
+              }
+          }
+      })
+
+
 
     .state('tab.about', {
       url: '/about',
       views: {
         'about-tab': {
-          templateUrl: 'src/templates/about.html'
+          templateUrl: '../about.html'
         }
       }
     });

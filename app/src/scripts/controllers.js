@@ -22,14 +22,28 @@ angular.module('RestaurantApp.controllers', [])
     };
 }])
 
-.controller('MenusCtrl', ['$scope', 'Menus', function($scope, Menus) {
+.controller('MenusCtrl', ['$scope', 'Menus', '$state', '$stateParams', function($scope, Menus, $state, $stateParams) {
     $scope.menuCat = {};
 
     $scope.menus = Menus.query( function(data) {
         $scope.menuCat = _.groupBy(data, 'catCode1');
     });
 
+    $scope.selectMenuCategory = function(catCodePara) {
+        $state.go('tab.itemlist', {catCode: catCodePara})
+    }
 }])
+
+.controller('ItemListCtrl', ['$scope', 'Menus', '$state', '$stateParams', function($scope, Menus, $state, $stateParams) {
+    $scope.selectedCatCode = $stateParams.catCode;
+    $scope.menuItems = [];
+
+    Menus.query( function(data) {
+        $scope.menuItems = _.filter(data, function(menuItem){return menuItem.catCode1 === $scope.selectedCatCode});
+    });
+}])
+
+
 
 .controller('FirstPageCtrl', ['$scope', '$state', '$stateParams', '$rootScope', '$ionicModal',
                               function($scope, $state, $stateParams, $rootScope, $ionicModal) {
@@ -61,6 +75,9 @@ angular.module('RestaurantApp.controllers', [])
     };
     $scope.closeLoginModal = function() {
         $scope.loginModal.hide();
+        if (true) {  //Logged in
+            $state.go('tab.menus');
+        }
     };
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
