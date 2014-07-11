@@ -1,31 +1,31 @@
 [
     {
-        "itemId": "I000001",
+        "itemId": "1",
         "catCode1": "SOUPS",
         "catCode2": "CHINESE",
-        "catCode3": "APPETIZER",
+        "catCode3": "APPETISER",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Mung Chow soup",
-        "itemDescription": "Mung Chow Soup with Bamboo shoots",
-        "categoryTag": ["Soups", "Eggless"],
-        "priceCat": [{"catCode": "VEG", "basicRate": 100, "discount": 0, "tax": 0},
-                     {"catCode": "CHICKEN", "basicRate": 120, "discount": 0, "tax": 0}]
+        "itemName": "Manchow soup",
+        "itemDescription": "Manchow Soup with Bamboo shoots",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 100, "discount": 10, "tax": 0},
+                     {"catCode": "CHICKEN", "basicRate": 120, "discount": 12, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "2",
         "catCode1": "SOUPS",
         "catCode2": "CHINESE",
-        "catCode3": "APPETIZER",
+        "catCode3": "APPETISER",
         "catCode4": "",
         "catCode5": "",
         "itemName": "Tomato clear soup",
         "itemDescription": "Tomato clear soup with fresh tomatoes",
-        "categoryTag": ["Soups", "Eggless"],
-        "priceCat": [{"catCode": "VEG", "basicRate": 100, "discount": 0, "tax": 0}]
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 100, "discount": 10, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "3",
         "catCode1": "PULAV-BIRYANI",
         "catCode2": "CHINESE",
         "catCode3": "MAINCOURSE",
@@ -33,12 +33,12 @@
         "catCode5": "",
         "itemName": "Fried Rice",
         "itemDescription": "Fried rice - Chinese style",
-        "categoryTag": ["Rice", "Egg"],
-        "priceCat": [{"catCode": "VEG", "basicRate": 150, "discount": 0, "tax": 0},
-                     {"catCode": "CHICKEN", "basicRate": 170, "discount": 0, "tax": 0}]
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 150, "discount": 10, "tax": 0},
+                     {"catCode": "CHICKEN", "basicRate": 170, "discount": 15, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "4",
         "catCode1": "PULAV-BIRYANI",
         "catCode2": "MOGHLAI",
         "catCode3": "MAINCOURSE",
@@ -46,13 +46,13 @@
         "catCode5": "",
         "itemName": "Hyderabadi Dum Biryani",
         "itemDescription": "Hyderabadi Dum biryani",
-        "categoryTag": ["Rice", "Biryani", "Moghlai"],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0},
-                     {"catCode": "CHICKEN", "basicRate": 220, "discount": 0, "tax": 0},
-                     {"catCode": "MUTTON", "basicRate": 250, "discount": 0, "tax": 0}]
+        "itemTag": ["Rice", "Biryani", "Moghlai"],
+        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 20, "tax": 0},
+                     {"catCode": "CHICKEN", "basicRate": 220, "discount": 20, "tax": 0},
+                     {"catCode": "MUTTON", "basicRate": 250, "discount": 20, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "5",
         "catCode1": "APPETISERS",
         "catCode2": "",
         "catCode3": "",
@@ -60,11 +60,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "6",
         "catCode1": "BEVERAGE",
         "catCode2": "",
         "catCode3": "",
@@ -72,11 +72,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "7",
         "catCode1": "CHINESE",
         "catCode2": "",
         "catCode3": "",
@@ -84,11 +84,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "8",
         "catCode1": "CONTINENTAL",
         "catCode2": "",
         "catCode3": "",
@@ -96,11 +96,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "9",
         "catCode1": "CURRIES-MASALA",
         "catCode2": "",
         "catCode3": "",
@@ -108,11 +108,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "10",
         "catCode1": "DAL-CUDHIS",
         "catCode2": "",
         "catCode3": "",
@@ -120,11 +120,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "11",
         "catCode1": "DESSERTS",
         "catCode2": "",
         "catCode3": "",
@@ -132,11 +132,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "12",
         "catCode1": "INDIAN",
         "catCode2": "",
         "catCode3": "",
@@ -144,11 +144,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "13",
         "catCode1": "BREAD",
         "catCode2": "",
         "catCode3": "",
@@ -156,11 +156,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "14",
         "catCode1": "ITALIAN",
         "catCode2": "",
         "catCode3": "",
@@ -168,11 +168,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "15",
         "catCode1": "JAPANESE",
         "catCode2": "",
         "catCode3": "",
@@ -180,11 +180,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "16",
         "catCode1": "LEBANESE",
         "catCode2": "",
         "catCode3": "",
@@ -192,11 +192,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "17",
         "catCode1": "MEXICAN",
         "catCode2": "",
         "catCode3": "",
@@ -204,11 +204,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "18",
         "catCode1": "ORIENTAL",
         "catCode2": "",
         "catCode3": "",
@@ -216,11 +216,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "19",
         "catCode1": "PULAV-BIRYANI",
         "catCode2": "",
         "catCode3": "",
@@ -228,11 +228,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "20",
         "catCode1": "RAITAS-PAPAD",
         "catCode2": "",
         "catCode3": "",
@@ -240,11 +240,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "21",
         "catCode1": "NOODLES",
         "catCode2": "",
         "catCode3": "",
@@ -252,11 +252,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "22",
         "catCode1": "SALADS",
         "catCode2": "",
         "catCode3": "",
@@ -264,11 +264,11 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
     {
-        "itemId": "I000002",
+        "itemId": "23",
         "catCode1": "THAI",
         "catCode2": "",
         "catCode3": "",
@@ -276,7 +276,7 @@
         "catCode5": "",
         "itemName": "Item name",
         "itemDescription": "Item description",
-        "categoryTag": [],
+        "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     }
 ]

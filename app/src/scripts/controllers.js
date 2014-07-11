@@ -13,7 +13,6 @@ angular.module('RestaurantApp.controllers', [])
     };
 })
 
-
 .controller('TablesCtrl', ['$scope', '$rootScope', '$window', 'Tables', function($scope, $rootScope, $window, Tables) {
     $scope.tables = Tables.query();
 
@@ -22,17 +21,34 @@ angular.module('RestaurantApp.controllers', [])
     };
 }])
 
-.controller('MenusCtrl', ['$scope', 'Menus', '$state', '$stateParams', function($scope, Menus, $state, $stateParams) {
+.controller('MenusCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window',
+                  function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window) {
     $scope.menuCat = {};
 
-    $scope.menus = Menus.query( function(data) {
+    Menus.query( function(data) {
         $scope.menuCat = _.groupBy(data, 'catCode1');
     });
 
     $scope.selectMenuCategory = function(catCodePara) {
-        $state.go('tab.itemlist', {catCode: catCodePara})
-    }
-}])
+        $state.go('tab.itemlist', {catCode: catCodePara});
+    };
+
+    var cleanupFunction = $rootScope.$on('want.to.go.home', function(){
+        $ionicPopup.confirm({
+            title: 'Done',
+            template: 'Are you sure?'
+        }).then(function(res) {
+            if(res) {
+                $window.location.href = 'index.html';
+            };
+        });
+    });
+
+    $scope.$on('$destroy', function() {
+      cleanupFunction();
+    });
+
+ }])
 
 .controller('ItemListCtrl', ['$scope', 'Menus', '$state', '$stateParams', function($scope, Menus, $state, $stateParams) {
     $scope.selectedCatCode = $stateParams.catCode;
@@ -41,19 +57,41 @@ angular.module('RestaurantApp.controllers', [])
     Menus.query( function(data) {
         $scope.menuItems = _.filter(data, function(menuItem){return menuItem.catCode1 === $scope.selectedCatCode});
     });
+
+    $scope.addItem = function(){
+
+    };
+
+    $scope.removeItem = function(){
+
+    };
+
 }])
 
-
-
-.controller('FirstPageCtrl', ['$scope', '$state', '$stateParams', '$rootScope', '$ionicModal',
-                              function($scope, $state, $stateParams, $rootScope, $ionicModal) {
+.controller('FirstPageCtrl', ['$scope', '$state', '$stateParams', '$rootScope', '$ionicModal', '$ionicPopup', '$window',
+        function($scope, $state, $stateParams, $rootScope, $ionicModal, $ionicPopup, $window) {
     $rootScope.staffId = $stateParams.staffId;
     $rootScope.selectedTable = $stateParams.selectedTable;
     $rootScope.tableNumber = $stateParams.tableNumber;
 
-    $scope.showTestMenu = function() {
+    $scope.showMenu = function() {
         $state.go('tab.menus');
     };
+
+    var cleanupFunction = $rootScope.$on('want.to.go.home', function(){
+        $ionicPopup.confirm({
+            title: 'Done',
+            template: 'Are you sure?'
+        }).then(function(res) {
+            if(res) {
+                $window.location.href = 'index.html';
+            };
+        });
+    });
+
+    $scope.$on('$destroy', function() {
+        cleanupFunction();
+    });
 
     $scope.customerInput = {
         name: '',
@@ -61,7 +99,7 @@ angular.module('RestaurantApp.controllers', [])
         mobile: '',
         pinCode: '',
         gender: '',
-    }
+    };
 
     $ionicModal.fromTemplateUrl('login-modal.html', {
         scope: $scope,
@@ -119,17 +157,11 @@ angular.module('RestaurantApp.controllers', [])
     });
 
 }])
+;
 
+function NavBarCtrl($scope, $rootScope) {
+    $scope.goHome = function(){
+        $rootScope.$emit('want.to.go.home');
+    }
+};
 
-// A simple controller that fetches a list of data from a service
-.controller('PetIndexCtrl', function($scope, PetService) {
-  // "Pets" is a service returning mock data (services.js)
-  $scope.pets = PetService.all();
-})
-
-
-// A simple controller that shows a tapped item's data
-.controller('PetDetailCtrl', function($scope, $stateParams, PetService) {
-  // "Pets" is a service returning mock data (services.js)
-  $scope.pet = PetService.get($stateParams.petId);
-});

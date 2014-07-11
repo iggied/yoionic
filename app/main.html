@@ -23,7 +23,17 @@
 
   <body ng-app="RestaurantApp" animation="slide-left-right-ios7">
 
-    <ion-nav-bar class="bar-header bar-positive">    </ion-nav-bar>
+
+    <ion-nav-bar class="bar-header bar-positive" ng-controller="NavBarCtrl">
+        <ion-nav-back-button class="button-clear">
+            <i class="ion-arrow-left-c"></i>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button" ng-click="goHome()">
+               Done
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
 
     <ion-nav-view> <i>Loading...</i> </ion-nav-view>
 
@@ -81,7 +91,7 @@
                         </div>
                         <div class="row" style="height:70px">
                             <div class="col col-75">
-                                <button class="button button-full button-positive" ng-click="showTestMenu()">
+                                <button class="button button-full button-positive" ng-click="showMenu()">
                                     Skip to Menu
                                 </button>
                             </div>
@@ -108,10 +118,43 @@
         </ion-view>
     </script>
 
+
+
     <script id="menu-itemlist.html" type="text/ng-template">
-        <ion-view title="{{selectedCatCode}}">
+
+        <ion-view title="{{selectedCatCode | lowercase}}">
+
             <ion-content>
-                <div ng-repeat="menuItem in menuItems">{{menuItem.itemName}}</div>
+
+                <div class="col col-75">
+                    <ion-list>
+                        <ion-item class="row">
+                            <h2 class="col col-50">Item</h2>
+                            <h2 class="col col-10" style="text-align:center">Price</h2>
+                            <h2 class="col col-10" style="text-align:center">{{programName}}<br/>Price</h2>
+                            <h2 class="col col-10" style="text-align:right">Qty</h2>
+                            <h2 class="col col-10" style="text-align:center">Add</h2>
+                            <h2 class="col col-10" style="text-align:center">Remove</h2>
+                        </ion-item>
+                        <ion-item class="row" ng-repeat="menuItem in menuItems">
+                            <a class="col col-50 item-content" href="#tab/item/:id">
+                                <h3>{{menuItem.itemName}}</h3>
+                                <p>{{menuItem.itemDescription}}</p>
+                            </a>
+                            <div class="col col-10">
+                                <h3 style="text-align:center">{{menuItem.priceCat[0].basicRate}}</h3>
+                            </div>
+                            <div class="col col-10">
+                                <h3 style="text-align:center">{{menuItem.priceCat[0].basicRate - menuItem.priceCat[0].discount}}</h3>
+                            </div>
+                            <div class="col col-10">
+                                <input type="number" style="text-align:right" min="0" max="99" step="1">
+                            </div>
+                            <div class="col col-10" style="text-align:center"><a class="button button-balanced">+</a></div>
+                            <div class="col col-10" style="text-align:center"><a class="button button-assertive">-</a></div>
+                        </ion-item>
+                    </ion-list>
+                </div>
             </ion-content>
         </ion-view>
     </script>
@@ -219,7 +262,7 @@
                 <form class="list list-inset">
                     <label class="item item-input">
                         <span class="input-label">Mobile Number</span>
-                        <input type="number" ng-model="custInput.mobileNo" placeholder="Type your mobile number" required autofocus>
+                        <input type="number" ng-model="custInput.mobileNo" placeholder="Type your mobile number" required>
                     </label>
                     <label class="item item-input">
                         <span class="input-label">Password</span>
@@ -241,7 +284,7 @@
                 <form class="list list-inset">
                     <label class="item item-input">
                         <span class="input-label">Name</span>
-                        <input type="text" ng-model="customerInput.name" placeholder="Type your name" required autofocus>
+                        <input type="text" ng-model="customerInput.name" placeholder="Type your name" required>
                     </label>
                     <label class="item item-input">
                         <span class="input-label">Email</span>

@@ -65,71 +65,58 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
-      .state('tab.itemlist', {
-          url: '/itemlist/:catCode',
-          views: {
-              'menu-tab': {
-                  templateUrl: 'menu-itemlist.html',
-                  controller: 'ItemListCtrl'
-              }
-          }
-      })
-
-
-
-      .state('tab.chefcorner', {
-      url: '/chefcorner',
+    .state('tab.itemlist', {
+      url: '/itemlist/:catCode',
       views: {
-          'chef-corner': {
-              templateUrl: 'chefcorner.html'
+          'menu-tab': {
+              templateUrl: 'menu-itemlist.html',
+              controller: 'ItemListCtrl'
           }
       }
     })
 
-      .state('tab.softdrinks', {
-          url: '/softdrinks',
-          views: {
-              'soft-drinks': {
-                  templateUrl: 'softdrinks.html'
-              }
-          }
-      })
+    .state('tab.chefcorner', {
+    url: '/chefcorner',
+    views: {
+      'chef-corner': {
+          templateUrl: 'chefcorner.html'
+      }
+    }
+    })
 
-      .state('tab.barcounter', {
-          url: '/barcounter',
-          views: {
-              'bar-counter': {
-                  templateUrl: 'barcounter.html'
-              }
-          }
-      })
-
-      .state('tab.specialoffer', {
-          url: '/specialoffer',
-          views: {
-              'special-offer': {
-                  templateUrl: 'specialoffer.html'
-              }
-          }
-      })
-
-      .state('tab.myfavourites', {
-          url: '/myfavourites',
-          views: {
-              'myfavourites': {
-                  templateUrl: 'myfavourites.html'
-              }
-          }
-      })
-
-
-
-    .state('tab.about', {
-      url: '/about',
+    .state('tab.softdrinks', {
+      url: '/softdrinks',
       views: {
-        'about-tab': {
-          templateUrl: '../about.html'
-        }
+          'soft-drinks': {
+              templateUrl: 'softdrinks.html'
+          }
+      }
+    })
+
+    .state('tab.barcounter', {
+      url: '/barcounter',
+      views: {
+          'bar-counter': {
+              templateUrl: 'barcounter.html'
+          }
+      }
+    })
+
+    .state('tab.specialoffer', {
+      url: '/specialoffer',
+      views: {
+          'special-offer': {
+              templateUrl: 'specialoffer.html'
+          }
+      }
+    })
+
+    .state('tab.myfavourites', {
+      url: '/myfavourites',
+      views: {
+          'myfavourites': {
+              templateUrl: 'myfavourites.html'
+          }
       }
     });
 
