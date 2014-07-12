@@ -13,6 +13,8 @@ angular.module('RestaurantApp.controllers', [])
     };
 })
 
+
+
 .controller('TablesCtrl', ['$scope', '$rootScope', '$window', 'Tables', function($scope, $rootScope, $window, Tables) {
     $scope.tables = Tables.query();
 
@@ -21,14 +23,20 @@ angular.module('RestaurantApp.controllers', [])
     };
 }])
 
+
+
 .controller('MainCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
-    $scope.goHome = function() {
+    $scope.notifyGoHome = function() {
         $rootScope.$emit('want.to.go.home');
     }
 }])
 
-.controller('MenusCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window',
-                  function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window) {
+
+
+
+.controller('MenusCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window', 'OrderSvc',
+                  function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window, OrderSvc) {
+    $scope.orderSvc = OrderSvc;
     $scope.menuCat = {};
 
     Menus.query( function(data) {
@@ -37,6 +45,10 @@ angular.module('RestaurantApp.controllers', [])
 
     $scope.selectMenuCategory = function(catCodePara) {
         $state.go('tab.itemlist', {catCode: catCodePara});
+    };
+
+    $scope.viewOrder = function() {
+      $state.go('tab.vieworder');
     };
 
     var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
@@ -49,22 +61,37 @@ angular.module('RestaurantApp.controllers', [])
 
  }])
 
+
+
+
 .controller('ItemListCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window', 'OrderSvc',
                     function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window, OrderSvc) {
     $scope.selectedCatCode = $stateParams.catCode;
+    $scope.orderSvc = OrderSvc;
     $scope.menuItems = [];
 
     Menus.query( function(data) {
         $scope.menuItems = _.filter(data, function(menuItem){return menuItem.catCode1 === $scope.selectedCatCode});
     });
 
-    $scope.addItem = function(menuItem){
-        menuItem.qty = menuItem.qty || 1 ;
-        OrderSvc.addItem(menuItem);
+
+    $scope.addQty = function(priceCat){
+        priceCat.quantity = (priceCat.quantity || 0 ) + 1;
+        if (priceCat.quantity > 99) {priceCat.quantity = 0; };
     };
 
-    $scope.removeItem = function(){
+    $scope.removeQty = function(priceCat){
+        priceCat.quantity = (priceCat.quantity || 0 ) - 1;
+        if (priceCat.quantity < 0) {priceCat.quantity = 0; }
+    };
 
+    $scope.addItem = function(menuItem, priceCat){
+        priceCat.quantity = priceCat.quantity || 1 ;
+        if (priceCat.quantity > 0 && priceCat.quantity < 100) { OrderSvc.addItem(menuItem, priceCat); };
+    };
+
+    $scope.viewOrder = function() {
+        $state.go('tab.vieworder');
     };
 
     var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
@@ -75,6 +102,20 @@ angular.module('RestaurantApp.controllers', [])
         cleanupFunction();
     });
 }])
+
+
+.controller('ViewOrderCtrl', ['$scope', '$rootScope', 'OrderSvc', function($scope, $rootScope, OrderSvc) {
+    $scope.orderSvc = OrderSvc;
+
+    var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
+        $rootScope.confirmAndGoHome()
+    });
+
+    $scope.$on('$destroy', function() {
+        cleanupFunction();
+    });
+}])
+
 
 .controller('FirstPageCtrl', ['$scope', '$state', '$stateParams', '$rootScope', '$ionicModal', '$ionicPopup', '$window',
         function($scope, $state, $stateParams, $rootScope, $ionicModal, $ionicPopup, $window) {

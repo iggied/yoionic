@@ -75,6 +75,18 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
+      .state('tab.vieworder', {
+          url: '/vieworder',
+          views: {
+              'menu-tab': {
+                  templateUrl: 'view-order.html',
+                  controller: 'ViewOrderCtrl'
+              }
+          }
+      })
+
+
+
     .state('tab.chefcorner', {
     url: '/chefcorner',
     views: {
@@ -134,6 +146,8 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
         }
     });
 
+//   $ionicPlatform.fullScreen( true, false);
+
    OrderSvc.setOrder([]);
 
     $rootScope.confirmAndGoHome =  function() {
@@ -165,4 +179,24 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
             }
         };
     }
-);
+)
+
+.directive('orderDetails', function(OrderSvc) {
+    return {
+        restrict : 'E',
+        controller : ['$scope', '$rootScope',  function($scope, $rootScope){
+            $scope.orderSvc = OrderSvc;
+            $scope.programName = $rootScope.programName;
+
+            $scope.removeItem = function(index){
+                OrderSvc.removeItem(index) ;
+            };
+        }],
+        scope: {},
+        templateUrl: 'order-details.html',
+        link:function(scope, element, attrs){
+
+        }
+    };
+});
+

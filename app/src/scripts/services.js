@@ -26,20 +26,16 @@ angular.module('RestaurantApp.services', [])
         return this.$order;
     }
 
-    this.setTax = function(tax){
-        this.$order.tax = tax;
-    }
-
-    this.getTax = function(){
-        return ((this.getSubTotal()/100) * this.getOrder().tax );
-    }
-
-    this.addItem = function (menuItem) {
+    this.addItem = function (menuItem, priceCat) {
+        priceCat.quantity = parseInt(priceCat.quantity);
 
         var i = {
             itemId: menuItem.itemId,
-            price: menuItem.priceCat[0].basicRate,
-            quantity: ParseInt(menuItem.qty),
+            itemName: menuItem.itemName,
+            itemDescription: menuItem.itemDescription,
+            basicRate: priceCat.basicRate,
+            discount: priceCat.discount,
+            quantity: priceCat.quantity,
             instructions: "",
             data: ""
         };
@@ -55,17 +51,26 @@ angular.module('RestaurantApp.services', [])
         else return a;
     }
 
-    this.totalItems = function () {
+    this.totalLineItems = function () {
         return this.getOrder().length;
     }
 
-    this.getSubTotal = function(){
+    this.getBasicTotal = function(){
         var total = 0;
         angular.forEach(this.getOrder(), function (item) {
-            total += (item.price * item.quantity);
+            total += (item.basicRate * item.quantity);
         });
         return total;
     }
+
+    this.getDiscountedTotal = function(){
+        var total = 0;
+        angular.forEach(this.getOrder(), function (item) {
+            total += ((item.basicRate-item.discount) * item.quantity);
+        });
+        return total;
+    }
+
 
 
     this.totalCost= function () {
@@ -73,12 +78,7 @@ angular.module('RestaurantApp.services', [])
         return this.getSubTotal() + tax;
     }
 
-    this.quantity = function (item, offset) {
-        var quantity = item.quantity + offset;
-        if (quantity < 1) quantity = 1;
-        item.quantity = quantity;
-        this.$saveOrder();
-    }
+
 
     this.removeItem = function (index) {
         this.$order.splice(index, 1);

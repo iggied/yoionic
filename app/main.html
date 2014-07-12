@@ -26,14 +26,17 @@
 
     <ion-nav-bar class="bar-header bar-positive">
         <ion-nav-back-button class="button-clear">
-            <i class="ion-arrow-left-c"></i>
+            <i class="ion-arrow-left-c">Back</i>
         </ion-nav-back-button>
         <ion-nav-buttons side="right">
-            <button class="button" ng-click="goHome()">
+            <button class="button" ng-click="notifyGoHome()">
                Done
             </button>
         </ion-nav-buttons>
     </ion-nav-bar>
+
+
+
 
     <ion-nav-view> <i>Loading...</i> </ion-nav-view>
 
@@ -64,7 +67,10 @@
 
 
     <script id="firstpage.html" type="text/ng-template">
+
         <ion-view title="You are being served by {{staffId}} on {{tableNumber}}">
+
+
             <ion-content>
 
                 <div class="row">
@@ -72,7 +78,7 @@
                         <div class="row">
                             <div class="col-75">
                                 <h2 style="text-align:center">Welcome to {{programName}}</h2>
-                                <img src="images/ibenefit.png"  style="display:block;margin-left:auto;margin-right:auto" ><img>
+                                <img src="images/ibenefit.png" height="144px" width="144px" style="display:block;margin-left:auto;margin-right:auto" ><img>
                             </div>
                         </div>
                         <div class="row" style="height:70px">
@@ -107,12 +113,22 @@
     </script>
 
 
+
     <script id="menus.html" type="text/ng-template">
+
         <ion-view title="You are being served by {{staffId}} on {{tableNumber}}">
+
+            <ion-header-bar class="bar bar-subheader item-input-inset">
+                <h1 class="title"></h1>
+                <div class="buttons">
+                    <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="viewOrder()">View order</button>
+                </div>
+            </ion-header-bar>
+
             <ion-content>
-                <div class="button" ng-repeat="(catCode, menu) in menuCat" style="float:left;display:inline;margin:5px" ng-click="selectMenuCategory('{{catCode}}')">
-                    <img src="images/{{catCode}}.png" style="margin-top:20px" height="110px" width="110px"></img>
-                    <p style="text-align:center;margin:0;line-height:24px">{{catCode | lowercase}}</p>
+                <div class="button" ng-repeat="(catCode, menu) in menuCat" style="float:left;display:inline;margin:5px" ng-click="selectMenuCategory(catCode)">
+                    <img src="images/{{catCode}}.png" style="margin-top:10px" height="110px" width="110px"></img>
+                    <p style="text-align:center;margin:0;line-height:20px">{{catCode | lowercase}}</p>
                 </div>
             </ion-content>
         </ion-view>
@@ -122,50 +138,87 @@
 
     <script id="menu-itemlist.html" type="text/ng-template">
 
-        <ion-view title="{{selectedCatCode | lowercase}}">
+        <ion-view title="">
+
+            <ion-header-bar class="bar bar-subheader item-input-inset">
+                <h1 class="title">{{selectedCatCode | lowercase}}</h1>
+                <div class="buttons">
+                    <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="viewOrder()">View order</button>
+                </div>
+            </ion-header-bar>
 
             <ion-content>
-
-                <div class="col col-75">
+                <div class="col">
                     <ion-list>
-                        <ion-item class="row">
+                        <ion-item class="row item-calm">
                             <h2 class="col col-50">Item</h2>
                             <h2 class="col col-10" style="text-align:center">Price</h2>
                             <h2 class="col col-10" style="text-align:center">{{programName}}<br/>Price</h2>
-                            <h2 class="col col-10" style="text-align:right">Qty</h2>
-                            <h2 class="col col-10" style="text-align:center">Add</h2>
-                            <h2 class="col col-10" style="text-align:center">Remove</h2>
+                            <h2 class="col col-10" style="text-align:right">Quantity</h2>
+                            <h2 class="col col-10" style="text-align:center;font-size:24px">+/-</h2>
+                            <h2 class="col col-10" style="text-align:center">Order</h2>
                         </ion-item>
-                        <ion-item class="row" ng-repeat="menuItem in menuItems">
-                            <a class="col col-50 item-content" href="#tab/item/:id">
-                                <!-- <img src="images/food.png">  -->
-                                <h2>{{menuItem.itemName}}</h2>
-                                <p>{{menuItem.itemDescription}}</p>
-                            </a>
-                            <div class="col col-10">
-                                <h3 style="text-align:center">{{menuItem.priceCat[0].basicRate | number}}</h3>
-                            </div>
-                            <div class="col col-10">
-                                <h3 style="text-align:center">{{menuItem.priceCat[0].basicRate - menuItem.priceCat[0].discount | number}}</h3>
-                            </div>
-                            <div class="col col-10">
-                                <input type="number" ng-model="menuItem.qty" style="text-align:right" ng-value="1" min="0" max="99" step="1">
-                            </div>
-                            <div class="col col-10" style="text-align:center"><a class="button button-balanced" ng-click="addItem(menuItem)">+</a></div>
-                            <div class="col col-10" style="text-align:center"><a class="button button-assertive">-</a></div>
-                        </ion-item>
+                        <div ng-repeat="menuItem in menuItems">
+                            <ion-item class="row" ng-repeat="menuItemPriceCat in menuItem.priceCat">
+                                <a class="col col-50 item-content">
+                                    <!-- <img src="images/food.png">  -->
+                                    <h2>{{menuItem.itemName}}</h2>
+                                    <p>{{menuItem.itemDescription}}</p>
+                                </a>
+                                <div class="col col-10">
+                                    <h3 style="text-align:center">{{menuItemPriceCat.basicRate | number}}</h3>
+                                </div>
+                                <div class="col col-10">
+                                    <h3 style="text-align:center">{{menuItemPriceCat.basicRate - menuItemPriceCat.discount | number}}</h3>
+                                </div>
+                                <div class="col col-10">
+                                    <input type="number" ng-model="menuItemPriceCat.quantity" style="text-align:right" min="0" max="99" step="1">
+                                </div>
+                                <div class="col col-10" style="text-align:center">
+                                    <a class="button button-small button-balanced" style="font-size:24px" ng-click="addQty(menuItemPriceCat)">+</a>
+                                    <a class="button button-small button-assertive" style="font-size:24px" ng-click="removeQty(menuItemPriceCat)">-</a>
+                                </div>
+                                <div class="col col-10" style="text-align:center">
+                                    <button class="button button-stable" ng-click="addItem(menuItem, menuItemPriceCat)">Order item</button>
+                                </div>
+                            </ion-item>
+                        </div>
                     </ion-list>
                 </div>
+
             </ion-content>
         </ion-view>
     </script>
 
 
+    <script id="view-order.html" type="text/ng-template">
+        <ion-view title="Your order">
+
+            <ion-header-bar class="bar bar-subheader item-input-inset">
+                <ion-nav-back-button class="button-clear">
+                    <i class="ion-arrow-left-c">Back</i>
+                </ion-nav-back-button>
+                <h1 class="title">You save {{orderSvc.getBasicTotal()-orderSvc.getDiscountedTotal()}}</h1>
+                <div class="buttons">
+                    <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="confirmOrder()">Confirm order</button>
+                </div>
+            </ion-header-bar>
+
+            <ion-content>
+
+                <order-details/>
+
+            </ion-content>
+
+        </ion-view>
+    </script>
 
 
     <script id="chefcorner.html" type="text/ng-template">
         <ion-view title="Chef's corner">
             <ion-content>
+
+
             </ion-content>
         </ion-view>
     </script>
@@ -276,6 +329,8 @@
         </div>
     </script>
 
+
+
     <script id="register-modal.html" type="text/ng-template">
         <div class="modal" style="top:10%;bottom:10%">
             <ion-header-bar>
@@ -329,6 +384,73 @@
             </ion-content>
         </div>
     </script>
+
+
+    <script id="order-details.html" type="text/ng-template">
+
+        <div>
+            <ion-list>
+                <ion-item class="row item-balanced">
+                    <h2 class="col col-33">Item</h2>
+                    <h2 class="col col-10" style="text-align:center">Price</h2>
+                    <h2 class="col col-10" style="text-align:center">{{programName}}<br/>Price</h2>
+                    <h2 class="col col-10" style="text-align:right">Quantity</h2>
+                    <h2 class="col col-20" style="text-align:center">Instructions</h2>
+                    <h2 class="col col-10" style="text-align:center">Remove</h2>
+                </ion-item>
+
+                <ion-item class="row" ng-repeat="item in orderSvc.getOrder() track by $index">
+                    <a class="col col-33 item-content">
+                        <h2>{{item.itemName}}</h2>
+                        <p>{{item.itemDescription}}</p>
+                    </a>
+                    <div class="col col-10">
+                        <h3 style="text-align:center">{{item.basicRate | number}}</h3>
+                    </div>
+                    <div class="col col-10">
+                        <h3 style="text-align:center">{{item.basicRate - item.discount | number}}</h3>
+                    </div>
+                    <div class="col col-10">
+                        <input type="number" ng-model="item.quantity" style="text-align:right" min="0" max="99" step="1">
+                    </div>
+                    <div class="col col-20">
+                        <input type="text" ng-model="item.instructions" style="text-align:center">
+                    </div>
+                    <div class="col col-10" style="text-align:center">
+                        <a class="button button-assertive" style="font-size:24px" ng-click="removeItem($index)">-</a>
+                    </div>
+                </ion-item>
+
+                <ion-item class="row">
+                    <a class="col col-33 item-content">
+                        <h1>Total</h1>
+                    </a>
+                    <div class="col col-10">
+                        <h1 style="text-align:center">{{orderSvc.getBasicTotal()}}</h1>
+                    </div>
+                    <div class="col col-10">
+                        <h1 style="text-align:center">{{orderSvc.getDiscountedTotal()}}</h1>
+                    </div>
+                    <div class="col col-10">
+                        <h1></h1>
+                    </div>
+                    <div class="col col-20">
+                        <h1></h1>
+                    </div>
+                    <div class="col col-10" style="text-align:center">
+                        <h1></h1>
+                    </div>
+                </ion-item>
+
+            </ion-list>
+        </div>
+
+    </script>
+
+
+
+
+
 
 
 
