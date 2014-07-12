@@ -30,22 +30,22 @@
         "tableYpos": "10px"
     },
     {
-        "tableNumber": "Table 7",
+        "tableNumber": "Table-7",
         "tableXpos": "250px",
         "tableYpos": "210px"
     },
     {
-        "tableNumber": "Table 8",
+        "tableNumber": "Table-8",
         "tableXpos": "250px",
         "tableYpos": "410px"
     },
     {
-        "tableNumber": "Table 9",
+        "tableNumber": "Table-9",
         "tableXpos": "250px",
         "tableYpos": "610px"
     },
     {
-        "tableNumber": "Table 10",
+        "tableNumber": "Table-10",
         "tableXpos": "250px",
         "tableYpos": "810px"
     }

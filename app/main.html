@@ -21,10 +21,10 @@
     <!-- endbuild -->
   </head>
 
-  <body ng-app="RestaurantApp" animation="slide-left-right-ios7">
+  <body ng-app="RestaurantApp" animation="slide-left-right-ios7" ng-controller="MainCtrl">
 
 
-    <ion-nav-bar class="bar-header bar-positive" ng-controller="NavBarCtrl">
+    <ion-nav-bar class="bar-header bar-positive">
         <ion-nav-back-button class="button-clear">
             <i class="ion-arrow-left-c"></i>
         </ion-nav-back-button>
@@ -108,7 +108,7 @@
 
 
     <script id="menus.html" type="text/ng-template">
-        <ion-view title="Restaurant menu">
+        <ion-view title="You are being served by {{staffId}} on {{tableNumber}}">
             <ion-content>
                 <div class="button" ng-repeat="(catCode, menu) in menuCat" style="float:left;display:inline;margin:5px" ng-click="selectMenuCategory('{{catCode}}')">
                     <img src="images/{{catCode}}.png" style="margin-top:20px" height="110px" width="110px"></img>
@@ -138,19 +138,20 @@
                         </ion-item>
                         <ion-item class="row" ng-repeat="menuItem in menuItems">
                             <a class="col col-50 item-content" href="#tab/item/:id">
-                                <h3>{{menuItem.itemName}}</h3>
+                                <!-- <img src="images/food.png">  -->
+                                <h2>{{menuItem.itemName}}</h2>
                                 <p>{{menuItem.itemDescription}}</p>
                             </a>
                             <div class="col col-10">
-                                <h3 style="text-align:center">{{menuItem.priceCat[0].basicRate}}</h3>
+                                <h3 style="text-align:center">{{menuItem.priceCat[0].basicRate | number}}</h3>
                             </div>
                             <div class="col col-10">
-                                <h3 style="text-align:center">{{menuItem.priceCat[0].basicRate - menuItem.priceCat[0].discount}}</h3>
+                                <h3 style="text-align:center">{{menuItem.priceCat[0].basicRate - menuItem.priceCat[0].discount | number}}</h3>
                             </div>
                             <div class="col col-10">
-                                <input type="number" style="text-align:right" min="0" max="99" step="1">
+                                <input type="number" ng-model="menuItem.qty" style="text-align:right" ng-value="1" min="0" max="99" step="1">
                             </div>
-                            <div class="col col-10" style="text-align:center"><a class="button button-balanced">+</a></div>
+                            <div class="col col-10" style="text-align:center"><a class="button button-balanced" ng-click="addItem(menuItem)">+</a></div>
                             <div class="col col-10" style="text-align:center"><a class="button button-assertive">-</a></div>
                         </ion-item>
                     </ion-list>

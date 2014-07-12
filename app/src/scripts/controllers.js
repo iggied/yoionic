@@ -21,6 +21,12 @@ angular.module('RestaurantApp.controllers', [])
     };
 }])
 
+.controller('MainCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+    $scope.goHome = function() {
+        $rootScope.$emit('want.to.go.home');
+    }
+}])
+
 .controller('MenusCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window',
                   function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window) {
     $scope.menuCat = {};
@@ -33,15 +39,8 @@ angular.module('RestaurantApp.controllers', [])
         $state.go('tab.itemlist', {catCode: catCodePara});
     };
 
-    var cleanupFunction = $rootScope.$on('want.to.go.home', function(){
-        $ionicPopup.confirm({
-            title: 'Done',
-            template: 'Are you sure?'
-        }).then(function(res) {
-            if(res) {
-                $window.location.href = 'index.html';
-            };
-        });
+    var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
+        $rootScope.confirmAndGoHome()
     });
 
     $scope.$on('$destroy', function() {
@@ -50,7 +49,8 @@ angular.module('RestaurantApp.controllers', [])
 
  }])
 
-.controller('ItemListCtrl', ['$scope', 'Menus', '$state', '$stateParams', function($scope, Menus, $state, $stateParams) {
+.controller('ItemListCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window', 'OrderSvc',
+                    function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window, OrderSvc) {
     $scope.selectedCatCode = $stateParams.catCode;
     $scope.menuItems = [];
 
@@ -58,35 +58,36 @@ angular.module('RestaurantApp.controllers', [])
         $scope.menuItems = _.filter(data, function(menuItem){return menuItem.catCode1 === $scope.selectedCatCode});
     });
 
-    $scope.addItem = function(){
-
+    $scope.addItem = function(menuItem){
+        menuItem.qty = menuItem.qty || 1 ;
+        OrderSvc.addItem(menuItem);
     };
 
     $scope.removeItem = function(){
 
     };
 
+    var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
+        $rootScope.confirmAndGoHome()
+    });
+
+    $scope.$on('$destroy', function() {
+        cleanupFunction();
+    });
 }])
 
 .controller('FirstPageCtrl', ['$scope', '$state', '$stateParams', '$rootScope', '$ionicModal', '$ionicPopup', '$window',
         function($scope, $state, $stateParams, $rootScope, $ionicModal, $ionicPopup, $window) {
     $rootScope.staffId = $stateParams.staffId;
-    $rootScope.selectedTable = $stateParams.selectedTable;
+    $rootScope.selectedTableIndex = $stateParams.selectedTableIndex;
     $rootScope.tableNumber = $stateParams.tableNumber;
 
     $scope.showMenu = function() {
         $state.go('tab.menus');
     };
 
-    var cleanupFunction = $rootScope.$on('want.to.go.home', function(){
-        $ionicPopup.confirm({
-            title: 'Done',
-            template: 'Are you sure?'
-        }).then(function(res) {
-            if(res) {
-                $window.location.href = 'index.html';
-            };
-        });
+    var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
+        $rootScope.confirmAndGoHome()
     });
 
     $scope.$on('$destroy', function() {
@@ -159,9 +160,4 @@ angular.module('RestaurantApp.controllers', [])
 }])
 ;
 
-function NavBarCtrl($scope, $rootScope) {
-    $scope.goHome = function(){
-        $rootScope.$emit('want.to.go.home');
-    }
-};
 

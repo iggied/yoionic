@@ -46,7 +46,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     })
 
     .state('firstpage', {
-      url: '/firstpage/:staffId/:selectedTable/:tableNumber',
+      url: '/firstpage/:staffId/:selectedTableIndex/:tableNumber',
       views: {
           '@': {
               templateUrl: 'firstpage.html',
@@ -125,7 +125,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 
 })
 
-.run(function($rootScope, $ionicPlatform) {
+.run(function($rootScope, $ionicPlatform, $ionicPopup, $window, OrderSvc) {
     $rootScope.programName = 'i benefit';
     $ionicPlatform.ready(function() {
         if(window.StatusBar) {
@@ -133,6 +133,21 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
             //StatusBar.show();
         }
     });
+
+   OrderSvc.setOrder([]);
+
+    $rootScope.confirmAndGoHome =  function() {
+        $ionicPopup.confirm({
+            title: 'Done',
+            template: 'Are you sure?'
+        })
+        .then(function (res) {
+            if (res) {
+                $window.location.href = 'index.html';
+            }
+            ;
+        })
+    };
 })
 
 .directive('ibenefitSavings', function() {

@@ -12,7 +12,9 @@
         "priceCat": [{"catCode": "VEG", "basicRate": 100, "discount": 10, "tax": 0},
                      {"catCode": "CHICKEN", "basicRate": 120, "discount": 12, "tax": 0}]
     },
-    {
+
+    
+{
         "itemId": "2",
         "catCode1": "SOUPS",
         "catCode2": "CHINESE",
@@ -24,7 +26,9 @@
         "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 100, "discount": 10, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "3",
         "catCode1": "PULAV-BIRYANI",
         "catCode2": "CHINESE",
@@ -37,7 +41,9 @@
         "priceCat": [{"catCode": "VEG", "basicRate": 150, "discount": 10, "tax": 0},
                      {"catCode": "CHICKEN", "basicRate": 170, "discount": 15, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "4",
         "catCode1": "PULAV-BIRYANI",
         "catCode2": "MOGHLAI",
@@ -51,232 +57,1043 @@
                      {"catCode": "CHICKEN", "basicRate": 220, "discount": 20, "tax": 0},
                      {"catCode": "MUTTON", "basicRate": 250, "discount": 20, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "5",
         "catCode1": "APPETISERS",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Hariyali Chakki Jam",
+        "itemDescription": "Finely chopped fresh spinach stuffed with cheese & mild spices deep fried",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "6",
         "catCode1": "BEVERAGE",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Iced Tea",
+        "itemDescription": "Cool & Thirst Queching tea",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 130, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "7",
         "catCode1": "CHINESE",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Chinese Green Vegetables",
+        "itemDescription": "Sauted seasonal vegetables with garlic",
         "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "8",
         "catCode1": "CONTINENTAL",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Mushroom Crespelle",
+        "itemDescription": "Mushroom & cottage cheese wrapped with filo pasty deep fried & served with mashed garlic beans",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "9",
         "catCode1": "CURRIES-MASALA",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "PAneer Bhuta PAlti Masala",
+        "itemDescription": "Cubes of paneer cooked with bhuta & kumb in spicy gravy",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 290, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "10",
         "catCode1": "DAL-CUDHIS",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Dal Makhani",
+        "itemDescription": "Black lentils cooked and simmered in tomoato ginger garlic herbs & spices on hot embers served with pure ghee",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 180, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "11",
         "catCode1": "DESSERTS",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Tiramisu",
+        "itemDescription": "Typical Italian dessert made with sponge vake, mascapan cheese, coffee & brandy",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 190, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "12",
         "catCode1": "INDIAN",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Paneer Gulnar",
+        "itemDescription": "Mash paneer mixed with finely chopped fresh vegetables cooked in tandoor",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 300, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "13",
         "catCode1": "BREAD",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Dawat-e-naan",
+        "itemDescription": "Naan stuffed with red yellow peppers& roasted fenugreek",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 65, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "14",
         "catCode1": "ITALIAN",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Minestrone Soup",
+        "itemDescription": "Clear Italian soup",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 150, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "15",
         "catCode1": "JAPANESE",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Japanese Cabbage Salad",
+        "itemDescription": "Iceburg cabbage plum tomatoes brocoli crushed pepper & basil with aniseed dressing",
         "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "16",
         "catCode1": "LEBANESE",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Batata Bilkiz Bara",
+        "itemDescription": "Fried potato cubed with crush black garlic pepper & fresh coriender leaves",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 230, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "17",
         "catCode1": "MEXICAN",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Mushroom Spinach Enchiladas",
+        "itemDescription": "Stuffed rolls served on the bed of tangy mexican sauce",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 270, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "18",
         "catCode1": "ORIENTAL",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Oriental Lime Chicken Salad",
+        "itemDescription": "Wild green tossed with peanut & mustard vinaigrette on bed of fried noodles topped with grilled oriental barbeque glazed sliced chicken breast",
         "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "19",
         "catCode1": "PULAV-BIRYANI",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Sabzi Dum Biryani",
+        "itemDescription": "Assorted vegetables with indian spices herbs & basmati rice delicately simmered on dum",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 250, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "20",
         "catCode1": "RAITAS-PAPAD",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Navratan Raita",
+        "itemDescription": "A mix of 9 vegetables dipped in sweet sour curds",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 100, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "21",
         "catCode1": "NOODLES",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Pan Fried Noodles",
+        "itemDescription": "Flat noodles sauted in olive oil with capsicum",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 250, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "22",
         "catCode1": "SALADS",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Som Tum",
+        "itemDescription": "Raw green papaya with cherry tomatoes long beans & peanuts",
         "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
     },
-    {
+    
+
+{
         "itemId": "23",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Corn Cheese Balls",
+        "itemDescription": "All time favourite dish prefered by our customers",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "24",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Mum Farang",
+        "itemDescription": "Chef's Special",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "25",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Fungi Parishiti",
+        "itemDescription": "Chef's Special",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "26",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Tempura",
+        "itemDescription": "Exotic vegetables marinated in starch deep fried & tossed with hot spcy garlic sauce",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "27",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Thai Satay",
+        "itemDescription": "Variety of satey pan grilled with thai chilli peanut sauce",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "28",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Jalepeno Poppers",
+        "itemDescription": "Cottage cheese minced with jalepeno spices fried wih crunchy coating",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "29",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Yummito Nachos",
+        "itemDescription": "Refried beans tortella chips served wtih cheese sauce & tamrind salsa",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "30",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Tofu Stick Ginger",
+        "itemDescription": "Cubes of tofu tossed with dry ginger & peppers",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "31",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Shanghai Roll",
+        "itemDescription": "Julienne of vegetables tossed with Shanghai sauce wrapped sheet and fried",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "32",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Pesto Mushroom",
+        "itemDescription": "Fresh mushrooms grilled and tossed with pesto sauce served with fries & garlic mayo dip",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "33",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Vegetable Momos",
+        "itemDescription": "The classic steamed veg dumplings",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 240, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "34",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Karari Corn Tikki",
+        "itemDescription": "Mash potatoes & corn blend to perfection with aromatic spices & shallow fried",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 230, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "35",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Glazed Meat Balls",
+        "itemDescription": "Fried minced meat balls glazed with barbeque sauce",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 350, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "36",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Birdss Nest",
+        "itemDescription": "Chicken mince balls coated with spices deep fried & served on net",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 350, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "37",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Chicker Curls",
+        "itemDescription": "Supreme of chicken marinated in black bean sauce garnish",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 350, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "38",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Tai Chin Chicken",
+        "itemDescription": "Chicken cubes cooked in tangy sauce the latest human sensation",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "39",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Black Beans Chicken",
+        "itemDescription": "Made with chilly beans hot spicy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+},
+
+
+{
+        "itemId": "40",
+        "catCode1": "APPETISERS",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Gyoga Chicken Dimsums",
+        "itemDescription": "Pan fried chicken dumplings",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 300, "discount": 0, "tax": 0}]
+},
+
+
+
+
+{
+        "itemId": "51",
         "catCode1": "THAI",
         "catCode2": "",
         "catCode3": "",
         "catCode4": "",
         "catCode5": "",
-        "itemName": "Item name",
-        "itemDescription": "Item description",
+        "itemName": "Thai Curry Rice",
+        "itemDescription": "Steam rice in green basil thai curry",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 200, "discount": 0, "tax": 0}]
+        "priceCat": [{"catCode": "VEG", "basicRate": 410, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "52",
+        "catCode1": "JAPANESE",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Tempura Murawase",
+        "itemDescription": "mixed vegetables & prawns with beer granted diakon ginger",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 490, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "53",
+        "catCode1": "JAPANESE",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Yakitori Shio",
+        "itemDescription": "Japanese style grilled chicken & leek skewer seasoned with yakitori & lemon wedges",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 370, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "54",
+        "catCode1": "JAPANESE",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Chicken Teriyaki",
+        "itemDescription": "Sliced chicken sauteed with peppers in burnt dark soya",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 360, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "55",
+        "catCode1": "THAI",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Exotic vegetables in thai pattaya sauce",
+        "itemDescription": "Thai Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 380, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "56",
+        "catCode1": "THAI",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Green Corn & Vegetables In Creamy Thai Sauce",
+        "itemDescription": "Thai Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 380, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "57",
+        "catCode1": "THAI",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Cottege Cheese In Thai Basil Sauce",
+        "itemDescription": "Thai Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 350, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "58",
+        "catCode1": "THAI",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Prawns Thai Curry Rice",
+        "itemDescription": "Thai Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 490, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "59",
+        "catCode1": "THAI",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Kai Kaprow Chicken",
+        "itemDescription": "Thai Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 390, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "60",
+        "catCode1": "THAI",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Thai Curry Rice",
+        "itemDescription": "Thai Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 410, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "61",
+        "catCode1": "MEXICAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Mushroom spinach enchiladas",
+        "itemDescription": "Stuffed rolls served on the bed of tangy mexican sauce",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 270, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "62",
+        "catCode1": "MEXICAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Stuffed fajitas baked with cheese",
+        "itemDescription": "Mexician delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 260, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "63",
+        "catCode1": "MEXICAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Pollo Bosaila",
+        "itemDescription": "Chunks of chicken with concase sauce",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 390, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "64",
+        "catCode1": "MEXICAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Chicken Ala Mexicana",
+        "itemDescription": "Mexician delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 390, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "65",
+        "catCode1": "LEBANESE",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Lake Fish Forestiere",
+        "itemDescription": "Grilled fish with wild mashroom, garlic chillies, white wine lemon juice served on garlic bread",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 390, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "66",
+        "catCode1": "LEBANESE",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Batata Bilkiz Bara",
+        "itemDescription": "fried potato cubed tossed with crush black pepper garlic & fresh coriendar leaves",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 230, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "67",
+        "catCode1": "LEBANESE",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Banana Flower",
+        "itemDescription": "Fresh banana flowers marinated in lebanese herbs sauted & shallow fried",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 230, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "68",
+        "catCode1": "LEBANESE",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Garlic Basil Cibatta",
+        "itemDescription": "Chopped cibatta with garlic & basil baked with cheese served on garlic bread",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 230, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "69",
+        "catCode1": "LEBANESE",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Chicken Shish-Tawouk",
+        "itemDescription": "Lebanese Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 400, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "70",
+        "catCode1": "LEBANESE",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Kibben Arrabieb",
+        "itemDescription": "Lebanese Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 400, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "71",
+        "catCode1": "ITALIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "lazzian",
+        "itemDescription": "All time favourite",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "72",
+        "catCode1": "THAI",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Three Cheese Cake Streak On Creamed Spinach With Spaghetti",
+        "itemDescription": "Italian Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "73",
+        "catCode1": "ITALIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Cannelloni Florentine",
+        "itemDescription": "Italian Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "74",
+        "catCode1": "ITALIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Your Choice Of Pasta [ penne/farfelle/alfredo ]",
+        "itemDescription": "Italian Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "75",
+        "catCode1": "ITALIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "With Choice Of Sauce [ arabbiata/formaggio/alfredo]",
+        "itemDescription": "Italian Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+},
+
+{
+        "itemId": "76",
+        "catCode1": "ITALIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": " Fungi Crema Verdure",
+        "itemDescription": "Italian Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "77",
+        "catCode1": "ITALIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Savory Risotto",
+        "itemDescription": "Italian Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 290, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "78",
+        "catCode1": "ITALIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Asparagus Risotto",
+        "itemDescription": "Italian Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 290, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "79",
+        "catCode1": "ITALIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Ragout De Pollo",
+        "itemDescription": "Italian Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 370, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "80",
+        "catCode1": "CONTINENTAL",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Ragout De Pollo",
+        "itemDescription": "Exotic vegetables with combination sauce sreved with butter rice",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "81",
+        "catCode1": "CONTINENTAL",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Baby Corn & Mushroom in creamed coriander sauce",
+        "itemDescription": "Served with buttered rice",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "82",
+        "catCode1": "CONTINENTAL",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Mushroom Crespelle",
+        "itemDescription": "Mushroom & cottage cheese wrapped with filo pasty deep fried & served with mashed garlic beans",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "83",
+        "catCode1": "CONTINENTAL",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Cottage Cheese Shashlik",
+        "itemDescription": "Continental Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "84",
+        "catCode1": "CONTINENTAL",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "vegetable au gratin",
+        "itemDescription": "Continental Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 260, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "85",
+        "catCode1": "CONTINENTAL",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Grilled Fish",
+        "itemDescription": "Continental Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 490, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "86",
+        "catCode1": "CONTINENTAL",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Prawns Newberg",
+        "itemDescription": "Continental Delicacy",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 490, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "87",
+        "catCode1": "CONTINENTAL",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Spiced Mince Steak",
+        "itemDescription": "Spiced meat with wholesome veggies in tangy bbq sauce",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 400, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "88",
+        "catCode1": "CONTINENTAL",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Rosemary Roast Chicken",
+        "itemDescription": "Red wine marinated chicken grilled & served with brown sauce flavour with rosemarry, macedoine veggie",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 370, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "89",
+        "catCode1": "CONTINENTAL",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Hunters Chicken",
+        "itemDescription": "Chicken grilled & smoothered chicken grilled & served with brown sauce flavoured with rosemarry, macedoine veggie.",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 370, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "90",
+        "catCode1": "INDIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Paneer Gulnar",
+        "itemDescription": "Mash paneer mixed with finely chopped fresh veg. cooked in tandoor",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 300, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "91",
+        "catCode1": "INDIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Moong aur paneer ki sheek",
+        "itemDescription": "Pefect blend of moong dal & paneer with herbs skewered",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
+    },
+{
+        "itemId": "92",
+        "catCode1": "INDIAN",
+        "catCode2": "",
+        "catCode3": "",
+        "catCode4": "",
+        "catCode5": "",
+        "itemName": "Mumtazi Paneer Tikka",
+        "itemDescription": "Fresh cottage cheese marinated with cashewnut paste light spices skewered with tomato capsicum onion",
+        "itemTag": [],
+        "priceCat": [{"catCode": "VEG", "basicRate": 320, "discount": 0, "tax": 0}]
     }
 ]
+
+
