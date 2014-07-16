@@ -8,9 +8,14 @@ angular.module('RestaurantApp.controllers', [])
     };
 
     $scope.login = function() {
-        if ($scope.staffInput.Id.length > 4 && $scope.staffInput.Pin.length > 4) {
-            if ($scope.staffInput.Pin === $scope.staffInput.Id.split("").reverse().toString().replace(/,/g, "")) {
-                $rootScope.staffId = $scope.staffInput.Id;
+        $rootScope.staffId = "";
+
+        var staffId = $scope.staffInput.Id, staffPin = $scope.staffInput.Pin;
+        var regExId = new RegExp( "\\" + staffId.substr(1,1), "g");
+
+        if (staffId.length > 4 && staffPin.length > 4 && staffId.replace(regExId, "").length > 0) {
+            if (staffPin === staffId.split("").reverse().toString().replace(/,/g, "")) {
+                $rootScope.staffId = staffId;
                 $state.go('tables');
             };
         };
@@ -76,7 +81,7 @@ angular.module('RestaurantApp.controllers', [])
         $scope.menuItems = _.filter(data, function(menuItem){return menuItem.catCode1 === $scope.selectedCatCode});
     });
 
-
+/*
     $scope.addQty = function(priceCat){
         priceCat.quantity = (priceCat.quantity || 0 ) + 1;
         if (priceCat.quantity > 99) {priceCat.quantity = 0; };
@@ -87,10 +92,12 @@ angular.module('RestaurantApp.controllers', [])
         if (priceCat.quantity < 0) {priceCat.quantity = 0; }
     };
 
+
     $scope.addItem = function(menuItem, priceCat){
-        priceCat.quantity = priceCat.quantity || 1 ;
+        priceCat.quantity = (priceCat.quantity || 0) + 1 ;
         if (priceCat.quantity > 0 && priceCat.quantity < 100) { OrderSvc.addItem(menuItem, priceCat); };
     };
+*/
 
     $scope.viewOrder = function() {
         $state.go('tab.vieworder');

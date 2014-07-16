@@ -27,26 +27,44 @@ angular.module('RestaurantApp.services', [])
     }
 
     this.addItem = function (menuItem, priceCat) {
+        if (!priceCat.quantity) priceCat.quantity = 1;
         priceCat.quantity = parseInt(priceCat.quantity);
 
-        var i = {
-            itemId: menuItem.itemId,
-            itemName: menuItem.itemName,
-            itemDescription: menuItem.itemDescription,
-            basicRate: priceCat.basicRate,
-            discount: priceCat.discount,
-            quantity: priceCat.quantity,
-            instructions: "",
-            data: ""
+        var inOrder = this.itemInOrder(menuItem.itemId, priceCat.catCode)
+
+        if (inOrder !== false){
+            this.quantity(inOrder, priceCat.quantity);
+        } else {
+
+            var i = {
+                itemId: menuItem.itemId,
+                itemName: menuItem.itemName,
+                itemDescription: menuItem.itemDescription,
+                priceCatCode: priceCat.catCode,
+                basicRate: priceCat.basicRate,
+                discount: priceCat.discount,
+                quantity: priceCat.quantity,
+                instructions: "",
+                data: ""
+            };
+
+            this.$order.push(i);
         };
 
-        this.$order.push(i);
-
-        this.$saveOrder(this.$order);
+        this.$saveOrder();
     };
 
-    this.itemInOrder = function (itemId) {
-        var a =  _.find(this.getOrder(), {itemId:itemId});
+
+
+
+    this.quantity = function (item, offset) {
+        var quantity = (item.quantity || 0) + offset;
+        if (quantity < 1) quantity = 1;
+        item.quantity = quantity;
+    }
+
+    this.itemInOrder = function (itemId, priceCatCode) {
+        var a =  _.findWhere(this.getOrder(), {itemId:itemId, priceCatCode: priceCatCode});
         if (a === undefined) return false
         else return a;
     }

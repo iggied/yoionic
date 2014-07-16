@@ -1,0 +1,23 @@
+Functionality Changes
+1.	Changing the layout of the calculator to look like a calculator with num pad(Will send the representation)
+2.	Spacing to add value in the calculator needs to be broadened/enlarged
+3.	Popping up keyboard, the screen shift & visibility to be checked for
+4.	‘Back’ ‘Next’ ‘Skip’ buttons need to be highlighted
+5.	Order tab to be deleted and functionally (+) implies to addition of dish & (-) implies to removal of dish
+*6.	Others to be removed from gender
+*7.	Name tab to be divided into two Name & Surname
+*8.	Discount to be change to 15%
+9.	Password to be deleted while logging in
+10.	Position of ‘Confirm Order’ tab to be at the bottom
+
+Pages/Links to be added
+1.	Food item details page to be added
+2.	Register(in case of unregistered member)/Favourites(for registered members) button to be added
+3.	Search bar to search cuisine/dish to be added
+4.	Restaurant cover page to be added
+5.	Ticker/Message scroll at the bottom to be added
+6.	Upon login and authentication pop up for verification
+7.	(+) (-) button to be added on ‘View Order’ page
+8.	Bottom tabular menu to be added preferably pop up based
+9.	Pop up with double confirmation of the order to be added
+10.	Feedback to be added

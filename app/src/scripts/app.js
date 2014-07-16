@@ -174,7 +174,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                     var restTotal = scope.avgSpendsAtRestaurants * scope.noOfVisits * 12;
                     var homeTotal = scope.avgSpendsOnHomeOrder * scope.noOfHomeOrders * 12;
 
-                    return ((isNaN(restTotal)?0:restTotal) + (isNaN(homeTotal)?0:homeTotal)) * .1;
+                    return ((isNaN(restTotal)?0:restTotal) + (isNaN(homeTotal)?0:homeTotal)) * .15;
                 }
             }
         };
