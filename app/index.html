@@ -71,7 +71,7 @@
         <!-- The title of the ion-view will be shown on the navbar -->
         <ion-view title="Welcome to {{programName}} - Staff login">
             <ion-content>
-                <form class="list list-inset">
+                <form class="list list-inset" ng-submit="login()">
                     <label class="item item-input">
                         <span class="input-label">Staff Id</span>
                         <input type="text" ng-model="staffInput.Id" placeholder="Type your Id" required autofocus>
@@ -81,7 +81,7 @@
                         <input type="password" ng-model="staffInput.Pin" placeholder="Type your password" required>
                     </label>
 
-                    <button class="button button-positive button-block" ng-click="login()">Touch to select table</button>
+                    <button class="button button-positive button-block">Touch to select table</button>
                 </form>
             </ion-content>
         </ion-view>

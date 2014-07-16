@@ -7,12 +7,15 @@ angular.module('RestaurantApp.controllers', [])
         Pin: ""
     };
 
-    $scope.login = function(){
-       $rootScope.staffId = $scope.staffInput.Id;
-       $state.go('tables');
+    $scope.login = function() {
+        if ($scope.staffInput.Id.length > 4 && $scope.staffInput.Pin.length > 4) {
+            if ($scope.staffInput.Pin === $scope.staffInput.Id.split("").reverse().toString().replace(/,/g, "")) {
+                $rootScope.staffId = $scope.staffInput.Id;
+                $state.go('tables');
+            };
+        };
     };
 })
-
 
 
 .controller('TablesCtrl', ['$scope', '$rootScope', '$window', 'Tables', function($scope, $rootScope, $window, Tables) {
@@ -22,7 +25,6 @@ angular.module('RestaurantApp.controllers', [])
         $window.location.href = 'main.html#/firstpage/'+$rootScope.staffId+'/'+tableIndex+'/'+$scope.tables[tableIndex].tableNumber;
     };
 }])
-
 
 
 .controller('MainCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
