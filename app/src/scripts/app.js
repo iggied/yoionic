@@ -188,8 +188,18 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
             $scope.orderSvc = OrderSvc;
             $scope.programName = $rootScope.programName;
 
-            $scope.removeItem = function(index){
-                OrderSvc.removeItem(index) ;
+            $scope.addItem = function(index){
+                OrderSvc.quantity(OrderSvc.getOrder()[index], 1) ;
+                OrderSvc.$saveOrder();
+            };
+
+            $scope.reduceItem = function(index){
+                if (OrderSvc.getOrder()[index].quantity <= 1) {
+                    OrderSvc.removeItem(index) ;
+                } else {
+                    OrderSvc.quantity(OrderSvc.getOrder()[index], -1) ;
+                }
+                OrderSvc.$saveOrder();
             };
         }],
         scope: {},

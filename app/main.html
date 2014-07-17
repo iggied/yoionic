@@ -154,9 +154,9 @@
                             <h2 class="col col-50">Item</h2>
                             <h2 class="col col-10" style="text-align:center">Price</h2>
                             <h2 class="col col-10" style="text-align:center">{{programName}}<br/>Price</h2>
-                            <h2 class="col col-10" style="text-align:right">Quantity</h2>
-                            <h2 class="col col-10" style="text-align:center;font-size:24px">+/-</h2>
-                            <h2 class="col col-10" style="text-align:center">Order</h2>
+                            <h2 class="col col-10" style="text-align:center">Ordered Qty</h2>
+                            <h2 class="col col-10" style="text-align:center">Add item</h2>
+                            <h2 class="col col-10" style="text-align:center">Reduce item</h2>
                         </ion-item>
                         <div ng-repeat="menuItem in menuItems">
                             <ion-item class="row" ng-repeat="menuItemPriceCat in menuItem.priceCat">
@@ -166,23 +166,20 @@
                                     <p>{{menuItem.itemDescription}}</p>
                                 </a>
                                 <div class="col col-10">
-                                    <h3 style="text-align:center">{{menuItemPriceCat.basicRate | number}}</h3>
+                                    <br/><h3 style="text-align:center">{{menuItemPriceCat.basicRate | number}}</h3>
                                 </div>
                                 <div class="col col-10">
-                                    <h3 style="text-align:center">{{menuItemPriceCat.basicRate - menuItemPriceCat.discount | number}}</h3>
+                                    <br/><h3 style="text-align:center">{{menuItemPriceCat.basicRate - menuItemPriceCat.discount | number}}</h3>
                                 </div>
                                 <div class="col col-10">
-                                    <!--<input type="number" ng-model="menuItemPriceCat.quantity" style="text-align:right" min="0" max="99" step="1">-->
-                                    <h3 style="text-align:right">{{ orderSvc.itemInOrder( menuItem.itemId, menuItemPriceCat.catCode ).quantity }}</h3>
+                                    <br/><h3 style="text-align:center">{{ orderSvc.itemInOrder( menuItem.itemId, menuItemPriceCat.catCode ).quantity }}</h3>
                                 </div>
                                 <div class="col col-10" style="text-align:center">
-                                    <a class="button button-small button-balanced" style="font-size:24px" ng-click="orderSvc.addItem(menuItem, menuItemPriceCat)">+</a>
-                                    <a class="button button-small button-assertive" style="font-size:24px" ng-click="removeQty(menuItemPriceCat)">-</a>
+                                    <a class="button button-balanced" style="font-size:24px" ng-click="orderSvc.addItem(menuItem, menuItemPriceCat)">+</a>
                                 </div>
-
-<!--                                <div class="col col-10" style="text-align:center">
-                                    <button class="button button-stable" ng-click="addItem(menuItem, menuItemPriceCat)">Order item</button>
-                                </div>-->
+                                <div class="col col-10" style="text-align:center">
+                                    <a class="button button-assertive" style="font-size:24px" ng-click="orderSvc.reduceItem(menuItem, menuItemPriceCat)">-</a>
+                                </div>
                             </ion-item>
                         </div>
                     </ion-list>
@@ -389,9 +386,9 @@
                     <h2 class="col col-33">Item</h2>
                     <h2 class="col col-10" style="text-align:center">Price</h2>
                     <h2 class="col col-10" style="text-align:center">{{programName}}<br/>Price</h2>
-                    <h2 class="col col-10" style="text-align:right">Quantity</h2>
+                    <h2 class="col col-10" style="text-align:center">Quantity</h2>
                     <h2 class="col col-20" style="text-align:center">Instructions</h2>
-                    <h2 class="col col-10" style="text-align:center">Remove</h2>
+                    <h2 class="col col-10" style="text-align:center">Add/Reduce</h2>
                 </ion-item>
 
                 <ion-item class="row" ng-repeat="item in orderSvc.getOrder() track by $index">
@@ -400,19 +397,20 @@
                         <p>{{item.itemDescription}}</p>
                     </a>
                     <div class="col col-10">
-                        <h3 style="text-align:center">{{item.basicRate | number}}</h3>
+                        <br/><h3 style="text-align:center">{{item.basicRate | number}}</h3>
                     </div>
                     <div class="col col-10">
-                        <h3 style="text-align:center">{{item.basicRate - item.discount | number}}</h3>
+                        <br/><h3 style="text-align:center">{{item.basicRate - item.discount | number}}</h3>
                     </div>
                     <div class="col col-10">
-                        <input type="number" ng-model="item.quantity" style="text-align:right" min="0" max="99" step="1">
+                        <br/><h3 style="text-align:center">{{item.quantity | number}}</h3>
                     </div>
                     <div class="col col-20">
                         <input type="text" ng-model="item.instructions" style="text-align:center">
                     </div>
                     <div class="col col-10" style="text-align:center">
-                        <a class="button button-assertive" style="font-size:24px" ng-click="removeItem($index)">-</a>
+                        <a class="button button-small button-balanced"  style="font-size:24px" ng-click="addItem($index)">+</a>
+                        <a class="button button-small button-assertive" style="font-size:24px" ng-click="reduceItem($index)">-</a>
                     </div>
                 </ion-item>
 

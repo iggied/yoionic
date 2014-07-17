@@ -55,6 +55,22 @@ angular.module('RestaurantApp.services', [])
     };
 
 
+    this.reduceItem = function (menuItem, priceCat) {
+        if (!priceCat.quantity) priceCat.quantity = 1;
+        priceCat.quantity = parseInt(priceCat.quantity);
+
+        var inOrder = this.itemInOrder(menuItem.itemId, priceCat.catCode)
+
+        if (inOrder !== false) {
+            if (inOrder.quantity <= 1) {
+                this.removeItem(this.getOrder().indexOf(inOrder));
+            } else {
+                this.quantity(inOrder, -priceCat.quantity);
+            }
+        }
+
+        this.$saveOrder();
+    };
 
 
     this.quantity = function (item, offset) {
