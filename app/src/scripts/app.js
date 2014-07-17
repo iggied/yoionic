@@ -173,9 +173,67 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                 scope.totalSavings = function () {
                     var restTotal = scope.avgSpendsAtRestaurants * scope.noOfVisits * 12;
                     var homeTotal = scope.avgSpendsOnHomeOrder * scope.noOfHomeOrders * 12;
+                    var bothTotal = ((isNaN(restTotal)?0:restTotal) + (isNaN(homeTotal)?0:homeTotal)) * .15 ;
 
-                    return ((isNaN(restTotal)?0:restTotal) + (isNaN(homeTotal)?0:homeTotal)) * .15;
+
+                    if (bothTotal === 0) {
+                        return "My savings calculator" ;
+                    } else {
+                        return "I can save " + bothTotal + "* in a year";
+                    }
+                };
+
+                scope.lastTouched = "ASR";
+
+                scope.touchedASR = function() {
+                    scope.lastTouched = "ASR";
+                };
+
+                scope.touchedNVR = function() {
+                    scope.lastTouched = "NVR";
+                };
+
+                scope.touchedASH = function() {
+                    scope.lastTouched = "ASH";
+                };
+
+                scope.touchedNVH = function() {
+                    scope.lastTouched = "NVH";
+                };
+
+                scope.calcTouched = function(key) {
+                    var fieldVal = '' ;
+
+                    switch (scope.lastTouched) {
+                        case 'ASR' : fieldVal = scope.avgSpendsAtRestaurants; break;
+                        case 'NVR' : fieldVal = scope.noOfVisits; break;
+                        case 'ASH' : fieldVal = scope.avgSpendsOnHomeOrder; break;
+                        case 'NVH' : fieldVal = scope.noOfHomeOrders; break;
+                    }
+
+
+                    switch (key) {
+                        case '.' :
+                            if (fieldVal.length > 1) {
+                                fieldVal = fieldVal.substr(0, fieldVal.length - 1);
+                            } else {
+                                fieldVal = "";
+                            }
+                            break;
+                        default : fieldVal = (fieldVal || "") + key;
+                            break;
+                    }
+
+                    switch (scope.lastTouched) {
+                        case 'ASR' : scope.avgSpendsAtRestaurants = fieldVal; break;
+                        case 'NVR' : scope.noOfVisits = fieldVal;  break;
+                        case 'ASH' : scope.avgSpendsOnHomeOrder = fieldVal; break;
+                        case 'NVH' : scope.noOfHomeOrders = fieldVal; break;
+                    }
+
+
                 }
+
             }
         };
     }

@@ -8,7 +8,7 @@ Functionality Changes
 *7.	Name tab to be divided into two Name & Surname
 *8.	Discount to be change to 15%
 9.	Password to be deleted while logging in
-10.	Position of ‘Confirm Order’ tab to be at the bottom
+*10.	Position of ‘Confirm Order’ tab to be at the bottom
 
 Pages/Links to be added
 1.	Food item details page to be added

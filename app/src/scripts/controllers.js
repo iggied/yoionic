@@ -11,7 +11,7 @@ angular.module('RestaurantApp.controllers', [])
         $rootScope.staffId = "";
 
         var staffId = $scope.staffInput.Id, staffPin = $scope.staffInput.Pin;
-        var regExId = new RegExp( "\\" + staffId.substr(1,1), "g");
+        var regExId = new RegExp( staffId.substr(1,1), "g");
 
         if (staffId.length > 4 && staffPin.length > 4 && staffId.replace(regExId, "").length > 0) {
             if (staffPin === staffId.split("").reverse().toString().replace(/,/g, "")) {

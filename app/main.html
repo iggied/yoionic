@@ -254,52 +254,78 @@
 
 
     <script id="ibenefit-savings.html" type="text/ng-template">
-        <div>
-            <div class="row">
-                <h3 class="col" style="text-align:center">My savings calculator</h3>
-            </div>
+        <ion-list>
+
 
             <div class="row">
-                <div class="col col-80 item item-royal" style="padding-top:10px">
+                <h3 class="col" style="text-align:center">{{totalSavings()}}</h3>
+            </div>
+
+            <div class="row item" ng-click="touchedASR()" ng-class="{'item item-royal': lastTouched=='ASR'}">
+                <div class="col col-80" style="padding-top:10px">
                     Average spends at restaurants
                 </div>
-                <div class="col col-20 item item-royal">
-                    <input type="number" style="text-align:right" ng-model="avgSpendsAtRestaurants" min="100" max="50000" step="100">
+                <div class="col col-20">
+                    <input type="number" style="text-align:right" readonly value="{{avgSpendsAtRestaurants}}">
                 </div>
             </div>
-            <div class="row">
-                <div class="col col-80 item item-royal" style="padding-top:10px">
+            <div class="row item" ng-click="touchedNVR()" ng-class="{'item item-royal': lastTouched=='NVR'}">
+                <div class="col col-80" style="padding-top:10px">
                     Restaurants visits per month
                 </div>
-                <div class="col col-20 item item-royal">
-                    <input type="number" style="text-align:right" ng-model="noOfVisits" min="0" max="30">
+                <div class="col col-20">
+                    <input type="number" style="text-align:right" readonly value="{{noOfVisits}}">
                 </div>
             </div>
-            <div class="row">
-                <div class="col col-80 item item-calm" style="padding-top:10px">
+            <div class="row item" ng-click="touchedASH()" ng-class="{'item item-royal': lastTouched=='ASH'}">
+                <div class="col col-80" style="padding-top:10px">
                     Average spends on home order
                 </div>
-                <div class="col col-20 item item-calm">
-                    <input type="number" style="text-align:right" ng-model="avgSpendsOnHomeOrder"  min="100" max="50000" step="100">
+                <div class="col col-20">
+                    <input type="number" style="text-align:right" readonly value="{{avgSpendsOnHomeOrder}}">
                 </div>
             </div>
-            <div class="row">
-                <div class="col col-80 item item-calm" style="padding-top:10px">
+            <div class="row item" ng-click="touchedNVH()" ng-class="{'item item-royal': lastTouched=='NVH'}">
+                <div class="col col-80" style="padding-top:10px">
                     Home orders per month
                 </div>
-                <div class="col col-20 item item-calm">
-                    <input type="number" style="text-align:right" ng-model="noOfHomeOrders" min="0" max="30">
+                <div class="col col-20">
+                    <input type="number" style="text-align:right" readonly value="{{noOfHomeOrders}}">
                 </div>
             </div>
-            <div class="row">
+<!--            <div class="row">
                 <div class="col col-80 item item-energized" style="padding-top:10px">
                     Approximate savings in a year
                 </div>
                 <div class="col col-20 item item-energized">
                      <input type="number" style="text-align:right" readonly value="{{totalSavings()}}">
                 </div>
+            </div>-->
+            <div class="row">
+                <div id="keypad" style="border:1px solid red;float:left">
+                    <div id="row1">
+                        <input type="button" class="button" value="1" ng-click="calcTouched('1')">
+                        <input type="button" class="button" value="2" ng-click="calcTouched('2')">
+                        <input type="button" class="button" value="3" ng-click="calcTouched('3')">
+                    </div>
+                    <div id="row2">
+                        <input type="button" class="button" value="4" ng-click="calcTouched('4')">
+                        <input type="button" class="button" value="5" ng-click="calcTouched('5')">
+                        <input type="button" class="button" value="6" ng-click="calcTouched('6')">
+                    </div>
+                    <div id="row3">
+                        <input type="button" class="button" value="7" ng-click="calcTouched('7')">
+                        <input type="button" class="button" value="8" ng-click="calcTouched('8')">
+                        <input type="button" class="button" value="9" ng-click="calcTouched('9')">
+                    </div>
+                    <div id="row4">
+                        <input type="button" class="button" value="del" ng-click="calcTouched('.')">
+                        <input type="button" class="button" value="0" ng-click="calcTouched('0')">
+                        <input type="button" class="button" value="X" ng-click="calcTouched('X')">
+                    </div>
+                </div>
             </div>
-        </div>
+        </ion-list>
     </script>
 
 
