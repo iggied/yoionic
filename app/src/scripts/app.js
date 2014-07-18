@@ -173,7 +173,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                 scope.totalSavings = function () {
                     var restTotal = scope.avgSpendsAtRestaurants * scope.noOfVisits * 12;
                     var homeTotal = scope.avgSpendsOnHomeOrder * scope.noOfHomeOrders * 12;
-                    var bothTotal = ((isNaN(restTotal)?0:restTotal) + (isNaN(homeTotal)?0:homeTotal)) * .15 ;
+                    var bothTotal = parseInt(((isNaN(restTotal)?0:restTotal) + (isNaN(homeTotal)?0:homeTotal)) * .15) ;
 
 
                     if (bothTotal === 0) {
@@ -183,7 +183,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                     }
                 };
 
-                scope.lastTouched = "ASR";
+                scope.lastTouched = "";
 
                 scope.touchedASR = function() {
                     scope.lastTouched = "ASR";
@@ -219,6 +219,8 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                             } else {
                                 fieldVal = "";
                             }
+                            break;
+                        case 'X': scope.lastTouched = "";
                             break;
                         default : fieldVal = (fieldVal || "") + key;
                             break;
@@ -266,5 +268,19 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 
         }
     };
+})
+
+.filter('objectToArray', function () {
+
+    return function (obj) {
+        if (!(obj instanceof Object)) {
+            return obj;
+        }
+
+        return Object.keys(obj).map(function (key) {
+            return Object.defineProperty(obj[key], '$key', {__proto__: null, value: key});
+        });
+    }
 });
+
 

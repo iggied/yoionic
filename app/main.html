@@ -119,6 +119,13 @@
         <ion-view title="You are being served by {{staffId}} on {{tableNumber}}">
 
             <ion-header-bar class="bar bar-subheader item-input-inset">
+                <label class="item-input-inset">
+                    <i class="icon ion-ios7-search placeholder-icon"></i>
+                    <input type="search" ng-model="searchInput">
+                </label>
+                <button class="button button-clear">
+                    Search
+                </button>
                 <h1 class="title"></h1>
                 <div class="buttons">
                     <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="viewOrder()">View order</button>
@@ -126,9 +133,9 @@
             </ion-header-bar>
 
             <ion-content>
-                <div class="button" ng-repeat="(catCode, menu) in menuCat" style="float:left;display:inline;margin:5px" ng-click="selectMenuCategory(catCode)">
-                    <img src="images/{{catCode}}.png" style="margin-top:10px" height="110px" width="110px"></img>
-                    <p style="text-align:center;margin:0;line-height:20px">{{catCode | lowercase}}</p>
+                <div class="button" ng-repeat="menuArray in menuCat | objectToArray | filter:searchInput" style="float:left;display:inline;margin:5px" ng-click="selectMenuCategory(menuArray[0].catCode1)">
+                    <img src="images/{{menuArray[0].catCode1}}.png" style="margin-top:10px" height="110px" width="110px"></img>
+                    <p style="text-align:center;margin:0;line-height:20px">{{menuArray[0].catCode1 | lowercase}}</p>
                 </div>
             </ion-content>
         </ion-view>
@@ -141,6 +148,11 @@
         <ion-view title="">
 
             <ion-header-bar class="bar bar-subheader item-input-inset">
+                    <label class="item-input-inset">
+                        <i class="icon ion-ios7-search placeholder-icon"></i>
+                        <input type="search" ng-model="searchInput">
+                    </label>
+
                 <h1 class="title">{{selectedCatCode | lowercase}}</h1>
                 <div class="buttons">
                     <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="viewOrder()">View order</button>
@@ -158,7 +170,7 @@
                             <h2 class="col col-10" style="text-align:center">Add item</h2>
                             <h2 class="col col-10" style="text-align:center">Reduce item</h2>
                         </ion-item>
-                        <div ng-repeat="menuItem in menuItems">
+                        <div ng-repeat="menuItem in menuItems | filter:searchInput">
                             <ion-item class="row" ng-repeat="menuItemPriceCat in menuItem.priceCat">
                                 <a class="col col-50 item-content">
                                     <!-- <img src="images/food.png">  -->
@@ -261,7 +273,7 @@
                 <h3 class="col" style="text-align:center">{{totalSavings()}}</h3>
             </div>
 
-            <div class="row item" ng-click="touchedASR()" ng-class="{'item item-royal': lastTouched=='ASR'}">
+            <div class="row item" ng-click="touchedASR()" ng-class="{'royal': lastTouched=='ASR'}">
                 <div class="col col-80" style="padding-top:10px">
                     Average spends at restaurants
                 </div>
@@ -269,7 +281,7 @@
                     <input type="number" style="text-align:right" readonly value="{{avgSpendsAtRestaurants}}">
                 </div>
             </div>
-            <div class="row item" ng-click="touchedNVR()" ng-class="{'item item-royal': lastTouched=='NVR'}">
+            <div class="row item" ng-click="touchedNVR()" ng-class="{'royal': lastTouched=='NVR'}">
                 <div class="col col-80" style="padding-top:10px">
                     Restaurants visits per month
                 </div>
@@ -277,7 +289,7 @@
                     <input type="number" style="text-align:right" readonly value="{{noOfVisits}}">
                 </div>
             </div>
-            <div class="row item" ng-click="touchedASH()" ng-class="{'item item-royal': lastTouched=='ASH'}">
+            <div class="row item" ng-click="touchedASH()" ng-class="{'royal': lastTouched=='ASH'}">
                 <div class="col col-80" style="padding-top:10px">
                     Average spends on home order
                 </div>
@@ -285,7 +297,7 @@
                     <input type="number" style="text-align:right" readonly value="{{avgSpendsOnHomeOrder}}">
                 </div>
             </div>
-            <div class="row item" ng-click="touchedNVH()" ng-class="{'item item-royal': lastTouched=='NVH'}">
+            <div class="row item" ng-click="touchedNVH()" ng-class="{'royal': lastTouched=='NVH'}">
                 <div class="col col-80" style="padding-top:10px">
                     Home orders per month
                 </div>
@@ -302,26 +314,26 @@
                 </div>
             </div>-->
             <div class="row">
-                <div id="keypad" style="border:1px solid red;float:left">
+                <div id="keypad" style="padding:10px" ng-hide="lastTouched==''">
                     <div id="row1">
-                        <input type="button" class="button" value="1" ng-click="calcTouched('1')">
-                        <input type="button" class="button" value="2" ng-click="calcTouched('2')">
-                        <input type="button" class="button" value="3" ng-click="calcTouched('3')">
+                        <button class="button button-large" ng-click="calcTouched('1')">1</button>
+                        <button class="button button-large" ng-click="calcTouched('2')">2</button>
+                        <button class="button button-large" ng-click="calcTouched('3')">3</button>
                     </div>
                     <div id="row2">
-                        <input type="button" class="button" value="4" ng-click="calcTouched('4')">
-                        <input type="button" class="button" value="5" ng-click="calcTouched('5')">
-                        <input type="button" class="button" value="6" ng-click="calcTouched('6')">
+                        <button class="button button-large" ng-click="calcTouched('4')">4</button>
+                        <button class="button button-large" ng-click="calcTouched('5')">5</button>
+                        <button class="button button-large" ng-click="calcTouched('6')">6</button>
                     </div>
                     <div id="row3">
-                        <input type="button" class="button" value="7" ng-click="calcTouched('7')">
-                        <input type="button" class="button" value="8" ng-click="calcTouched('8')">
-                        <input type="button" class="button" value="9" ng-click="calcTouched('9')">
+                        <button class="button button-large" ng-click="calcTouched('7')">7</button>
+                        <button class="button button-large" ng-click="calcTouched('8')">8</button>
+                        <button class="button button-large" ng-click="calcTouched('9')">9</button>
                     </div>
                     <div id="row4">
-                        <input type="button" class="button" value="del" ng-click="calcTouched('.')">
-                        <input type="button" class="button" value="0" ng-click="calcTouched('0')">
-                        <input type="button" class="button" value="X" ng-click="calcTouched('X')">
+                        <button class="button button-large" ng-click="calcTouched('.')">.</button>
+                        <button class="button button-large" ng-click="calcTouched('0')">0</button>
+                        <button class="button button-large" ng-click="calcTouched('X')">X</button>
                     </div>
                 </div>
             </div>

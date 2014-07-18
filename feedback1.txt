@@ -1,5 +1,5 @@
 Functionality Changes
-1.	Changing the layout of the calculator to look like a calculator with num pad(Will send the representation)
+*1.	Changing the layout of the calculator to look like a calculator with num pad(Will send the representation)
 2.	Spacing to add value in the calculator needs to be broadened/enlarged
 3.	Popping up keyboard, the screen shift & visibility to be checked for
 4.	‘Back’ ‘Next’ ‘Skip’ buttons need to be highlighted
