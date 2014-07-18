@@ -66,7 +66,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     })
 
     .state('tab.itemlist', {
-      url: '/itemlist/:catCode',
+      url: '/itemlist/:catCode/:searchInput',
       views: {
           'menu-tab': {
               templateUrl: 'menu-itemlist.html',
@@ -186,19 +186,19 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                 scope.lastTouched = "";
 
                 scope.touchedASR = function() {
-                    scope.lastTouched = "ASR";
+                    scope.lastTouched = scope.lastTouched == "ASR" ? "" : "ASR";
                 };
 
                 scope.touchedNVR = function() {
-                    scope.lastTouched = "NVR";
+                    scope.lastTouched = scope.lastTouched == "NVR" ? "" : "NVR";
                 };
 
                 scope.touchedASH = function() {
-                    scope.lastTouched = "ASH";
+                    scope.lastTouched = scope.lastTouched == "ASH" ? "" : "ASH";
                 };
 
                 scope.touchedNVH = function() {
-                    scope.lastTouched = "NVH";
+                    scope.lastTouched = scope.lastTouched == "NVH" ? "" : "NVH";
                 };
 
                 scope.calcTouched = function(key) {

@@ -123,7 +123,7 @@
                     <i class="icon ion-ios7-search placeholder-icon"></i>
                     <input type="search" ng-model="searchInput">
                 </label>
-                <button class="button button-clear">
+                <button class="button button-clear" ng-click="searchItems()">
                     Search
                 </button>
                 <h1 class="title"></h1>
@@ -148,10 +148,10 @@
         <ion-view title="">
 
             <ion-header-bar class="bar bar-subheader item-input-inset">
-                    <label class="item-input-inset">
-                        <i class="icon ion-ios7-search placeholder-icon"></i>
-                        <input type="search" ng-model="searchInput">
-                    </label>
+                <label class="item-input-inset">
+                    <i class="icon ion-ios7-search placeholder-icon"></i>
+                    <input type="search" ng-model="searchInput">
+                </label>
 
                 <h1 class="title">{{selectedCatCode | lowercase}}</h1>
                 <div class="buttons">
@@ -170,29 +170,33 @@
                             <h2 class="col col-10" style="text-align:center">Add item</h2>
                             <h2 class="col col-10" style="text-align:center">Reduce item</h2>
                         </ion-item>
-                        <div ng-repeat="menuItem in menuItems | filter:searchInput">
-                            <ion-item class="row" ng-repeat="menuItemPriceCat in menuItem.priceCat">
-                                <a class="col col-50 item-content">
-                                    <!-- <img src="images/food.png">  -->
-                                    <h2>{{menuItem.itemName}}</h2>
-                                    <p>{{menuItem.itemDescription}}</p>
-                                </a>
-                                <div class="col col-10">
-                                    <br/><h3 style="text-align:center">{{menuItemPriceCat.basicRate | number}}</h3>
-                                </div>
-                                <div class="col col-10">
-                                    <br/><h3 style="text-align:center">{{menuItemPriceCat.basicRate - menuItemPriceCat.discount | number}}</h3>
-                                </div>
-                                <div class="col col-10">
-                                    <br/><h3 style="text-align:center">{{ orderSvc.itemInOrder( menuItem.itemId, menuItemPriceCat.catCode ).quantity }}</h3>
-                                </div>
-                                <div class="col col-10" style="text-align:center">
-                                    <a class="button button-balanced" style="font-size:24px" ng-click="orderSvc.addItem(menuItem, menuItemPriceCat)">+</a>
-                                </div>
-                                <div class="col col-10" style="text-align:center">
-                                    <a class="button button-assertive" style="font-size:24px" ng-click="orderSvc.reduceItem(menuItem, menuItemPriceCat)">-</a>
-                                </div>
+                        <div ng-repeat="menuArray in menuItems">
+                            <ion-item class="item item-divider">
+                                {{menuArray[0].catCode1}}
                             </ion-item>
+                            <div ng-repeat="menuItem in menuArray | filter:searchInput">
+                                <ion-item class="row" ng-repeat="menuItemPriceCat in menuItem.priceCat">
+                                    <a class="col col-50 item-content">
+                                        <h2>{{menuItem.itemName}}</h2>
+                                        <p>{{menuItem.itemDescription}}</p>
+                                    </a>
+                                    <div class="col col-10">
+                                        <br/><h3 style="text-align:center">{{menuItemPriceCat.basicRate | number}}</h3>
+                                    </div>
+                                    <div class="col col-10">
+                                        <br/><h3 style="text-align:center">{{menuItemPriceCat.basicRate - menuItemPriceCat.discount | number}}</h3>
+                                    </div>
+                                    <div class="col col-10">
+                                        <br/><h3 style="text-align:center">{{ orderSvc.itemInOrder( menuItem.itemId, menuItemPriceCat.catCode ).quantity }}</h3>
+                                    </div>
+                                    <div class="col col-10" style="text-align:center">
+                                        <a class="button button-balanced" style="font-size:24px" ng-click="orderSvc.addItem(menuItem, menuItemPriceCat)">+</a>
+                                    </div>
+                                    <div class="col col-10" style="text-align:center">
+                                        <a class="button button-assertive" style="font-size:24px" ng-click="orderSvc.reduceItem(menuItem, menuItemPriceCat)">-</a>
+                                    </div>
+                                </ion-item>
+                            </div>
                         </div>
                     </ion-list>
                 </div>

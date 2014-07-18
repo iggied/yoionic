@@ -13,7 +13,7 @@ Functionality Changes
 Pages/Links to be added
 1.	Food item details page to be added
 2.	Register(in case of unregistered member)/Favourites(for registered members) button to be added
-3.	Search bar to search cuisine/dish to be added
+*3.	Search bar to search cuisine/dish to be added
 4.	Restaurant cover page to be added
 5.	Ticker/Message scroll at the bottom to be added
 6.	Upon login and authentication pop up for verification

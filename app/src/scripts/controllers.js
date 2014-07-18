@@ -51,12 +51,16 @@ angular.module('RestaurantApp.controllers', [])
     });
 
     $scope.selectMenuCategory = function(catCodePara) {
-        $state.go('tab.itemlist', {catCode: catCodePara});
+        $state.go('tab.itemlist', {catCode: catCodePara, searchInput: ""});
     };
 
     $scope.viewOrder = function() {
       $state.go('tab.vieworder');
     };
+
+    $scope.searchItems = function() {
+        $state.go('tab.itemlist', {catCode: "", searchInput: $scope.searchInput});
+    }
 
     var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
         $rootScope.confirmAndGoHome()
@@ -71,33 +75,26 @@ angular.module('RestaurantApp.controllers', [])
 
 
 
-.controller('ItemListCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window', 'OrderSvc',
-                    function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window, OrderSvc) {
+.controller('ItemListCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window', '$filter', 'OrderSvc',
+                    function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window, $filter, OrderSvc) {
     $scope.selectedCatCode = $stateParams.catCode;
+    $scope.searchInput = $stateParams.searchInput;
     $scope.orderSvc = OrderSvc;
     $scope.menuItems = [];
 
-    Menus.query( function(data) {
-        $scope.menuItems = _.filter(data, function(menuItem){return menuItem.catCode1 === $scope.selectedCatCode});
-    });
-
-/*
-    $scope.addQty = function(priceCat){
-        priceCat.quantity = (priceCat.quantity || 0 ) + 1;
-        if (priceCat.quantity > 99) {priceCat.quantity = 0; };
+    if ($scope.selectedCatCode != "") {
+        Menus.query(function (data) {
+            $scope.menuItems = [ _.filter(data, function (menuItem) {
+                return menuItem.catCode1 === $scope.selectedCatCode
+            }) ];
+        })
+    } else {
+        if ($scope.searchInput != "") {
+            Menus.query(function (data) {
+                $scope.menuItems = _.groupBy( $filter('filter')(data, $scope.searchInput), "catCode1" ) ;
+            })
+        }
     };
-
-    $scope.removeQty = function(priceCat){
-        priceCat.quantity = (priceCat.quantity || 0 ) - 1;
-        if (priceCat.quantity < 0) {priceCat.quantity = 0; }
-    };
-
-
-    $scope.addItem = function(menuItem, priceCat){
-        priceCat.quantity = (priceCat.quantity || 0) + 1 ;
-        if (priceCat.quantity > 0 && priceCat.quantity < 100) { OrderSvc.addItem(menuItem, priceCat); };
-    };
-*/
 
     $scope.viewOrder = function() {
         $state.go('tab.vieworder');
