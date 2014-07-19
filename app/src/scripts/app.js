@@ -144,9 +144,11 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
             StatusBar.styleDefault();
             //StatusBar.show();
         }
+
+        $ionicPlatform.fullScreen( true, false);
+
     });
 
-//   $ionicPlatform.fullScreen( true, false);
 
    OrderSvc.setOrder([]);
 

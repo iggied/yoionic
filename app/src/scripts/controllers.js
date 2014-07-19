@@ -59,8 +59,10 @@ angular.module('RestaurantApp.controllers', [])
     };
 
     $scope.searchItems = function() {
-        $state.go('tab.itemlist', {catCode: "", searchInput: $scope.searchInput});
-    }
+        if ($scope.searchInput) {
+            $state.go('tab.itemlist', {catCode: "", searchInput: $scope.searchInput});
+        };
+    };
 
     var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
         $rootScope.confirmAndGoHome()

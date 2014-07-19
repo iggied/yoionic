@@ -10,4 +10,5 @@
     <icon src="res/icons/android/ibenefit.png" width="57" height="57"/>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="Fullscreen" value="true" />
 </widget>
