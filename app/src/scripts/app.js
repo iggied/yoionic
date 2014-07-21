@@ -179,9 +179,13 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 
 
                     if (bothTotal === 0) {
-                        return "My savings calculator" ;
+                        if (scope.lastTouched == "") {
+                            return "";   //"Touch the questions to input values" ;
+                        } else {
+                            return "";   //"Use this number pad to input values" ;
+                        }
                     } else {
-                        return "I can save " + bothTotal + "* in a year";
+                        return "I can save Rs." + bothTotal + "* /year" ;
                     }
                 };
 

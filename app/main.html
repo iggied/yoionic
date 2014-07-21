@@ -23,7 +23,6 @@
 
   <body ng-app="RestaurantApp" animation="slide-left-right-ios7" ng-controller="MainCtrl">
 
-
     <ion-nav-bar class="bar-header bar-positive">
         <ion-nav-back-button class="button-clear">
             <i class="ion-arrow-left-c">Back</i>
@@ -35,11 +34,7 @@
         </ion-nav-buttons>
     </ion-nav-bar>
 
-
-
-
     <ion-nav-view> <i>Loading...</i> </ion-nav-view>
-
 
     <!-- build:js scripts/vendor.js -->
     <!-- <script src="vendor/someContribJs.js"></script> -->
@@ -64,15 +59,11 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-
-
     <script id="firstpage.html" type="text/ng-template">
 
         <ion-view title="You are being served by {{staffId}} on {{tableNumber}}">
 
-
             <ion-content>
-
                 <div class="row">
                     <div class="col col-67">
                         <div class="row">
@@ -112,7 +103,7 @@
         </ion-view>
     </script>
 
-
+<!-------------------------------------------------------------------------------------------------------------->
 
     <script id="menus.html" type="text/ng-template">
 
@@ -141,7 +132,7 @@
         </ion-view>
     </script>
 
-
+<!-------------------------------------------------------------------------------------------------------------->
 
     <script id="menu-itemlist.html" type="text/ng-template">
 
@@ -205,6 +196,7 @@
         </ion-view>
     </script>
 
+<!-------------------------------------------------------------------------------------------------------------->
 
     <script id="view-order.html" type="text/ng-template">
         <ion-view title="Your order">
@@ -226,6 +218,7 @@
         </ion-view>
     </script>
 
+<!-------------------------------------------------------------------------------------------------------------->
 
     <script id="chefcorner.html" type="text/ng-template">
         <ion-view title="Chef's corner">
@@ -236,12 +229,16 @@
         </ion-view>
     </script>
 
+<!-------------------------------------------------------------------------------------------------------------->
+
     <script id="softdrinks.html" type="text/ng-template">
         <ion-view title="Soft drinks">
             <ion-content>
             </ion-content>
         </ion-view>
     </script>
+
+<!-------------------------------------------------------------------------------------------------------------->
 
     <script id="barcounter.html" type="text/ng-template">
         <ion-view title="Bar Counter">
@@ -250,12 +247,16 @@
         </ion-view>
     </script>
 
+<!-------------------------------------------------------------------------------------------------------------->
+
     <script id="specialoffer.html" type="text/ng-template">
         <ion-view title="Special Offers">
             <ion-content>
             </ion-content>
         </ion-view>
     </script>
+
+<!-------------------------------------------------------------------------------------------------------------->
 
     <script id="myfavourites.html" type="text/ng-template">
         <ion-view title="My Favourites">
@@ -264,17 +265,14 @@
         </ion-view>
     </script>
 
-
-
-
-
+<!-------------------------------------------------------------------------------------------------------------->
 
     <script id="ibenefit-savings.html" type="text/ng-template">
 
         <div style="border:thick ridge #9900FF;border-radius:5px">
 
                 <div class="row">
-                    <h3 class="col" style="text-align:center">{{totalSavings()}}</h3>
+                    <h2 class="col" style="text-align:center">My savings calculator</h2>
                 </div>
 
                 <div class="row" ng-click="touchedNVR()" ng-class="{'royal': lastTouched=='NVR'}">
@@ -312,6 +310,9 @@
                         {{avgSpendsOnHomeOrder}}
                     </div>
                 </div>
+                <div class="row">
+                    <h3 class="col" style="text-align:left">{{totalSavings()}}</h3>
+                </div>
 
                 <div>
                     <div ng-hide="lastTouched==''">
@@ -340,10 +341,10 @@
         </div>
     </script>
 
-
+<!-------------------------------------------------------------------------------------------------------------->
 
     <script id="login-modal.html" type="text/ng-template">
-        <div class="modal" style="height:100px">
+        <div class="modal" style="height:auto">
             <ion-header-bar>
                 <h1 class="title">Login to {{programName}}</h1>
             </ion-header-bar>
@@ -359,15 +360,17 @@
                     </label>
 
                     <button class="button button-positive button-block" ng-click="closeLoginModal()">Login</button>
+                    <button class="button button-positive button-block" ng-click="closeLoginModal()">Cancel</button>
+
                 </form>
             </ion-content>
         </div>
     </script>
 
-
+<!-------------------------------------------------------------------------------------------------------------->
 
     <script id="register-modal.html" type="text/ng-template">
-        <div class="modal" style="top:10%;bottom:10%">
+        <div class="modal" >
             <ion-header-bar>
                 <h1 class="title">Register to {{programName}}</h1>
             </ion-header-bar>
@@ -375,21 +378,21 @@
                 <form class="list list-inset">
                     <label class="item item-input">
                         <span class="input-label">First name</span>
-                        <input type="text" ng-model="customerInput.firstName" placeholder="Type your first name" required>
+                        <input type="text" ng-model="customerInput.firstName" placeholder="Type your first name">
                         <span class="input-label">Surname</span>
                         <input type="text" ng-model="customerInput.surName" placeholder="Type your surname">
                     </label>
                     <label class="item item-input">
                         <span class="input-label">Email</span>
-                        <input type="email" ng-model="customerInput.email" placeholder="Type your email" required>
+                        <input type="email" ng-model="customerInput.email" placeholder="Type your email">
                     </label>
                     <label class="item item-input">
                         <span class="input-label">Mobile</span>
-                        <input type="tel" ng-model="customerInput.mobile" placeholder="Type your mobile number" required>
+                        <input type="tel" ng-model="customerInput.mobile" placeholder="Type your mobile number">
                     </label>
                     <label class="item item-input">
                         <span class="input-label">PIN code</span>
-                        <input type="tel" ng-model="customerInput.pinCode" placeholder="Type your PIN code" required>
+                        <input type="tel" ng-model="customerInput.pinCode" placeholder="Type your PIN code">
                     </label>
                     <label class="item item-input">
                         <label class="item item-radio">
@@ -407,14 +410,15 @@
                             <i class="radio-icon ion-checkmark-circled"></i>
                         </label>
                     </label>
-
                     <button class="button button-positive button-block" ng-click="closeRegisterModal()">Register</button>
+                    <button class="button button-positive button-block" ng-click="closeRegisterModal()">Cancel</button>
                 </form>
 
             </ion-content>
         </div>
     </script>
 
+<!-------------------------------------------------------------------------------------------------------------->
 
     <script id="order-details.html" type="text/ng-template">
 
@@ -478,12 +482,7 @@
 
     </script>
 
-
-
-
-
-
-
+<!-------------------------------------------------------------------------------------------------------------->
 
   </body>
 </html>
