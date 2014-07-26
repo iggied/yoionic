@@ -27,7 +27,7 @@ angular.module('RestaurantApp.controllers', [])
     $scope.tables = Tables.query();
 
     $scope.TableSelected = function(tableIndex) {
-        $window.location.href = 'main.html#/firstpage/'+$rootScope.staffId+'/'+tableIndex+'/'+$scope.tables[tableIndex].tableNumber;
+        $window.location.href = 'main.html#/coverpage/'+$rootScope.staffId+'/'+tableIndex+'/'+$scope.tables[tableIndex].tableNumber;
     };
 }])
 
@@ -36,6 +36,7 @@ angular.module('RestaurantApp.controllers', [])
     $scope.notifyGoHome = function() {
         $rootScope.$emit('want.to.go.home');
     }
+
 }])
 
 
@@ -45,6 +46,7 @@ angular.module('RestaurantApp.controllers', [])
                   function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window, OrderSvc) {
     $scope.orderSvc = OrderSvc;
     $scope.menuCat = {};
+    $rootScope.customerName = $stateParams.customerName;
 
     Menus.query( function(data) {
         $scope.menuCat = _.groupBy(data, 'catCode1');
@@ -125,11 +127,23 @@ angular.module('RestaurantApp.controllers', [])
 }])
 
 
-.controller('FirstPageCtrl', ['$scope', '$state', '$stateParams', '$rootScope', '$ionicModal', '$ionicPopup', '$window',
-        function($scope, $state, $stateParams, $rootScope, $ionicModal, $ionicPopup, $window) {
-    $rootScope.staffId = $stateParams.staffId;
-    $rootScope.selectedTableIndex = $stateParams.selectedTableIndex;
-    $rootScope.tableNumber = $stateParams.tableNumber;
+.controller('CoverPageCtrl', ['$scope', '$state', '$stateParams', '$rootScope',
+    function($scope, $state, $stateParams, $rootScope) {
+        $rootScope.staffId = $stateParams.staffId;
+        $rootScope.selectedTableIndex = $stateParams.selectedTableIndex;
+        $rootScope.tableNumber = $stateParams.tableNumber;
+
+        $scope.ShowFirstPage = function(){
+            $state.go('firstpage');
+
+        }
+    }])
+
+
+.controller('FirstPageCtrl', ['$scope', '$state', '$ionicModal', '$rootScope', 'LoginSvc', 'Customers',
+        function($scope, $state, $ionicModal, $rootScope, LoginSvc, Customers) {
+
+    $rootScope.customerName = '';
 
     $scope.showMenu = function() {
         $state.go('tab.menus');
@@ -143,6 +157,8 @@ angular.module('RestaurantApp.controllers', [])
         cleanupFunction();
     });
 
+
+
     $scope.customerInput = {
         name: '',
         email: '',
@@ -151,6 +167,13 @@ angular.module('RestaurantApp.controllers', [])
         gender: '',
     };
 
+    $scope.openLoginModal = function() {
+        LoginSvc.openLoginModal('tab.menus');
+    }
+
+//    $scope.loginSvc = LoginSvc;
+
+/*
     $ionicModal.fromTemplateUrl('login-modal.html', {
         scope: $scope,
         animation: 'slide-in-up',
@@ -161,11 +184,20 @@ angular.module('RestaurantApp.controllers', [])
     $scope.openLoginModal = function() {
         $scope.loginModal.show();
     };
+    $scope.loginLoginModal = function() {
+        var customer;
+        Customers.query( function(data) {
+            customer = _.find(data, function(cust){return cust.loginId == $scope.custLoginInput.mobile && cust.password == $scope.custLoginInput.pin; } );
+            if (customer) {
+                $rootScope.customerName = customer.customerName;
+                $scope.loginModal.hide();
+                $state.go('tab.menus');
+            }
+        });
+
+    };
     $scope.closeLoginModal = function() {
         $scope.loginModal.hide();
-        if (true) {  //Logged in
-            $state.go('tab.menus');
-        }
     };
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
@@ -179,6 +211,9 @@ angular.module('RestaurantApp.controllers', [])
     $scope.$on('modal.removed', function() {
         // Execute action
     });
+*/
+
+
 
     $ionicModal.fromTemplateUrl('register-modal.html', {
       scope: $scope,

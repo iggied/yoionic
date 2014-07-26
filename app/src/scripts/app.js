@@ -45,8 +45,18 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
+      .state('coverpage', {
+          url: '/coverpage/:staffId/:selectedTableIndex/:tableNumber',
+          views: {
+              '@': {
+                  templateUrl: 'coverpage.html',
+                  controller: 'CoverPageCtrl'
+              }
+          }
+      })
+
     .state('firstpage', {
-      url: '/firstpage/:staffId/:selectedTableIndex/:tableNumber',
+      url: '/firstpage',
       views: {
           '@': {
               templateUrl: 'firstpage.html',
@@ -56,7 +66,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     })
 
     .state('tab.menus', {
-      url: '/menus',
+      url: '/menus/:customerName',
       views: {
           'menu-tab': {
               templateUrl: 'menus.html',
@@ -137,7 +147,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 
 })
 
-.run(function($rootScope, $ionicPlatform, $ionicPopup, $window, OrderSvc) {
+.run(function($rootScope, $ionicPlatform, $ionicPopup, $window, OrderSvc, LoginSvc) {
     $rootScope.programName = 'i benefit';
     $ionicPlatform.ready(function() {
         if(window.StatusBar) {
@@ -150,7 +160,10 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     });
 
 
-   OrderSvc.setOrder([]);
+    OrderSvc.setOrder([]);
+    LoginSvc.initialize();
+
+    $rootScope.customerName = '';
 
     $rootScope.confirmAndGoHome =  function() {
         $ionicPopup.confirm({

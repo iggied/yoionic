@@ -16,6 +16,92 @@ angular.module('RestaurantApp.services', [])
 ])
 
 
+.factory('Customers', ['$resource',
+    function($resource){
+        return $resource('res/appdata/customers.json', {}, {query: {method: 'GET', isArray: true}}
+        );
+    }
+])
+
+.service('LoginSvc', ['$state', '$rootScope', '$ionicModal', 'Customers', function ($state, $rootScope, $ionicModal, Customers) {
+
+
+
+
+    this.setLoginModal = function(modal) {
+        this.loginModal = modal;
+    };
+
+    this.getLoginModal = function(){
+        return this.loginModal
+    };
+
+    this.initialize = function() {
+        var parent = this;
+        $ionicModal.fromTemplateUrl('login-modal.html', {
+            scope: $rootScope,
+            animation: 'slide-in-up',
+            focusFirstInput: true
+        }).then(function (modal) {
+            parent.setLoginModal(modal);
+
+            modal.scope.close = function() {
+                modal.hide();
+            };
+
+            modal.scope.custLoginInput = {
+                mobile: '',
+                pin: ''};
+
+            modal.scope.login = function() {
+                var customer;
+                Customers.query( function(data) {
+                    customer = _.find(data, function(cust){return cust.loginId == modal.scope.custLoginInput.mobile && cust.password == modal.scope.custLoginInput.pin; } );
+                    if (customer) {
+                        //$rootScope.customerName = customer.customerName;
+                        modal.hide();
+                        $state.go(parent.getNextState(), {customerName: customer.customerName});
+                    }
+                });
+            };
+
+
+        });
+    };
+
+    this.setNextState = function(state) {
+        this.nextState = state;
+    };
+
+    this.getNextState = function() {
+        return this.nextState;
+    }
+
+    this.openLoginModal = function(nextState) {
+        this.setNextState( nextState );
+        this.loginModal.show();
+    };
+
+
+
+/*
+        //Cleanup the modal when we're done with it!
+        $scope.$on('$destroy', function() {
+            this.loginModal.remove();
+        });
+        // Execute action on hide modal
+        $scope.$on('modal.hidden', function() {
+            // Execute action
+        });
+        // Execute action on remove modal
+        $scope.$on('modal.removed', function() {
+            // Execute action
+        });
+*/
+
+
+    }])
+
 .service('OrderSvc', function () {
 
     this.setOrder = function (order) {
