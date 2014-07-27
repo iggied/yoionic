@@ -232,7 +232,7 @@
                 <ion-nav-back-button class="button-clear">
                     <i class="ion-arrow-left-c">Back</i>
                 </ion-nav-back-button>
-                <h1 class="title">You save {{orderSvc.getBasicTotal()-orderSvc.getDiscountedTotal()}}</h1>
+                <h1 class="title">Your {{programName}} savings is Rs.{{orderSvc.getBasicTotal()-orderSvc.getDiscountedTotal()}}</h1>
 
             </ion-header-bar>
 
@@ -296,13 +296,13 @@
 
     <script id="ibenefit-savings.html" type="text/ng-template">
 
-        <div style="border:thick ridge #9900FF;border-radius:5px">
+        <div class="list list-inset" style="border:thick ridge #9900FF;border-radius:5px">
 
                 <div class="row">
-                    <h2 class="col" style="text-align:center">My savings calculator</h2>
+                    <h3 class="col" style="text-align:center">My {{programName}} savings calculator</h3>
                 </div>
 
-                <div class="row" ng-click="touchedNVR()" ng-class="{'royal': lastTouched=='NVR'}">
+                <div class="row item item-positive" ng-click="touchedNVR()" ng-class="{'item-royal': lastTouched=='NVR'}">
                     <div class="col col-80" style="padding-top:10px">
                         No. of restaurants visits/month
                     </div>
@@ -311,7 +311,7 @@
                     </div>
                 </div>
 
-                <div class="row" ng-click="touchedASR()" ng-class="{'royal': lastTouched=='ASR'}">
+                <div class="row item item-positive" ng-click="touchedASR()" ng-class="{'item-royal': lastTouched=='ASR'}">
                     <div class="col col-80" style="padding-top:10px">
                         Average spends at restaurant
                     </div>
@@ -320,7 +320,7 @@
                     </div>
                 </div>
 
-                <div class="row" ng-click="touchedNVH()" ng-class="{'royal': lastTouched=='NVH'}">
+                <div class="row item item-positive" ng-click="touchedNVH()" ng-class="{'item-royal': lastTouched=='NVH'}">
                     <div class="col col-80" style="padding-top:10px;">
                         No. of Home orders/month
                     </div>
@@ -329,7 +329,7 @@
                     </div>
                 </div>
 
-                <div class="row" ng-click="touchedASH()" ng-class="{'royal': lastTouched=='ASH'}">
+                <div class="row item item-positive" ng-click="touchedASH()" ng-class="{'item-royal': lastTouched=='ASH'}">
                     <div class="col col-80" style="padding-top:10px">
                         Average spends on home order
                     </div>
@@ -338,7 +338,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h3 class="col" style="text-align:left">{{totalSavings()}}</h3>
+                    <h4 class="col" style="text-align:center">{{totalSavings()}}</h4>
                 </div>
 
                 <div>
@@ -365,6 +365,9 @@
                         </div>
                     </div>
                 </div>
+        </div>
+        <div>
+            <i>Get your yearly {{programName}} membership at just Rs.650</i>
         </div>
     </script>
 

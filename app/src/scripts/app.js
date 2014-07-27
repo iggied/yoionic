@@ -191,16 +191,19 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                     var restTotal = scope.avgSpendsAtRestaurants * scope.noOfVisits * 12;
                     var homeTotal = scope.avgSpendsOnHomeOrder * scope.noOfHomeOrders * 12;
                     var bothTotal = parseInt(((isNaN(restTotal)?0:restTotal) + (isNaN(homeTotal)?0:homeTotal)) * .15) ;
+                    var noOfTimes = Math.ceil(650 / (Math.max(isNaN(scope.avgSpendsAtRestaurants)?0:scope.avgSpendsAtRestaurants, isNaN(scope.avgSpendsOnHomeOrder)?0:scope.avgSpendsOnHomeOrder) * .15));
 
+                    var s=["th","st","nd","rd"], v=noOfTimes%100;
+                    noOfTimes = noOfTimes + (s[(v-20)%10]||s[v]||s[0]);
 
-                    if (bothTotal === 0) {
+                    if (bothTotal < 650) {
                         if (scope.lastTouched == "") {
                             return "";   //"Touch the questions to input values" ;
                         } else {
                             return "";   //"Use this number pad to input values" ;
                         }
                     } else {
-                        return "I can save Rs." + bothTotal + "* /year" ;
+                        return "You can save Rs." + bothTotal + "* /year and recover the cost of membership the " + noOfTimes + " time you book your order using i benefit"  ;
                     }
                 };
 
@@ -265,7 +268,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 .directive('orderDetails', function(OrderSvc) {
     return {
         restrict : 'E',
-        controller : ['$scope', '$rootScope',  function($scope, $rootScope){
+        controller : ['$scope', '$rootScope', '$ionicPopup', function($scope, $rootScope, $ionicPopup){
             $scope.orderSvc = OrderSvc;
             $scope.programName = $rootScope.programName;
 
@@ -282,6 +285,22 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                 }
                 OrderSvc.$saveOrder();
             };
+
+            $scope.confirmOrder = function() {
+                var confirmPopup = $ionicPopup.confirm({
+                    title: 'Order submission',
+                    okText: 'CONFIRM',
+                    template: 'Please touch CONFIRM to submit your order to the server. To make changes to your order, please touch cancel'
+                });
+                confirmPopup.then(function (res) {
+                    if (res) {
+                        console.log('You are sure');
+                    } else {
+                        console.log('You are not sure');
+                    }
+                })
+            };
+
         }],
         scope: {},
         templateUrl: 'order-details.html',
