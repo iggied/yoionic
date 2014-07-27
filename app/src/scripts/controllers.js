@@ -32,14 +32,24 @@ angular.module('RestaurantApp.controllers', [])
 }])
 
 
-.controller('MainCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+.controller('MainCtrl', ['$scope', '$rootScope', '$state', 'LoginSvc', 'RegisterSvc',
+                function($scope, $rootScope, $state, LoginSvc, RegisterSvc) {
     $scope.notifyGoHome = function() {
         $rootScope.$emit('want.to.go.home');
     }
 
+    $scope.loggedIn = function(){
+        return $rootScope.customerName || $rootScope.customerName != '';
+    }
+
+    $scope.openLoginModal = function() {
+        LoginSvc.openLoginModal($state.$current.name);
+    }
+
+    $scope.openRegisterModal = function() {
+        RegisterSvc.openRegisterModal($state.$current.name);
+    }
 }])
-
-
 
 
 .controller('MenusCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window', 'OrderSvc',
@@ -75,8 +85,6 @@ angular.module('RestaurantApp.controllers', [])
     });
 
  }])
-
-
 
 
 .controller('ItemListCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window', '$filter', 'OrderSvc',
@@ -140,8 +148,8 @@ angular.module('RestaurantApp.controllers', [])
     }])
 
 
-.controller('FirstPageCtrl', ['$scope', '$state', '$ionicModal', '$rootScope', 'LoginSvc', 'Customers',
-        function($scope, $state, $ionicModal, $rootScope, LoginSvc, Customers) {
+.controller('FirstPageCtrl', ['$scope', '$state', '$ionicModal', '$rootScope', 'LoginSvc', 'RegisterSvc', 'Customers',
+        function($scope, $state, $ionicModal, $rootScope, LoginSvc, RegisterSvc, Customers) {
 
     $rootScope.customerName = '';
 
@@ -157,89 +165,13 @@ angular.module('RestaurantApp.controllers', [])
         cleanupFunction();
     });
 
-
-
-    $scope.customerInput = {
-        name: '',
-        email: '',
-        mobile: '',
-        pinCode: '',
-        gender: '',
-    };
-
     $scope.openLoginModal = function() {
         LoginSvc.openLoginModal('tab.menus');
     }
 
-//    $scope.loginSvc = LoginSvc;
-
-/*
-    $ionicModal.fromTemplateUrl('login-modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up',
-        focusFirstInput: true
-    }).then(function(modal) {
-        $scope.loginModal = modal;
-    });
-    $scope.openLoginModal = function() {
-        $scope.loginModal.show();
-    };
-    $scope.loginLoginModal = function() {
-        var customer;
-        Customers.query( function(data) {
-            customer = _.find(data, function(cust){return cust.loginId == $scope.custLoginInput.mobile && cust.password == $scope.custLoginInput.pin; } );
-            if (customer) {
-                $rootScope.customerName = customer.customerName;
-                $scope.loginModal.hide();
-                $state.go('tab.menus');
-            }
-        });
-
-    };
-    $scope.closeLoginModal = function() {
-        $scope.loginModal.hide();
-    };
-    //Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
-        $scope.loginModal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hidden', function() {
-        // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
-        // Execute action
-    });
-*/
-
-
-
-    $ionicModal.fromTemplateUrl('register-modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up',
-      focusFirstInput: true
-    }).then(function(modal) {
-      $scope.registerModal = modal;
-    });
     $scope.openRegisterModal = function() {
-      $scope.registerModal.show();
-    };
-    $scope.closeRegisterModal = function() {
-      $scope.registerModal.hide();
-    };
-    //Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
-      $scope.registerModal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hidden', function() {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
-      // Execute action
-    });
+        RegisterSvc.openRegisterModal($state.$current.name);
+    }
 
 }])
 ;

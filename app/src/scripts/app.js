@@ -147,7 +147,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 
 })
 
-.run(function($rootScope, $ionicPlatform, $ionicPopup, $window, OrderSvc, LoginSvc) {
+.run(function($rootScope, $ionicPlatform, $ionicPopup, $window, OrderSvc, LoginSvc, RegisterSvc) {
     $rootScope.programName = 'i benefit';
     $ionicPlatform.ready(function() {
         if(window.StatusBar) {
@@ -162,6 +162,8 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 
     OrderSvc.setOrder([]);
     LoginSvc.initialize();
+    RegisterSvc.initialize();
+
 
     $rootScope.customerName = '';
 

@@ -23,10 +23,8 @@ angular.module('RestaurantApp.services', [])
     }
 ])
 
-.service('LoginSvc', ['$state', '$rootScope', '$ionicModal', 'Customers', function ($state, $rootScope, $ionicModal, Customers) {
-
-
-
+.service('LoginSvc', ['$state', '$rootScope', '$ionicModal', 'Customers',
+            function ($state, $rootScope, $ionicModal, Customers) {
 
     this.setLoginModal = function(modal) {
         this.loginModal = modal;
@@ -101,6 +99,68 @@ angular.module('RestaurantApp.services', [])
 
 
     }])
+
+
+
+
+
+.service('RegisterSvc', ['$state', '$rootScope', '$ionicModal', 'Customers',
+                function ($state, $rootScope, $ionicModal, Customers) {
+
+    this.setRegisterModal = function(modal) {
+        this.registerModal = modal;
+    };
+
+    this.getRegisterModal = function(){
+        return this.registerModal
+    };
+
+    this.initialize = function() {
+        var parent = this;
+        $ionicModal.fromTemplateUrl('register-modal.html', {
+            scope: $rootScope,
+            animation: 'slide-in-up',
+            focusFirstInput: true
+        }).then(function (modal) {
+            parent.setRegisterModal(modal);
+
+            modal.scope.close = function() {
+                modal.hide();
+            };
+
+            modal.scope.customerInput = {
+                name: '',
+                email: '',
+                mobile: '',
+                pinCode: '',
+                gender: '',
+            };
+
+            modal.scope.register = function() {
+                modal.hide();
+                $state.go(parent.getNextState(), {customerName: customer.customerName});
+            };
+
+        });
+    };
+
+
+    this.setNextState = function(state) {
+        this.nextState = state;
+    };
+
+    this.getNextState = function() {
+        return this.nextState;
+    }
+
+    this.openRegisterModal = function(nextState) {
+        this.setNextState( nextState );
+        this.registerModal.show();
+    };
+
+}])
+
+
 
 .service('OrderSvc', function () {
 
