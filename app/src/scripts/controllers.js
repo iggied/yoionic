@@ -42,6 +42,10 @@ angular.module('RestaurantApp.controllers', [])
         return $rootScope.customerName || $rootScope.customerName != '';
     }
 
+    $scope.notInMenu = function(){
+        return $scope.loggedIn() || $state.$current.name.indexOf("menu") < 0;
+    }
+
     $scope.openLoginModal = function() {
         LoginSvc.openLoginModal($state.$current.name);
     }
@@ -52,11 +56,15 @@ angular.module('RestaurantApp.controllers', [])
 }])
 
 
-.controller('MenusCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window', 'OrderSvc',
-                  function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window, OrderSvc) {
+.controller('MenusCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicViewService', '$window', 'OrderSvc',
+                  function($scope, Menus, $state, $stateParams, $rootScope, $ionicViewService, $window, OrderSvc) {
     $scope.orderSvc = OrderSvc;
     $scope.menuCat = {};
     $rootScope.customerName = $stateParams.customerName;
+
+    if ($stateParams.clearHistory) {
+        $ionicViewService.clearHistory();
+    }
 
     Menus.query( function(data) {
         $scope.menuCat = _.groupBy(data, 'catCode1');

@@ -58,7 +58,7 @@ angular.module('RestaurantApp.services', [])
                     if (customer) {
                         //$rootScope.customerName = customer.customerName;
                         modal.hide();
-                        $state.go(parent.getNextState(), {customerName: customer.customerName});
+                        $state.go(parent.getNextState(), {customerName: customer.customerName, clearHistory: true});
                     }
                 });
             };
@@ -119,8 +119,7 @@ angular.module('RestaurantApp.services', [])
         var parent = this;
         $ionicModal.fromTemplateUrl('register-modal.html', {
             scope: $rootScope,
-            animation: 'slide-in-up',
-            focusFirstInput: true
+            animation: 'slide-in-up'
         }).then(function (modal) {
             parent.setRegisterModal(modal);
 

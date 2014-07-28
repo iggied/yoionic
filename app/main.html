@@ -24,14 +24,14 @@
   <body ng-app="RestaurantApp" animation="slide-left-right-ios7" ng-controller="MainCtrl">
 
     <ion-nav-bar class="bar-header bar-positive">
-        <ion-nav-back-button class="button-clear">
-            <i class="ion-arrow-left-c">Back</i>
+        <ion-nav-back-button class="button-clear ">
+            <i class="icon-left ion-chevron-left">Back</i>
         </ion-nav-back-button>
         <ion-nav-buttons side="left">
-            <button class="button" ng-hide="loggedIn()" ng-click="openLoginModal()">
+            <button class="button" ng-hide="notInMenu()" ng-click="openLoginModal()">
                 Login
             </button>
-            <button class="button" ng-hide="loggedIn()" ng-click="openRegisterModal()">
+            <button class="button" ng-hide="notInMenu()" ng-click="openRegisterModal()">
                 Register
             </button>
         </ion-nav-buttons>
@@ -75,11 +75,11 @@
         <ion-view>
 
             <ion-content>
-                <a href="#" ng-click="ShowFirstPage()">
-                    <img src="images/coverpage.jpeg" height="auto" width="auto" style="display:block;margin-left:auto;margin-right:auto">
-                        <button>Tap to enter</button>
+                <div ng-click="ShowFirstPage()">
+                    <img src="images/coverpage.jpeg" style="width=200%">   <!--  style="position:fixed;top:0;left:0;min-width:1024px;height:550px">  -->
+                        <button class="button button-clear button-outline" style="position:relative;top:550px;left:380px">Tap the screen to open</button>
                     <img>
-                </a>
+                </div>
             </ion-content>
         </ion-view>
     </script>
@@ -123,7 +123,13 @@
                     </div>
 
                     <div class="col col-33">
-                         <ibenefit-savings/>
+                        <div>
+                            <ibenefit-savings/>
+                        </div>
+
+                        <div align="middle">
+                            <a href='#' ng-click="openRegisterModal()">Get your yearly {{programName}} membership at just Rs.{{programFee}}</a>
+                        </div>
                     </div>
                 </div>
             </ion-content>
@@ -298,8 +304,8 @@
 
         <div class="list list-inset" style="border:thick ridge #9900FF;border-radius:5px">
 
-                <div class="row">
-                    <h3 class="col" style="text-align:center">My {{programName}} savings calculator</h3>
+                <div class="row-top">
+                    <b class="col" style="text-align:center">My {{programName}} savings calculator</b>
                 </div>
 
                 <div class="row item item-positive" ng-click="touchedNVR()" ng-class="{'item-royal': lastTouched=='NVR'}">
@@ -337,8 +343,8 @@
                         {{avgSpendsOnHomeOrder}}
                     </div>
                 </div>
-                <div class="row">
-                    <h4 class="col" style="text-align:center">{{totalSavings()}}</h4>
+                <div class="row-bottom">
+                    <b class="col" style="text-align:center;background-color:orange">{{totalSavings()}}</b>
                 </div>
 
                 <div>
@@ -366,16 +372,13 @@
                     </div>
                 </div>
         </div>
-        <div>
-            <i>Get your yearly {{programName}} membership at just Rs.650</i>
-        </div>
     </script>
 
 <!-------------------------------------------------------------------------------------------------------------->
 
     <script id="login-modal.html" type="text/ng-template">
         <ion-modal-view>
-            <div class="modal" style="height:auto">
+            <div class="modal" style="top:10%">
                 <ion-header-bar>
                     <h1 class="title">Login to {{programName}}</h1>
                 </ion-header-bar>
@@ -389,9 +392,11 @@
                             <span class="input-label">Password</span>
                             <input type="password" ng-model="custLoginInput.pin" placeholder="Type your password">
                         </label>
+                        <div>
+                            <button class="button button-positive" style="width:200px" ng-click="login()">Login</button>
+                            <button class="button button-outline" style="width:200px" ng-click="close()">Cancel</button>
+                        </div>
 
-                        <button class="button button-positive button-block" ng-click="login()">Login</button>
-                        <button class="button button-positive button-block" ng-click="close()">Cancel</button>
                     </form>
                 </ion-content>
             </div>
@@ -401,28 +406,28 @@
 <!-------------------------------------------------------------------------------------------------------------->
 
     <script id="register-modal.html" type="text/ng-template">
-        <div class="modal" >
+        <div class="modal" style="top:10%;height:80%;left:10%;width:80%">
             <ion-header-bar>
                 <h1 class="title">Register to {{programName}}</h1>
             </ion-header-bar>
             <ion-content>
                 <form class="list list-inset">
                     <label class="item item-input">
-                        <span class="input-label">First name</span>
+                        <span class="input-label" style="width:100px;max-width:100px">First name</span>
                         <input type="text" ng-model="customerInput.firstName" placeholder="Type your first name">
-                        <span class="input-label">Surname</span>
+                        <span class="input-label" style="width:100px;max-width:100px">Surname</span>
                         <input type="text" ng-model="customerInput.surName" placeholder="Type your surname">
                     </label>
                     <label class="item item-input">
-                        <span class="input-label">Email</span>
+                        <span class="input-label" style="width:100px;max-width:100px">Email</span>
                         <input type="email" ng-model="customerInput.email" placeholder="Type your email">
                     </label>
                     <label class="item item-input">
-                        <span class="input-label">Mobile</span>
+                        <span class="input-label" style="width:100px;max-width:100px">Mobile</span>
                         <input type="tel" ng-model="customerInput.mobile" placeholder="Type your mobile number">
                     </label>
                     <label class="item item-input">
-                        <span class="input-label">PIN code</span>
+                        <span class="input-label" style="width:100px;max-width:100px">PIN code</span>
                         <input type="tel" ng-model="customerInput.pinCode" placeholder="Type your PIN code">
                     </label>
                     <label class="item item-input">
@@ -440,9 +445,19 @@
                             </div>
                             <i class="radio-icon ion-checkmark-circled"></i>
                         </label>
+                        <div style="margin-left:140px">
+                            <button class="button button-positive" style="width:200px" ng-click="register()">Register</button>
+                            <button class="button button-outline" style="width:200px" ng-click="close()">Cancel</button>
+                        </div>
                     </label>
-                    <button class="button button-positive button-block" ng-click="register()">Register</button>
-                    <button class="button button-positive button-block" ng-click="close()">Cancel</button>
+
+                    <div style="margin-top:20px">
+                        By tapping Register you agree to pay Rs.650 towards yearly membership
+                        <div>
+                            <button class="button" style="width:300px">Pay online</button>
+                            <button class="button" style="width:300px">Add to Restaurant bill</button>
+                        </div>
+                    </div>
                 </form>
 
             </ion-content>

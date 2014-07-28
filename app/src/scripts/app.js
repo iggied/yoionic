@@ -66,7 +66,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     })
 
     .state('tab.menus', {
-      url: '/menus/:customerName',
+      url: '/menus/:customerName/:clearHistory',
       views: {
           'menu-tab': {
               templateUrl: 'menus.html',
@@ -149,6 +149,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 
 .run(function($rootScope, $ionicPlatform, $ionicPopup, $window, OrderSvc, LoginSvc, RegisterSvc) {
     $rootScope.programName = 'i benefit';
+    $rootScope.programFee = 650;
     $ionicPlatform.ready(function() {
         if(window.StatusBar) {
             StatusBar.styleDefault();
