@@ -192,21 +192,32 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                     var restTotal = scope.avgSpendsAtRestaurants * scope.noOfVisits * 12;
                     var homeTotal = scope.avgSpendsOnHomeOrder * scope.noOfHomeOrders * 12;
                     var bothTotal = parseInt(((isNaN(restTotal)?0:restTotal) + (isNaN(homeTotal)?0:homeTotal)) * .15) ;
+
+                    if (bothTotal < 650) {
+                        return 0;
+                    } else {
+                        return bothTotal;
+                    }
+                        /*                        if (scope.lastTouched == "") {
+                         return "";   //"Touch the questions to input values" ;
+                         } else {
+                         return "";   //"Use this number pad to input values" ;
+                         }
+                         } else {
+                         return "You can save Rs." + bothTotal + "* /year and recover the cost of membership the " + noOfTimes + " time you book your order using i benefit"  ;
+                         }
+                         */
+
+                };
+
+                scope.approxNoOfTimes = function() {
                     var noOfTimes = Math.ceil(650 / (Math.max(isNaN(scope.avgSpendsAtRestaurants)?0:scope.avgSpendsAtRestaurants, isNaN(scope.avgSpendsOnHomeOrder)?0:scope.avgSpendsOnHomeOrder) * .15));
 
                     var s=["th","st","nd","rd"], v=noOfTimes%100;
                     noOfTimes = noOfTimes + (s[(v-20)%10]||s[v]||s[0]);
 
-                    if (bothTotal < 650) {
-                        if (scope.lastTouched == "") {
-                            return "";   //"Touch the questions to input values" ;
-                        } else {
-                            return "";   //"Use this number pad to input values" ;
-                        }
-                    } else {
-                        return "You can save Rs." + bothTotal + "* /year and recover the cost of membership the " + noOfTimes + " time you book your order using i benefit"  ;
-                    }
-                };
+                    return noOfTimes ;
+                }
 
                 scope.lastTouched = "";
 
@@ -236,7 +247,6 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                         case 'NVH' : fieldVal = scope.noOfHomeOrders; break;
                     }
 
-
                     switch (key) {
                         case '.' :
                             if (fieldVal.length > 1) {
@@ -245,19 +255,34 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                                 fieldVal = "";
                             }
                             break;
-                        case 'X': scope.lastTouched = "";
+                        case 'X':
+                            switch (scope.lastTouched) {
+                                case 'ASR' : scope.lastTouched = 'NVH'; break;
+                                case 'NVR' : scope.lastTouched = 'ASR'; break;
+                                case 'ASH' : scope.lastTouched = ''; break;
+                                case 'NVH' : scope.lastTouched = 'ASH'; break;
+                                }
                             break;
                         default : fieldVal = (fieldVal || "") + key;
                             break;
                     }
 
-                    switch (scope.lastTouched) {
-                        case 'ASR' : scope.avgSpendsAtRestaurants = fieldVal; break;
-                        case 'NVR' : scope.noOfVisits = fieldVal;  break;
-                        case 'ASH' : scope.avgSpendsOnHomeOrder = fieldVal; break;
-                        case 'NVH' : scope.noOfHomeOrders = fieldVal; break;
+                    if (key != 'X') {
+                        switch (scope.lastTouched) {
+                            case 'ASR' :
+                                scope.avgSpendsAtRestaurants = fieldVal;
+                                break;
+                            case 'NVR' :
+                                scope.noOfVisits = fieldVal;
+                                break;
+                            case 'ASH' :
+                                scope.avgSpendsOnHomeOrder = fieldVal;
+                                break;
+                            case 'NVH' :
+                                scope.noOfHomeOrders = fieldVal;
+                                break;
+                        }
                     }
-
 
                 }
 

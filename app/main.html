@@ -25,7 +25,7 @@
 
     <ion-nav-bar class="bar-header bar-positive">
         <ion-nav-back-button class="button-clear ">
-            <i class="icon-left ion-chevron-left">Back</i>
+            <button class="button button-energized icon-left ion-chevron-left">Back</button>
         </ion-nav-back-button>
         <ion-nav-buttons side="left">
             <button class="button" ng-hide="notInMenu()" ng-click="openLoginModal()">
@@ -72,12 +72,12 @@
 
     <script id="coverpage.html" type="text/ng-template">
 
-        <ion-view>
+        <ion-view title="You are being served by {{staffId}} on {{tableNumber}}">
 
             <ion-content>
                 <div ng-click="ShowFirstPage()">
-                    <img src="images/coverpage.jpeg" style="width=200%">   <!--  style="position:fixed;top:0;left:0;min-width:1024px;height:550px">  -->
-                        <button class="button button-clear button-outline" style="position:relative;top:550px;left:380px">Tap the screen to open</button>
+                    <img src="images/coverpage.jpeg" width="50%">   <!--  style="position:fixed;top:0;left:0;min-width:1024px;height:550px">  -->
+                        <b style="position:absolute;top:680px;left:250px;color:white">Tap the screen to open</b>
                     <img>
                 </div>
             </ion-content>
@@ -305,7 +305,7 @@
         <div class="list list-inset" style="border:thick ridge #9900FF;border-radius:5px">
 
                 <div class="row-top">
-                    <b class="col" style="text-align:center">My {{programName}} savings calculator</b>
+                    <b class="col" style="text-align:center">My i benefit savings calculator</b>
                 </div>
 
                 <div class="row item item-positive" ng-click="touchedNVR()" ng-class="{'item-royal': lastTouched=='NVR'}">
@@ -343,8 +343,11 @@
                         {{avgSpendsOnHomeOrder}}
                     </div>
                 </div>
-                <div class="row-bottom">
-                    <b class="col" style="text-align:center;background-color:orange">{{totalSavings()}}</b>
+                <div class="row-bottom" ng-show="totalSavings()">
+                    <p class="col" style="text-align:center;background-color:orange">You can save <b>Rs.{{totalSavings()}}</b>
+                    */year and recover the cost of membership the <b>{{approxNoOfTimes()}}</b>
+                    time you book your order using i benefit
+                    </p>
                 </div>
 
                 <div>
@@ -367,7 +370,7 @@
                         <div class="row button-bar">
                             <button class="col-33 button" ng-click="calcTouched('.')">del</button>
                             <button class="col-33 button" ng-click="calcTouched('0')">0</button>
-                            <button class="col-33 button" ng-click="calcTouched('X')">hide</button>
+                            <button class="col-33 button" ng-click="calcTouched('X')">next</button>
                         </div>
                     </div>
                 </div>
@@ -378,7 +381,7 @@
 
     <script id="login-modal.html" type="text/ng-template">
         <ion-modal-view>
-            <div class="modal" style="top:10%">
+            <div class="modal" style="top:10%;height:30%;left:30%;width:50%">
                 <ion-header-bar>
                     <h1 class="title">Login to {{programName}}</h1>
                 </ion-header-bar>
@@ -392,9 +395,9 @@
                             <span class="input-label">Password</span>
                             <input type="password" ng-model="custLoginInput.pin" placeholder="Type your password">
                         </label>
-                        <div>
-                            <button class="button button-positive" style="width:200px" ng-click="login()">Login</button>
-                            <button class="button button-outline" style="width:200px" ng-click="close()">Cancel</button>
+                        <div style="margin-top:20px">
+                            <button class="button button-positive" style="width:150px" ng-click="login()">Login</button>
+                            <button class="button button-outline" style="width:150px" ng-click="close()">Cancel</button>
                         </div>
 
                     </form>
@@ -406,7 +409,7 @@
 <!-------------------------------------------------------------------------------------------------------------->
 
     <script id="register-modal.html" type="text/ng-template">
-        <div class="modal" style="top:10%;height:80%;left:10%;width:80%">
+        <div class="modal" style="top:5%;height:80%;left:10%;width:80%">
             <ion-header-bar>
                 <h1 class="title">Register to {{programName}}</h1>
             </ion-header-bar>
