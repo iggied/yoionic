@@ -95,8 +95,9 @@ angular.module('RestaurantApp.controllers', [])
  }])
 
 
-.controller('ItemListCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicPopup', '$window', '$filter', 'OrderSvc',
-                    function($scope, Menus, $state, $stateParams, $rootScope, $ionicPopup, $window, $filter, OrderSvc) {
+.controller('ItemListCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$filter', 'OrderSvc',
+                    function($scope, Menus, $state, $stateParams, $rootScope, $filter, OrderSvc) {
+
     $scope.selectedCatCode = $stateParams.catCode;
     $scope.searchInput = $stateParams.searchInput;
     $scope.orderSvc = OrderSvc;
@@ -116,6 +117,10 @@ angular.module('RestaurantApp.controllers', [])
         }
     };
 
+    $scope.showItemDetails = function(menuItem, menuItemPriceCat) {
+        $state.go('tab.viewitem', {itemId: menuItem.itemId, priceCatCode: menuItemPriceCat.catCode});
+    };
+
     $scope.viewOrder = function() {
         $state.go('tab.vieworder');
     };
@@ -129,6 +134,31 @@ angular.module('RestaurantApp.controllers', [])
     });
 }])
 
+
+.controller('ViewItemCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', 'OrderSvc',
+                    function($scope, Menus, $state, $stateParams, $rootScope, OrderSvc) {
+    $scope.orderSvc = OrderSvc;
+    $scope.menuItem = {};
+    $scope.priceCat = {};
+    $scope.orderItem = $scope.orderSvc.itemInOrder($stateParams.itemId, $stateParams.priceCatCode);
+
+    Menus.query(function(data) {
+        $scope.menuItem = _.findWhere(data, { itemId: $stateParams.itemId });
+        $scope.priceCat = _.findWhere($scope.menuItem.priceCat, {catCode: $stateParams.priceCatCode});
+    })
+
+    $scope.viewOrder = function() {
+        $state.go('tab.vieworder');
+    };
+
+    var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
+        $rootScope.confirmAndGoHome()
+    });
+
+    $scope.$on('$destroy', function() {
+        cleanupFunction();
+    });
+}])
 
 .controller('ViewOrderCtrl', ['$scope', '$rootScope', 'OrderSvc', function($scope, $rootScope, OrderSvc) {
     $scope.orderSvc = OrderSvc;

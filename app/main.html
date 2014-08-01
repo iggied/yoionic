@@ -38,7 +38,7 @@
         <ion-nav-buttons side="right">
             <i ng-show="loggedIn()">Welcome {{customerName}}</i>
             <button class="button" ng-click="notifyGoHome()">
-               Done
+               .
             </button>
         </ion-nav-buttons>
     </ion-nav-bar>
@@ -75,11 +75,14 @@
         <ion-view title="You are being served by {{staffId}} on {{tableNumber}}">
 
             <ion-content>
-                <div ng-click="ShowFirstPage()">
-                    <img src="images/coverpage.jpeg" width="50%">   <!--  style="position:fixed;top:0;left:0;min-width:1024px;height:550px">  -->
-                        <b style="position:absolute;top:680px;left:250px;color:white">Tap the screen to open</b>
+            <div class="row">
+                <div class="col col-100" ng-click="ShowFirstPage()">
+                    <img src="images/coverpage.png" width="100%">
+<!--  style="position:fixed;top:0;left:0;min-width:1024px;height:550px">
+<!--                        <b style="position:absolute;top:680px;left:250px;color:white">Tap the screen to open</b> -->
                     <img>
                 </div>
+            </div>
             </ion-content>
         </ion-view>
     </script>
@@ -152,7 +155,9 @@
                 </button>
                 <h1 class="title"></h1>
                 <div class="buttons">
-                    <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="viewOrder()">View order</button>
+                    <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="viewOrder()">View order
+                        <span class="badge badge-balanced">{{orderSvc.totalLineItems()}}</span>
+                    </button>
                 </div>
             </ion-header-bar>
 
@@ -169,7 +174,7 @@
 
     <script id="menu-itemlist.html" type="text/ng-template">
 
-        <ion-view title="">
+        <ion-view>
 
             <ion-header-bar class="bar bar-subheader item-input-inset">
                 <label class="item-input-inset">
@@ -179,7 +184,9 @@
 
                 <h1 class="title">{{selectedCatCode | lowercase}}</h1>
                 <div class="buttons">
-                    <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="viewOrder()">View order</button>
+                    <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="viewOrder()">View order
+                        <span class="badge badge-balanced">{{orderSvc.totalLineItems()}}</span>
+                    </button>
                 </div>
             </ion-header-bar>
 
@@ -200,7 +207,7 @@
                             </ion-item>
                             <div ng-repeat="menuItem in menuArray | filter:searchInput">
                                 <ion-item class="row" ng-repeat="menuItemPriceCat in menuItem.priceCat">
-                                    <a class="col col-50 item-content">
+                                    <a class="col col-50 item-content"  ng-click="showItemDetails(menuItem, menuItemPriceCat)">
                                         <h2>{{menuItem.itemName}}</h2>
                                         <p>{{menuItem.itemDescription}}</p>
                                     </a>
@@ -231,21 +238,89 @@
 
 <!-------------------------------------------------------------------------------------------------------------->
 
-    <script id="view-order.html" type="text/ng-template">
-        <ion-view title="Your order">
+    <script id="view-item.html" type="text/ng-template">
+        <ion-view>
 
             <ion-header-bar class="bar bar-subheader item-input-inset">
                 <ion-nav-back-button class="button-clear">
                     <i class="ion-arrow-left-c">Back</i>
                 </ion-nav-back-button>
-                <h1 class="title">Your {{programName}} savings is Rs.{{orderSvc.getBasicTotal()-orderSvc.getDiscountedTotal()}}</h1>
+                <h1 class="title">{{menuItem.itemName}}</h1>
+                <div class="buttons">
+                    <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="viewOrder()">View order
+                        <span class="badge badge-balanced">{{orderSvc.totalLineItems()}}</span>
+                    </button>
+                </div>
+            </ion-header-bar>
+
+            <ion-content>
+                <div class="row">
+                    <div class="col col-67">
+                        <div class="row">
+                            <div class="col col-67">
+                                <img src="images/1.jpg" width="100%">
+                                <p style="text-align:justify">{{menuItem.itemDescription}}</p>
+                            </div>
+                            <div class="col col-33">
+                                <div class="row">
+                                    <div>
+                                        <input type="text" ng-model="orderItem.instructions" placeholder="Special requests">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <h3 class="col">Regular price</h3>
+                                    <h1 class="col" style="text-align:right">{{priceCat.basicRate | number}}</h1>
+                                </div>
+                                <div class="row">
+                                    <h3 class="col">{{programName}} price</h3>
+                                    <h1 class="col" style="text-align:right"> {{priceCat.basicRate - priceCat.discount | number}}</h1>
+                                </div>
+                                <div class="row">
+                                    <a class="col-33 button button-balanced"  style="font-size:24px" ng-click="orderSvc.addItem(menuItem, priceCat)">+</a>
+                                    <i class="col-33"></i>
+                                    <a class="col-33 button button-assertive" style="font-size:24px" ng-click="orderSvc.reduceItem(menuItem, priceCat)">-</a>
+                                </div>
+                                <div class="row">
+                                    <h3 class="col">Ordered quantity</h3>
+                                    <h1 class="col" style="text-align:right">{{orderSvc.itemInOrder( menuItem.itemId, priceCat.catCode ).quantity | number}}</h1>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <img src="images/{{priceCat.catCode}}.png" width="15%"></img>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col col-20">
+
+                    </div>
+                </div>
+
+            </ion-content>
+
+        </ion-view>
+    </script>
+
+<!-------------------------------------------------------------------------------------------------------------->
+
+    <script id="view-order.html" type="text/ng-template">
+        <ion-view>
+
+            <ion-header-bar class="bar bar-subheader item-input-inset">
+                <ion-nav-back-button class="button-clear">
+                    <i class="ion-arrow-left-c">Back</i>
+                </ion-nav-back-button>
+                <h1 class="title">Your Order</h1>
 
             </ion-header-bar>
 
             <ion-content>
+                <div> <order-details/> </div>
 
-                <order-details/>
-
+                <div></div>
             </ion-content>
 
         </ion-view>
@@ -497,7 +572,7 @@
                         <br/><h3 style="text-align:center">{{item.quantity | number}}</h3>
                     </div>
                     <div class="col col-20">
-                        <input type="text" ng-model="item.instructions" style="text-align:center">
+                        <input type="text" ng-model="item.instructions" style="text-align:center" placeholder="Special request">
                     </div>
                     <div class="col col-10" style="text-align:center">
                         <a class="button button-small button-balanced"  style="font-size:24px" ng-click="addItem($index)">+</a>
@@ -507,19 +582,19 @@
 
                 <ion-item class="row">
                     <a class="col col-33 item-content">
-                        <h1>Total</h1>
+                        <h1>{{programName}} savings = Rs.{{orderSvc.getBasicTotal()-orderSvc.getDiscountedTotal() | number}}</h1>
                     </a>
                     <div class="col col-10">
-                        <h1 style="text-align:center">{{orderSvc.getBasicTotal()}}</h1>
+                        <h1 style="text-align:center">{{orderSvc.getBasicTotal() | number}}</h1>
                     </div>
                     <div class="col col-10">
-                        <h1 style="text-align:center">{{orderSvc.getDiscountedTotal()}}</h1>
+                        <h1 style="text-align:center">{{orderSvc.getDiscountedTotal() | number}}</h1>
                     </div>
                     <div class="col col-10">
-                        <h1></h1>
+                        <h2></h2>
                     </div>
                     <div class="col col-20">
-                        <h1></h1>
+                        <h2></h2>
                     </div>
                     <div class="col col-10" style="text-align:center">
                         <button class="button" ng-show="orderSvc.totalLineItems()" ng-click="confirmOrder()">Confirm order</button>

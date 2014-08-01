@@ -11,8 +11,6 @@
         "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 120, "discount": 20, "tax": 0}]
     },
-
-    
 {
         "itemId": "2",
         "catCode1": "SOUPS",
@@ -25,8 +23,6 @@
         "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 100, "discount": 10, "tax": 0}]
     },
-    
-
 {
         "itemId": "3",
         "catCode1": "PULAV-BIRYANI",
@@ -40,8 +36,6 @@
         "priceCat": [{"catCode": "VEG", "basicRate": 150, "discount": 10, "tax": 0},
                      {"catCode": "CHICKEN", "basicRate": 170, "discount": 15, "tax": 0}]
     },
-    
-
 {
         "itemId": "4",
         "catCode1": "PULAV-BIRYANI",
@@ -56,8 +50,6 @@
                      {"catCode": "CHICKEN", "basicRate": 220, "discount": 20, "tax": 0},
                      {"catCode": "MUTTON", "basicRate": 250, "discount": 20, "tax": 0}]
     },
-    
-
 {
         "itemId": "5",
         "catCode1": "APPETISERS",
@@ -70,8 +62,6 @@
         "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 280, "discount": 30, "tax": 0}]
     },
-    
-
 {
         "itemId": "6",
         "catCode1": "BEVERAGE",
@@ -84,8 +74,6 @@
         "itemTag": [],
         "priceCat": [{"catCode": "VEG", "basicRate": 130, "discount": 15, "tax": 0}]
     },
-    
-
 {
         "itemId": "7",
         "catCode1": "CHINESE",
@@ -735,9 +723,9 @@
         "catCode4": "",
         "catCode5": "",
         "itemName": "Chicken Teriyaki",
-        "itemDescription": "Sliced chicken sauteed with peppers in burnt dark soya",
+        "itemDescription": "Sliced chicken sauteed with peppers in burnt dark soya. Traditionally the meat is dipped in or brushed with sauce several times during cooking Chicken Teriyaki. The tare is traditionally made by mixing and heating soy sauce, sake, or miring; and sugar or honey. The sauce is boiled and reduced to the desired thickness, then used to marinate meat which is then grilled or broiled. The final dish is garnished with onions, cabbage and tomatoes",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 360, "discount": 40, "tax": 0}]
+        "priceCat": [{"catCode": "NONVEG", "basicRate": 360, "discount": 40, "tax": 0}]
 },
 
 {
@@ -789,7 +777,7 @@
         "itemName": "Prawns Thai Curry Rice",
         "itemDescription": "Thai Delicacy",
         "itemTag": [],
-        "priceCat": [{"catCode": "VEG", "basicRate": 490, "discount": 50, "tax": 0}]
+        "priceCat": [{"catCode": "NONVEG", "basicRate": 490, "discount": 50, "tax": 0}]
 },
 
 {

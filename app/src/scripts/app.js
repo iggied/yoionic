@@ -85,6 +85,17 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
+      .state('tab.viewitem', {
+          url: '/viewitem/:itemId/:priceCatCode',
+          views: {
+              'menu-tab': {
+                  templateUrl: 'view-item.html',
+                  controller: 'ViewItemCtrl'
+              }
+          }
+      })
+
+
       .state('tab.vieworder', {
           url: '/vieworder',
           views: {
