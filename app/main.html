@@ -35,6 +35,8 @@
                 Register
             </button>
         </ion-nav-buttons>
+
+
         <ion-nav-buttons side="right">
             <i ng-show="loggedIn()">Welcome {{customerName}}</i>
             <button class="button" ng-click="notifyGoHome()">
@@ -95,9 +97,19 @@
 
             <ion-content>
                 <div class="row">
+                    <div class="col col-33">
+                        <div>
+                            <ibenefit-savings/>
+                        </div>
+
+                        <div align="middle">
+                            <a href='#' ng-click="openRegisterModal()">Get your yearly {{programName}} membership at just Rs.{{programFee}}</a>
+                        </div>
+                    </div>
+
                     <div class="col col-67">
                         <div class="row">
-                            <div class="col-75">
+                            <div class="col col-75">
                                 <h2 style="text-align:center">Welcome to {{programName}}</h2>
                                 <img src="images/ibenefit.png" height="144px" width="144px" style="display:block;margin-left:auto;margin-right:auto" ><img>
                             </div>
@@ -124,22 +136,56 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col col-33">
-                        <div>
-                            <ibenefit-savings/>
-                        </div>
-
-                        <div align="middle">
-                            <a href='#' ng-click="openRegisterModal()">Get your yearly {{programName}} membership at just Rs.{{programFee}}</a>
-                        </div>
-                    </div>
                 </div>
             </ion-content>
         </ion-view>
     </script>
 
-<!-------------------------------------------------------------------------------------------------------------->
+    <!-------------------------------------------------------------------------------------------------------------->
+
+    <script id="register-complete.html" type="text/ng-template">
+
+        <ion-view title="You are being served by {{staffId}} on {{tableNumber}}">
+
+            <ion-content>
+                <div>
+
+                    <div class="row">
+                        <div class="col">
+                            <img src="images/ibenefit.png" height="124px" width="124px" style="display:block;margin-left:auto;margin-right:auto" ><img>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h1 style="text-align:center">Registration Complete</h1>
+                            <p style="text-align:center">Please collect your membership card from the Cashier/Manager</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <img src="images/cardimage.png" height="150px" width="200px" style="display:block;margin-left:auto;margin-right:auto" ><img>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-33 col-offset-33">
+                            <button class="button button-full button-positive" ng-click="showMenu()">
+                                View Menu
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p style="text-align:center">To know more, visit</p>
+                            <p style="text-align:center">www.ibenefit.in</p>
+                        </div>
+                    </div>
+
+                </div>
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <!-------------------------------------------------------------------------------------------------------------->
 
     <script id="menus.html" type="text/ng-template">
 
@@ -207,7 +253,7 @@
                             </ion-item>
                             <div ng-repeat="menuItem in menuArray | filter:searchInput">
                                 <ion-item class="row" ng-repeat="menuItemPriceCat in menuItem.priceCat">
-                                    <a class="col col-50 item-content"  ng-click="showItemDetails(menuItem, menuItemPriceCat)">
+                                    <a class="col col-50 item-content"  ng-click="showItemDetails(menuItem.itemId, menuItemPriceCat.catCode)">
                                         <h2>{{menuItem.itemName}}</h2>
                                         <p>{{menuItem.itemDescription}}</p>
                                     </a>
@@ -258,43 +304,48 @@
                     <div class="col col-67">
                         <div class="row">
                             <div class="col col-67">
-                                <img src="images/1.jpg" width="100%">
-                                <p style="text-align:justify">{{menuItem.itemDescription}}</p>
+                                <img src="images/1.jpg" width="100%" height="100%">
                             </div>
                             <div class="col col-33">
                                 <div class="row">
-                                    <div>
-                                        <input type="text" ng-model="orderItem.instructions" placeholder="Special requests">
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <h3 class="col">Regular price</h3>
-                                    <h1 class="col" style="text-align:right">{{priceCat.basicRate | number}}</h1>
+                                    <input type="text" ng-model="orderItem.instructions" placeholder="Special requests">
                                 </div>
                                 <div class="row">
-                                    <h3 class="col">{{programName}} price</h3>
-                                    <h1 class="col" style="text-align:right"> {{priceCat.basicRate - priceCat.discount | number}}</h1>
-                                </div>
-                                <div class="row">
-                                    <a class="col-33 button button-balanced"  style="font-size:24px" ng-click="orderSvc.addItem(menuItem, priceCat)">+</a>
-                                    <i class="col-33"></i>
-                                    <a class="col-33 button button-assertive" style="font-size:24px" ng-click="orderSvc.reduceItem(menuItem, priceCat)">-</a>
-                                </div>
-                                <div class="row">
-                                    <h3 class="col">Ordered quantity</h3>
-                                    <h1 class="col" style="text-align:right">{{orderSvc.itemInOrder( menuItem.itemId, priceCat.catCode ).quantity | number}}</h1>
-                                </div>
-                                <br/>
-                                <div class="row">
-                                    <img src="images/{{priceCat.catCode}}.png" width="15%"></img>
+                                    <p style="text-align:justify">{{menuItem.itemDescription}}</p>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-                    <div class="col col-20">
+                    <div class="col col-33">
+                        <div class="row">
+                            <p class="col" style="text-align:center">Quantity</p>
+                            <p class="col" style="text-align:center">Regular price</p>
+                            <p class="col" style="text-align:center">{{programName}} price</p>
+                        </div>
+                        <div class="row">
+                            <b class="col" style="text-align:center">{{orderSvc.itemInOrder( menuItem.itemId, priceCat.catCode ).quantity | number}}</b>
+                            <b class="col" style="text-align:center">{{priceCat.basicRate | number}}</b>
+                            <b class="col" style="text-align:center">{{priceCat.basicRate - priceCat.discount | number}}</b>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-50">
+                                <a class="button button-balanced"  style="font-size:24px" ng-click="orderSvc.addItem(menuItem, priceCat)">+</a>
+                                <a class="button button-assertive" style="font-size:24px" ng-click="orderSvc.reduceItem(menuItem, priceCat)">-</a>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col">
+                                <button><img src="images/ilikeit.png"></img><p>I like it</p></button>
+                                <button><img src="images/addtofavourite.png"></img><p>Add to my favourites</p></button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <img src="images/{{priceCat.catCode}}.png" width="15%" height="15%"></img>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -320,7 +371,13 @@
             <ion-content>
                 <div> <order-details/> </div>
 
-                <div></div>
+                <div class="row">
+                    <div class="col" style="text-align:center">
+                        <button class="button" ng-hide="loggedIn()" ng-click="openRegisterModal()">
+                            Register now
+                        </button>
+                    </div>
+                </div>
             </ion-content>
 
         </ion-view>
@@ -377,7 +434,7 @@
 
     <script id="ibenefit-savings.html" type="text/ng-template">
 
-        <div class="list list-inset" style="border:thick ridge #9900FF;border-radius:5px">
+        <div class="list list-inset" style="border:thick ridge #9900FF;border-radius:5px;margin-top:0">
 
                 <div class="row-top">
                     <b class="col" style="text-align:center">My i benefit savings calculator</b>
@@ -524,17 +581,18 @@
                             <i class="radio-icon ion-checkmark-circled"></i>
                         </label>
                         <div style="margin-left:140px">
-                            <button class="button button-positive" style="width:200px" ng-click="register()">Register</button>
+                            <button class="button button-positive" style="width:200px" ng-click="showRegister=true" ng-hide="showRegister">Register</button>
                             <button class="button button-outline" style="width:200px" ng-click="close()">Cancel</button>
                         </div>
                     </label>
 
                     <div style="margin-top:20px">
                         By tapping Register you agree to pay Rs.650 towards yearly membership
-                        <div>
-                            <button class="button" style="width:300px">Pay online</button>
-                            <button class="button" style="width:300px">Add to Restaurant bill</button>
-                        </div>
+                        <button-bar class="row" ng-show="showRegister">
+                            <button class="col col-33 button button-stable" ng-click="register()">Pay online</button>
+                            <button class="col col-33 button button-stable" ng-click="register()">Add to Restaurant bill</button>
+                            <button class="col col-33 button button-stable" ng-click="skipToMenu()">Skip to menu</button>
+                        </button-bar>
                     </div>
                 </form>
 
@@ -558,7 +616,7 @@
                 </ion-item>
 
                 <ion-item class="row" ng-repeat="item in orderSvc.getOrder() track by $index">
-                    <a class="col col-33 item-content">
+                    <a class="col col-33 item-content" ng-click="showItemDetails(item.itemId, item.priceCatCode)">
                         <h2>{{item.itemName}}</h2>
                         <p>{{item.itemDescription}}</p>
                     </a>
@@ -572,7 +630,7 @@
                         <br/><h3 style="text-align:center">{{item.quantity | number}}</h3>
                     </div>
                     <div class="col col-20">
-                        <input type="text" ng-model="item.instructions" style="text-align:center" placeholder="Special request">
+                        <input type="text" ng-model="item.instructions" style="text-align:center">
                     </div>
                     <div class="col col-10" style="text-align:center">
                         <a class="button button-small button-balanced"  style="font-size:24px" ng-click="addItem($index)">+</a>
@@ -581,14 +639,14 @@
                 </ion-item>
 
                 <ion-item class="row">
-                    <a class="col col-33 item-content">
-                        <h1>{{programName}} savings = Rs.{{orderSvc.getBasicTotal()-orderSvc.getDiscountedTotal() | number}}</h1>
-                    </a>
-                    <div class="col col-10">
-                        <h1 style="text-align:center">{{orderSvc.getBasicTotal() | number}}</h1>
+                    <div class="col col-33 item-content">
+                        <h2>Totals</h2>
                     </div>
                     <div class="col col-10">
-                        <h1 style="text-align:center">{{orderSvc.getDiscountedTotal() | number}}</h1>
+                        <h2 style="text-align:center">{{orderSvc.getBasicTotal() | number}}</h2>
+                    </div>
+                    <div class="col col-10">
+                        <h2 style="text-align:center">{{orderSvc.getDiscountedTotal() | number}}</h2>
                     </div>
                     <div class="col col-10">
                         <h2></h2>
@@ -601,7 +659,15 @@
                     </div>
                 </ion-item>
 
+                <ion-item class="row">
+                    <div class="col" style="text-align:center">
+                        <h1>Your {{programName}} savings is Rs.{{orderSvc.getBasicTotal()-orderSvc.getDiscountedTotal() | number}}</h1>
+                    </div>
+                </ion-item>
+
+
             </ion-list>
+
         </div>
 
     </script>

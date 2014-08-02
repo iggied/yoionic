@@ -128,7 +128,8 @@ angular.module('RestaurantApp.services', [])
             };
 
             modal.scope.customerInput = {
-                name: '',
+                firstName: '',
+                surName: '',
                 email: '',
                 mobile: '',
                 pinCode: '',
@@ -137,9 +138,13 @@ angular.module('RestaurantApp.services', [])
 
             modal.scope.register = function() {
                 modal.hide();
-                $state.go(parent.getNextState(), {customerName: customer.customerName});
+                $state.go('firstpage.registercomplete', {customerName: modal.scope.customerInput.firstName});
             };
 
+            modal.scope.skipToMenu = function() {
+                modal.hide();
+                $state.go('tab.menus', {customerName: modal.scope.customerInput.firstName});
+            };
         });
     };
 

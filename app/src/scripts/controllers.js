@@ -43,17 +43,19 @@ angular.module('RestaurantApp.controllers', [])
     }
 
     $scope.notInMenu = function(){
-        return $scope.loggedIn() || $state.$current.name.indexOf("menu") < 0;
+        return $scope.loggedIn() || $state.$current.name.indexOf("tab") < 0;
     }
 
     $scope.openLoginModal = function() {
-        LoginSvc.openLoginModal($state.$current.name);
+        LoginSvc.openLoginModal('tab.menus') ;   //$state.$current.name);
     }
 
     $scope.openRegisterModal = function() {
-        RegisterSvc.openRegisterModal($state.$current.name);
+        RegisterSvc.openRegisterModal('tab.menus') ;   //$state.$current.name);
     }
 }])
+
+
 
 
 .controller('MenusCtrl', ['$scope', 'Menus', '$state', '$stateParams', '$rootScope', '$ionicViewService', '$window', 'OrderSvc',
@@ -117,8 +119,8 @@ angular.module('RestaurantApp.controllers', [])
         }
     };
 
-    $scope.showItemDetails = function(menuItem, menuItemPriceCat) {
-        $state.go('tab.viewitem', {itemId: menuItem.itemId, priceCatCode: menuItemPriceCat.catCode});
+    $scope.showItemDetails = function(itemId, priceCatCode) {
+        $state.go('tab.viewitem', {itemId: itemId, priceCatCode: priceCatCode});
     };
 
     $scope.viewOrder = function() {
@@ -160,7 +162,8 @@ angular.module('RestaurantApp.controllers', [])
     });
 }])
 
-.controller('ViewOrderCtrl', ['$scope', '$rootScope', 'OrderSvc', function($scope, $rootScope, OrderSvc) {
+.controller('ViewOrderCtrl', ['$scope', '$stateParams', '$rootScope', 'OrderSvc',
+                    function($scope, $stateParams, $rootScope, OrderSvc) {
     $scope.orderSvc = OrderSvc;
 
     var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
@@ -212,6 +215,24 @@ angular.module('RestaurantApp.controllers', [])
     }
 
 }])
+
+.controller('RegisterCompleteCtrl', ['$scope', '$state', '$stateParams', '$rootScope',
+    function($scope, $state, $stateParams, $rootScope) {
+
+        $scope.showMenu = function() {
+            $state.go('tab.menus', {customerName: $stateParams.customerName});
+        };
+
+        var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
+            $rootScope.confirmAndGoHome()
+        });
+
+        $scope.$on('$destroy', function() {
+            cleanupFunction();
+        });
+
+}])
+
 ;
 
 

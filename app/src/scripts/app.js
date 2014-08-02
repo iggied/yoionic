@@ -65,6 +65,16 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
       }
     })
 
+      .state('firstpage.registercomplete', {
+          url: '/registercomplete/:customerName',
+          views: {
+              '@': {
+                  templateUrl: 'register-complete.html',
+                  controller: 'RegisterCompleteCtrl'
+              }
+          }
+      })
+
     .state('tab.menus', {
       url: '/menus/:customerName/:clearHistory',
       views: {
@@ -109,7 +119,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 
 
     .state('tab.chefcorner', {
-    url: '/chefcorner',
+    url: '/chefcorner/:customerName/:clearHistory',
     views: {
       'chef-corner': {
           templateUrl: 'chefcorner.html'
@@ -118,7 +128,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     })
 
     .state('tab.softdrinks', {
-      url: '/softdrinks',
+      url: '/softdrinks/:customerName/:clearHistory',
       views: {
           'soft-drinks': {
               templateUrl: 'softdrinks.html'
@@ -127,7 +137,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     })
 
     .state('tab.barcounter', {
-      url: '/barcounter',
+      url: '/barcounter/:customerName/:clearHistory',
       views: {
           'bar-counter': {
               templateUrl: 'barcounter.html'
@@ -136,7 +146,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     })
 
     .state('tab.specialoffer', {
-      url: '/specialoffer',
+      url: '/specialoffer/:customerName/:clearHistory',
       views: {
           'special-offer': {
               templateUrl: 'specialoffer.html'
@@ -145,7 +155,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
     })
 
     .state('tab.myfavourites', {
-      url: '/myfavourites',
+      url: '/myfavourites/:customerName/:clearHistory',
       views: {
           'myfavourites': {
               templateUrl: 'myfavourites.html'
@@ -230,7 +240,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                     return noOfTimes ;
                 }
 
-                scope.lastTouched = "";
+                scope.lastTouched = "NVR";
 
                 scope.touchedASR = function() {
                     scope.lastTouched = scope.lastTouched == "ASR" ? "" : "ASR";
@@ -305,7 +315,7 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 .directive('orderDetails', function(OrderSvc) {
     return {
         restrict : 'E',
-        controller : ['$scope', '$rootScope', '$ionicPopup', function($scope, $rootScope, $ionicPopup){
+        controller : ['$scope', '$rootScope', '$state', '$ionicPopup', function($scope, $rootScope, $state, $ionicPopup){
             $scope.orderSvc = OrderSvc;
             $scope.programName = $rootScope.programName;
 
@@ -321,6 +331,10 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
                     OrderSvc.quantity(OrderSvc.getOrder()[index], -1) ;
                 }
                 OrderSvc.$saveOrder();
+            };
+
+            $scope.showItemDetails = function(itemId, priceCatCode) {
+                $state.go('tab.viewitem', {itemId: itemId, priceCatCode: priceCatCode});
             };
 
             $scope.confirmOrder = function() {
