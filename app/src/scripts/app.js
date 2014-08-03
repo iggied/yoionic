@@ -191,8 +191,8 @@ angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services',
 
     $rootScope.confirmAndGoHome =  function() {
         $ionicPopup.confirm({
-            title: 'Done',
-            template: 'Are you sure?'
+            title: 'Shutdown App',
+            template: 'Sure you want to shutdown app?'
         })
         .then(function (res) {
             if (res) {

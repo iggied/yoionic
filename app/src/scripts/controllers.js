@@ -186,6 +186,15 @@ angular.module('RestaurantApp.controllers', [])
             $state.go('firstpage');
 
         }
+
+        var cleanupFunction = $rootScope.$on('want.to.go.home', function() {
+            $rootScope.confirmAndGoHome()
+        });
+
+        $scope.$on('$destroy', function() {
+            cleanupFunction();
+        });
+
     }])
 
 

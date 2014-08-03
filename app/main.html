@@ -39,9 +39,7 @@
 
         <ion-nav-buttons side="right">
             <i ng-show="loggedIn()">Welcome {{customerName}}</i>
-            <button class="button" ng-click="notifyGoHome()">
-               .
-            </button>
+            <button class="button button-clear ion-power" ng-click="notifyGoHome()"></button>
         </ion-nav-buttons>
     </ion-nav-bar>
 
@@ -267,10 +265,10 @@
                                         <br/><h3 style="text-align:center">{{ orderSvc.itemInOrder( menuItem.itemId, menuItemPriceCat.catCode ).quantity }}</h3>
                                     </div>
                                     <div class="col col-10" style="text-align:center">
-                                        <a class="button button-balanced" style="font-size:24px" ng-click="orderSvc.addItem(menuItem, menuItemPriceCat)">+</a>
+                                        <button class="button button-balanced ion-plus-circled" style="font-size:24px" ng-click="orderSvc.addItem(menuItem, menuItemPriceCat)"></button>
                                     </div>
                                     <div class="col col-10" style="text-align:center">
-                                        <a class="button button-assertive" style="font-size:24px" ng-click="orderSvc.reduceItem(menuItem, menuItemPriceCat)">-</a>
+                                        <button class="button button-assertive ion-minus-circled" style="font-size:24px" ng-click="orderSvc.reduceItem(menuItem, menuItemPriceCat)"></button>
                                     </div>
                                 </ion-item>
                             </div>
@@ -330,8 +328,8 @@
                         <br/>
                         <div class="row">
                             <div class="col-50">
-                                <a class="button button-balanced"  style="font-size:24px" ng-click="orderSvc.addItem(menuItem, priceCat)">+</a>
-                                <a class="button button-assertive" style="font-size:24px" ng-click="orderSvc.reduceItem(menuItem, priceCat)">-</a>
+                                <button class="button button-balanced ion-plus-circled"  style="font-size:24px" ng-click="orderSvc.addItem(menuItem, priceCat)"></button>
+                                <button class="button button-assertive ion-minus-circled" style="font-size:24px" ng-click="orderSvc.reduceItem(menuItem, priceCat)"></button>
                             </div>
                         </div>
                         <br/>
@@ -444,7 +442,7 @@
                     <div class="col col-80" style="padding-top:10px">
                         No. of restaurants visits/month
                     </div>
-                    <div class="col col-20" style="padding-top:10px;text-align:right">
+                    <div class="col col-20" style="padding-top:10px;text-align:right" ng-class="{'item item-clear': lastTouched=='NVR'}">
                         {{noOfVisits}}
                     </div>
                 </div>
@@ -453,7 +451,7 @@
                     <div class="col col-80" style="padding-top:10px">
                         Average spends at restaurant
                     </div>
-                    <div class="col col-20" style="padding-top:10px;text-align:right">
+                    <div class="col col-20" style="padding-top:10px;text-align:right" ng-class="{'item item-clear': lastTouched=='ASR'}">
                         {{avgSpendsAtRestaurants}}
                     </div>
                 </div>
@@ -462,7 +460,7 @@
                     <div class="col col-80" style="padding-top:10px;">
                         No. of Home orders/month
                     </div>
-                    <div class="col col-20" style="padding-top:10px;text-align:right">
+                    <div class="col col-20" style="padding-top:10px;text-align:right" ng-class="{'item item-clear': lastTouched=='NVH'}">
                         {{noOfHomeOrders}}
                     </div>
                 </div>
@@ -471,7 +469,7 @@
                     <div class="col col-80" style="padding-top:10px">
                         Average spends on home order
                     </div>
-                    <div class="col col-20" style="padding-top:10px;text-align:right">
+                    <div class="col col-20" style="padding-top:10px;text-align:right" ng-class="{'item item-clear': lastTouched=='ASH'}">
                         {{avgSpendsOnHomeOrder}}
                     </div>
                 </div>
@@ -633,8 +631,8 @@
                         <input type="text" ng-model="item.instructions" style="text-align:center">
                     </div>
                     <div class="col col-10" style="text-align:center">
-                        <a class="button button-small button-balanced"  style="font-size:24px" ng-click="addItem($index)">+</a>
-                        <a class="button button-small button-assertive" style="font-size:24px" ng-click="reduceItem($index)">-</a>
+                        <button class="button button-small button-balanced ion-plus-circled"  style="font-size:24px" ng-click="addItem($index)"></button>
+                        <button class="button button-small button-assertive ion-minus-circled" style="font-size:24px" ng-click="reduceItem($index)"></button>
                     </div>
                 </ion-item>
 
