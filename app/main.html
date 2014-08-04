@@ -206,9 +206,9 @@
             </ion-header-bar>
 
             <ion-content>
-                <div class="button" ng-repeat="menuArray in menuCat | objectToArray | filter:searchInput" style="float:left;display:inline;margin:5px" ng-click="selectMenuCategory(menuArray[0].catCode1)">
-                    <img src="images/{{menuArray[0].catCode1}}.png" style="margin-top:10px" height="110px" width="110px"></img>
-                    <p style="text-align:center;margin:0;line-height:20px">{{menuArray[0].catCode1 | lowercase}}</p>
+                <div class="button" ng-repeat="menuArray in menuCat | objectToArray | filter:searchInput" style="float:left;display:inline;margin:5px" ng-click="selectMenuCategory(menuArray[0].itemCatCodes[0])">
+                    <img src="images/{{menuArray[0].itemCatCodes[0]}}.png" style="margin-top:10px" height="110px" width="110px"></img>
+                    <p style="text-align:center;margin:0;line-height:20px">{{menuArray[0].itemCatCodes[0] | lowercase}}</p>
                 </div>
             </ion-content>
         </ion-view>
@@ -247,7 +247,7 @@
                         </ion-item>
                         <div ng-repeat="menuArray in menuItems">
                             <ion-item class="item item-divider">
-                                {{menuArray[0].catCode1}}
+                                {{menuArray[0].itemCatCodes[0]}}
                             </ion-item>
                             <div ng-repeat="menuItem in menuArray | filter:searchInput">
                                 <ion-item class="row" ng-repeat="menuItemPriceCat in menuItem.priceCat">

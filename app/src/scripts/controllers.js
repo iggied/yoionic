@@ -69,7 +69,7 @@ angular.module('RestaurantApp.controllers', [])
     }
 
     Menus.query( function(data) {
-        $scope.menuCat = _.groupBy(data, 'catCode1');
+        $scope.menuCat = _.groupBy(data, function(item){ return item.itemCatCodes[0]; });
     });
 
     $scope.selectMenuCategory = function(catCodePara) {
@@ -108,13 +108,13 @@ angular.module('RestaurantApp.controllers', [])
     if ($scope.selectedCatCode != "") {
         Menus.query(function (data) {
             $scope.menuItems = [ _.filter(data, function (menuItem) {
-                return menuItem.catCode1 === $scope.selectedCatCode
+                return menuItem.itemCatCodes[0] === $scope.selectedCatCode
             }) ];
         })
     } else {
         if ($scope.searchInput != "") {
             Menus.query(function (data) {
-                $scope.menuItems = _.groupBy( $filter('filter')(data, $scope.searchInput), "catCode1" ) ;
+                $scope.menuItems = _.groupBy( $filter('filter')(data, $scope.searchInput), function(item){ return item.itemCatCodes[0]; } ) ;
             })
         }
     };
