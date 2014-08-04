@@ -259,7 +259,7 @@
                                         <br/><h3 style="text-align:center">{{menuItemPriceCat.basicRate | number}}</h3>
                                     </div>
                                     <div class="col col-10">
-                                        <br/><h3 style="text-align:center">{{menuItemPriceCat.basicRate - menuItemPriceCat.discount | number}}</h3>
+                                        <br/><h3 style="text-align:center">{{menuItemPriceCat.discountRate | number}}</h3>
                                     </div>
                                     <div class="col col-10">
                                         <br/><h3 style="text-align:center">{{ orderSvc.itemInOrder( menuItem.itemId, menuItemPriceCat.catCode ).quantity }}</h3>
@@ -323,7 +323,7 @@
                         <div class="row">
                             <b class="col" style="text-align:center">{{orderSvc.itemInOrder( menuItem.itemId, priceCat.catCode ).quantity | number}}</b>
                             <b class="col" style="text-align:center">{{priceCat.basicRate | number}}</b>
-                            <b class="col" style="text-align:center">{{priceCat.basicRate - priceCat.discount | number}}</b>
+                            <b class="col" style="text-align:center">{{priceCat.discountRate | number}}</b>
                         </div>
                         <br/>
                         <div class="row">
@@ -544,25 +544,28 @@
                 <h1 class="title">Register to {{programName}}</h1>
             </ion-header-bar>
             <ion-content>
-                <form class="list list-inset">
+                <div class="list list-inset">
                     <label class="item item-input">
                         <span class="input-label" style="width:100px;max-width:100px">First name</span>
-                        <input type="text" ng-model="customerInput.firstName" placeholder="Type your first name">
-                        <span class="input-label" style="width:100px;max-width:100px">Surname</span>
-                        <input type="text" ng-model="customerInput.surName" placeholder="Type your surname">
+                        <input type="text" maxlength="50" ng-model="customerInput.firstName" placeholder="Type your first name">
+                        <label class="item-input">
+                            <span class="input-label" style="width:100px;max-width:100px">Surname</span>
+                            <input type="text" maxlength="50" ng-model="customerInput.surName" placeholder="Type your surname" >
+                        </label>
                     </label>
                     <label class="item item-input">
                         <span class="input-label" style="width:100px;max-width:100px">Email</span>
-                        <input type="email" ng-model="customerInput.email" placeholder="Type your email">
+                        <input type="email" maxlength="100" ng-model="customerInput.email" placeholder="Type your email">
                     </label>
                     <label class="item item-input">
                         <span class="input-label" style="width:100px;max-width:100px">Mobile</span>
-                        <input type="tel" ng-model="customerInput.mobile" placeholder="Type your mobile number">
+                        <input type="tel" maxlength="15" ng-model="customerInput.mobile" placeholder="Type your mobile number">
+                        <label class="item-input">
+                            <span class="input-label" style="width:100px;max-width:100px">PIN code</span>
+                            <input type="tel" maxlength="6" ng-model="customerInput.pinCode" placeholder="Type your PIN code">
+                        </label>
                     </label>
-                    <label class="item item-input">
-                        <span class="input-label" style="width:100px;max-width:100px">PIN code</span>
-                        <input type="tel" ng-model="customerInput.pinCode" placeholder="Type your PIN code">
-                    </label>
+
                     <label class="item item-input">
                         <label class="item item-radio">
                             <input type="radio" name="group" ng-model="customerInput.gender" value="F">
@@ -592,7 +595,7 @@
                             <button class="col col-33 button button-stable" ng-click="skipToMenu()">Skip to menu</button>
                         </button-bar>
                     </div>
-                </form>
+                </div>
 
             </ion-content>
         </div>
@@ -622,7 +625,7 @@
                         <br/><h3 style="text-align:center">{{item.basicRate | number}}</h3>
                     </div>
                     <div class="col col-10">
-                        <br/><h3 style="text-align:center">{{item.basicRate - item.discount | number}}</h3>
+                        <br/><h3 style="text-align:center">{{item.discountRate | number}}</h3>
                     </div>
                     <div class="col col-10">
                         <br/><h3 style="text-align:center">{{item.quantity | number}}</h3>

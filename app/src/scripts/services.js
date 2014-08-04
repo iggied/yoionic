@@ -10,7 +10,21 @@ angular.module('RestaurantApp.services', [])
 
 .factory('Menus', ['$resource',
     function($resource){
-        return $resource('res/appdata/Restaurantmenu.json', {}, {query: {method: 'GET', isArray: true}}
+
+        function calcDiscount(response) {
+            var key1, key2, data = response.data;
+            for (key1 in data) {
+                for (key2 in data[key1].priceCat) {
+                    data[key1].priceCat[key2].discountRate = Math.round(data[key1].priceCat[key2].basicRate * 0.85);
+                }
+            }
+
+            return response.resource;
+        }
+
+
+        return $resource('res/appdata/Restaurantmenu.json', {},
+            {query: {method: 'GET', isArray: true, interceptor: {response: calcDiscount }}}
         );
     }
 ])
@@ -193,6 +207,7 @@ angular.module('RestaurantApp.services', [])
                 priceCatCode: priceCat.catCode,
                 basicRate: priceCat.basicRate,
                 discount: priceCat.discount,
+                discountRate: priceCat.discountRate,
                 quantity: priceCat.quantity,
                 instructions: "",
                 data: ""
@@ -250,9 +265,9 @@ angular.module('RestaurantApp.services', [])
     this.getDiscountedTotal = function(){
         var total = 0;
         angular.forEach(this.getOrder(), function (item) {
-            total += ((item.basicRate-item.discount) * item.quantity);
+            total += ((item.discountRate) /*-item.discount)*/ * item.quantity);
         });
-        return total;
+        return Math.round(total);
     }
 
 

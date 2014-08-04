@@ -201,6 +201,7 @@ angular.module('RestaurantApp.controllers', [])
 .controller('FirstPageCtrl', ['$scope', '$state', '$ionicModal', '$rootScope', 'LoginSvc', 'RegisterSvc', 'Customers',
         function($scope, $state, $ionicModal, $rootScope, LoginSvc, RegisterSvc, Customers) {
 
+
     $rootScope.customerName = '';
 
     $scope.showMenu = function() {
