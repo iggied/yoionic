@@ -510,30 +510,28 @@
 <!-------------------------------------------------------------------------------------------------------------->
 
     <script id="login-modal.html" type="text/ng-template">
-        <ion-modal-view>
-            <div class="modal" style="top:10%;height:30%;left:30%;width:50%">
-                <ion-header-bar>
-                    <h1 class="title">Login to {{programName}}</h1>
-                </ion-header-bar>
-                <ion-content>
-                    <form class="list list-inset">
-                        <label class="item item-input">
-                            <span class="input-label">Mobile Number</span>
-                            <input type="number" ng-model="custLoginInput.mobile" placeholder="Type your mobile number">
-                        </label>
-                        <label class="item item-input">
-                            <span class="input-label">Password</span>
-                            <input type="password" ng-model="custLoginInput.pin" placeholder="Type your password">
-                        </label>
-                        <div style="margin-top:20px">
-                            <button class="button button-positive" style="width:150px" ng-click="login()">Login</button>
-                            <button class="button button-outline" style="width:150px" ng-click="close()">Cancel</button>
-                        </div>
+        <div class="modal" style="top:10%;height:30%;left:30%;width:50%">
+            <ion-header-bar>
+                <h1 class="title">Login to {{programName}}</h1>
+            </ion-header-bar>
+            <ion-content>
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <span class="input-label">Mobile Number</span>
+                        <input type="number" ng-model="custLoginInput.mobile" placeholder="Type your mobile number">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input type="password" ng-model="custLoginInput.pin" placeholder="Type your password">
+                    </label>
+                    <button-bar style="margin-top:20px">
+                        <button class="button button-positive" style="width:150px" ng-click="login()">Login</button>
+                        <button class="button button-outline" style="width:150px" ng-click="close()">Cancel</button>
+                    </button-bar>
 
-                    </form>
-                </ion-content>
-            </div>
-        </ion-modal-view>
+                </div>
+            </ion-content>
+        </div>
     </script>
 
 <!-------------------------------------------------------------------------------------------------------------->
@@ -566,26 +564,32 @@
                         </label>
                     </label>
 
-                    <label class="item item-input">
-                        <label class="item item-radio">
-                            <input type="radio" name="group" ng-model="customerInput.gender" value="F">
-                            <div class="item-content">
-                                Female
-                            </div>
-                            <i class="radio-icon ion-checkmark-circled"></i>
-                        </label>
-                        <label class="item item-radio">
-                            <input type="radio" name="group" ng-model="customerInput.gender" value="M">
-                            <div class="item-content">
-                                Male
-                            </div>
-                            <i class="radio-icon ion-checkmark-circled"></i>
-                        </label>
-                        <div style="margin-left:140px">
-                            <button class="button button-positive" style="width:200px" ng-click="showRegister=true" ng-hide="showRegister">Register</button>
-                            <button class="button button-outline" style="width:200px" ng-click="close()">Cancel</button>
+                    <div class="row">
+                        <div class="col col-33">
+                            <label class="item-input">
+                                <label class="item item-radio">
+                                    <input type="radio" name="group" ng-model="customerInput.gender" value="F">
+                                    <div class="item-content">
+                                        Female
+                                    </div>
+                                    <i class="radio-icon ion-checkmark-circled"></i>
+                                </label>
+                                <label class="item item-radio">
+                                    <input type="radio" name="group" ng-model="customerInput.gender" value="M">
+                                    <div class="item-content">
+                                        Male
+                                    </div>
+                                    <i class="radio-icon ion-checkmark-circled"></i>
+                                </label>
+                            </label>
                         </div>
-                    </label>
+
+                        <button-bar class="col col-50 col-offset-20">
+                            <button class="button button-positive" style="width:150px" ng-click="showRegister=true" ng-hide="showRegister">Register</button>
+                            <button class="button button-outline" style="width:150px" ng-click="close()">Cancel</button>
+                        </button-bar>
+                    </div>
+
 
                     <div style="margin-top:20px">
                         By tapping Register you agree to pay Rs.650 towards yearly membership
