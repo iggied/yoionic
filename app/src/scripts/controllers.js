@@ -229,6 +229,8 @@ angular.module('RestaurantApp.controllers', [])
 .controller('RegisterCompleteCtrl', ['$scope', '$state', '$stateParams', '$rootScope',
     function($scope, $state, $stateParams, $rootScope) {
 
+        $rootScope.customerName = $stateParams.customerName;
+
         $scope.showMenu = function() {
             $state.go('tab.menus', {customerName: $stateParams.customerName});
         };

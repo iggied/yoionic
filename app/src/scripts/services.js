@@ -37,8 +37,28 @@ angular.module('RestaurantApp.services', [])
     }
 ])
 
-.service('LoginSvc', ['$state', '$rootScope', '$ionicModal', 'Customers',
-            function ($state, $rootScope, $ionicModal, Customers) {
+.service('CustomerSvc', ['$window',
+    function($window){
+
+        this.getCustomer = function( mobile ) {
+            return angular.fromJson(localStorage.getItem('cust.' + mobile));
+        }
+
+        this.setCustomer = function( customer ) {
+            localStorage.setItem('cust.' + customer.mobile, JSON.stringify(customer));
+        }
+
+        this.checkLogin = function( mobile, surName ) {
+            var cust = this.getCustomer( mobile );
+            return ( cust.mobile == mobile && cust.surName == surName );
+        }
+
+
+    }
+])
+
+.service('LoginSvc', ['$state', '$rootScope', '$ionicModal', 'CustomerSvc',
+            function ($state, $rootScope, $ionicModal, CustomerSvc) {
 
     this.setLoginModal = function(modal) {
         this.loginModal = modal;
@@ -66,15 +86,11 @@ angular.module('RestaurantApp.services', [])
                 pin: ''};
 
             modal.scope.login = function() {
-                var customer;
-                Customers.query( function(data) {
-                    customer = _.find(data, function(cust){return cust.loginId == modal.scope.custLoginInput.mobile && cust.password == modal.scope.custLoginInput.pin; } );
-                    if (customer) {
-                        //$rootScope.customerName = customer.customerName;
-                        modal.hide();
-                        $state.go(parent.getNextState(), {customerName: customer.customerName, clearHistory: true});
-                    }
-                });
+                if (CustomerSvc.checkLogin(modal.scope.custLoginInput.mobile, modal.scope.custLoginInput.pin )) {
+                    $rootScope.customerName = CustomerSvc.getCustomer(modal.scope.custLoginInput.mobile).firstName;
+                    modal.hide();
+                    $state.go(parent.getNextState(), {customerName: $rootScope.customerName, clearHistory: true});
+                }
             };
 
 
@@ -118,8 +134,8 @@ angular.module('RestaurantApp.services', [])
 
 
 
-.service('RegisterSvc', ['$state', '$rootScope', '$ionicModal', 'Customers',
-                function ($state, $rootScope, $ionicModal, Customers) {
+.service('RegisterSvc', ['$state', '$rootScope', '$ionicModal', 'CustomerSvc',
+                function ($state, $rootScope, $ionicModal, CustomerSvc) {
 
     this.setRegisterModal = function(modal) {
         this.registerModal = modal;
@@ -151,6 +167,8 @@ angular.module('RestaurantApp.services', [])
             };
 
             modal.scope.register = function() {
+                CustomerSvc.setCustomer(modal.scope.customerInput);
+//                $rootScope.customerName = modal.scope.customerInput.firstName;
                 modal.hide();
                 $state.go('firstpage.registercomplete', {customerName: modal.scope.customerInput.firstName});
             };

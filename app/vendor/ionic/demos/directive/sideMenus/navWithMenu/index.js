@@ -9,7 +9,7 @@ angular.module('navWithMenu', ['ionic'])
     .state('app', {
       url: "/app",
       abstract: true,
-      templateUrl: "../../../../../../src/templates/menu.html",
+      templateUrl: "templates/menu.html",
       controller: 'AppCtrl'
     })
 
@@ -17,7 +17,7 @@ angular.module('navWithMenu', ['ionic'])
       url: "/search",
       views: {
         'menuContent' :{
-          templateUrl: "../../../../../../src/templates/search.html"
+          templateUrl: "templates/search.html"
         }
       }
     })
@@ -26,7 +26,7 @@ angular.module('navWithMenu', ['ionic'])
       url: "/browse",
       views: {
         'menuContent' :{
-          templateUrl: "../../../../../../src/templates/browse.html"
+          templateUrl: "templates/browse.html"
         }
       }
     })
@@ -34,7 +34,7 @@ angular.module('navWithMenu', ['ionic'])
       url: "/playlists",
       views: {
         'menuContent' :{
-          templateUrl: "../../../../../../src/templates/playlists.html",
+          templateUrl: "templates/playlists.html",
           controller: 'PlaylistsCtrl'
         }
       }
@@ -44,7 +44,7 @@ angular.module('navWithMenu', ['ionic'])
       url: "/playlists/:playlistId",
       views: {
         'menuContent' :{
-          templateUrl: "../../../../../../src/templates/playlist.html",
+          templateUrl: "templates/playlist.html",
           controller: 'PlaylistCtrl'
         }
       }
