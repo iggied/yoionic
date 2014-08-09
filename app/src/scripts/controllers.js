@@ -198,8 +198,8 @@ angular.module('RestaurantApp.controllers', [])
     }])
 
 
-.controller('FirstPageCtrl', ['$scope', '$state', '$ionicModal', '$rootScope', 'LoginSvc', 'RegisterSvc', 'Customers',
-        function($scope, $state, $ionicModal, $rootScope, LoginSvc, RegisterSvc, Customers) {
+.controller('FirstPageCtrl', ['$scope', '$state', '$ionicModal', '$rootScope', 'LoginSvc', 'RegisterSvc',
+        function($scope, $state, $ionicModal, $rootScope, LoginSvc, RegisterSvc) {
 
 
     $rootScope.customerName = '';

@@ -30,13 +30,6 @@ angular.module('RestaurantApp.services', [])
 ])
 
 
-.factory('Customers', ['$resource',
-    function($resource){
-        return $resource('res/appdata/customers.json', {}, {query: {method: 'GET', isArray: true}}
-        );
-    }
-])
-
 .service('CustomerSvc', ['$window',
     function($window){
 
