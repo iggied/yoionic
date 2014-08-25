@@ -50,8 +50,8 @@ angular.module('RestaurantApp.services', [])
     }
 ])
 
-.service('LoginSvc', ['$state', '$rootScope', '$ionicModal', 'CustomerSvc',
-            function ($state, $rootScope, $ionicModal, CustomerSvc) {
+.service('LoginSvc', ['$state', '$rootScope', '$ionicModal', '$timeout', 'CustomerSvc', 'DialImage', 'VerificationStatus',
+            function ($state, $rootScope, $ionicModal, $timeout, CustomerSvc, DialImage, VerificationStatus) {
 
     this.setLoginModal = function(modal) {
         this.loginModal = modal;
@@ -79,16 +79,91 @@ angular.module('RestaurantApp.services', [])
                 pin: ''};
 
             modal.scope.login = function() {
-                if (CustomerSvc.checkLogin(modal.scope.custLoginInput.mobile, modal.scope.custLoginInput.pin )) {
+                //if (CustomerSvc.checkLogin(modal.scope.custLoginInput.mobile, modal.scope.custLoginInput.pin )) {
                     $rootScope.customerName = CustomerSvc.getCustomer(modal.scope.custLoginInput.mobile).firstName;
                     modal.hide();
                     $state.go(parent.getNextState(), {customerName: $rootScope.customerName, clearHistory: true});
-                }
+                //}
             };
 
+            modal.scope.dialImageRes = {} ;
+            modal.scope.verificationStatusRes = {} ;
+            modal.scope.inAPIcall = 0;
+
+            modal.scope.verify = function() {
+                modal.scope.inAPIcall = 1;
+                DialImage.post({mobile_no: modal.scope.custLoginInput.mobile},
+                    function (data) {
+                        parent.getLoginModal().scope.dialImageRes = data;
+                        //data.ImageUrl,data.SessionId
+                    }).$promise.then( function(data) {
+                        return $timeout(function () {
+                            parent.getLoginModal().scope.checkStatus(data.SessionId);
+                        }, 25000)})
+                    .then( function() {
+                        if (parent.getLoginModal().scope.verificationStatusRes.VerificationStatus != "VERIFIED") {
+                            return $timeout(function () {
+                                parent.getLoginModal().scope.checkStatus(parent.getLoginModal().scope.dialImageRes.SessionId);
+                            }, 5000)
+                        }})
+                    .then(function (data) {
+                        if (parent.getLoginModal().scope.verificationStatusRes.VerificationStatus != "VERIFIED") {
+                            return $timeout(function () {
+                                parent.getLoginModal().scope.checkStatus(parent.getLoginModal().scope.dialImageRes.SessionId);
+                            }, 5000)
+                        }})
+                    .then(function (data) {
+                        if (parent.getLoginModal().scope.verificationStatusRes.VerificationStatus != "VERIFIED") {
+                            return $timeout(function () {
+                                parent.getLoginModal().scope.checkStatus(parent.getLoginModal().scope.dialImageRes.SessionId);
+                            }, 5000)
+                        }})
+                    .then(function (data) {
+                        if (parent.getLoginModal().scope.verificationStatusRes.VerificationStatus != "VERIFIED") {
+                            return $timeout(function () {
+                                parent.getLoginModal().scope.checkStatus(parent.getLoginModal().scope.dialImageRes.SessionId);
+                            }, 5000)
+                        }})
+                    .then(function (data) {
+                        if (parent.getLoginModal().scope.verificationStatusRes.VerificationStatus != "VERIFIED") {
+                            return $timeout(function () {
+                                parent.getLoginModal().scope.checkStatus(parent.getLoginModal().scope.dialImageRes.SessionId);
+                            }, 5000)
+                        }})
+                    .then(function (data) {
+                        if (parent.getLoginModal().scope.verificationStatusRes.VerificationStatus != "VERIFIED") {
+                            return $timeout(function () {
+                                parent.getLoginModal().scope.checkStatus(parent.getLoginModal().scope.dialImageRes.SessionId);
+                            }, 5000)
+                        }})
+                    .then(function (data) {
+                        if (parent.getLoginModal().scope.verificationStatusRes.VerificationStatus != "VERIFIED") {
+                            return $timeout(function () {
+                                parent.getLoginModal().scope.checkStatus(parent.getLoginModal().scope.dialImageRes.SessionId);
+                            }, 5000)
+                        }})
+                    .then(function () {
+                        modal.scope.inAPIcall = 0;
+                    })
+            };
+
+            modal.scope.checkStatus = function(sessionId)
+            {
+                VerificationStatus.post( { sessionId : sessionId },
+                    function(data) {
+                        parent.getLoginModal().scope.verificationStatusRes = data;
+                        if (data.VerificationStatus === "VERIFIED") {
+                            parent.getLoginModal().scope.login();
+                        }
+                    }
+                )
+            };
 
         });
     };
+
+
+
 
     this.setNextState = function(state) {
         this.nextState = state;
@@ -123,6 +198,19 @@ angular.module('RestaurantApp.services', [])
 
     }])
 
+.factory('DialImage', ['$resource',
+    function($resource){
+        return $resource('http://project-one-ek.appspot.com/getimage', {phone_number: "@mobile_no" }, {post: {method: 'POST'}}
+        );
+    }
+])
+
+.factory('VerificationStatus', ['$resource',
+    function($resource){
+        return $resource('http://project-one-ek.appspot.com/verificationstatus', { SID : "@sessionId" }, {post: {method: 'POST'}}
+        );
+    }
+])
 
 
 
