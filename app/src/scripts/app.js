@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 'use strict';
-angular.module('RestaurantApp', ['ngResource','ionic', 'RestaurantApp.services', 'RestaurantApp.controllers'])
+angular.module('RestaurantApp', ['ngResource','ionic', 'firebase', 'RestaurantApp.services', 'RestaurantApp.controllers'])
 
 
 .config(function($stateProvider, $urlRouterProvider) {

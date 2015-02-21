@@ -50,8 +50,8 @@ angular.module('RestaurantApp.services', [])
     }
 ])
 
-.service('LoginSvc', ['$state', '$rootScope', '$ionicModal', '$timeout', 'CustomerSvc', 'DialImage', 'VerificationStatus',
-            function ($state, $rootScope, $ionicModal, $timeout, CustomerSvc, DialImage, VerificationStatus) {
+.service('LoginSvc', ['$state', '$rootScope', '$ionicModal', '$timeout', 'CustomerSvc', 'DialImage', 'VerificationStatus', '$firebase',
+            function ($state, $rootScope, $ionicModal, $timeout, CustomerSvc, DialImage, VerificationStatus, $firebase) {
 
     this.setLoginModal = function(modal) {
         this.loginModal = modal;
@@ -90,13 +90,27 @@ angular.module('RestaurantApp.services', [])
             modal.scope.verificationStatusRes = {} ;
             modal.scope.inAPIcall = 0;
 
+            modal.scope.firebaseData = {};
+
             modal.scope.verify = function() {
                 modal.scope.inAPIcall = 1;
                 DialImage.post({mobile_no: modal.scope.custLoginInput.mobile},
                     function (data) {
                         parent.getLoginModal().scope.dialImageRes = data;
+
+                        var ref = new Firebase("https://boiling-fire-4418.firebaseio.com/crn/"+data.SessionId.substr(3));
+
+                        ref.once('child_added', function(dataSnapshot){ parent.getLoginModal().scope.login(); });
+
+//                        var sync = $firebase(ref);
+//                        modal.scope.firebaseData = sync.$asObject();
+
+
                         //data.ImageUrl,data.SessionId
-                    }).$promise.then( function(data) {
+                    })
+
+/*
+                     .$promise.then( function(data) {
                         return $timeout(function () {
                             parent.getLoginModal().scope.checkStatus(data.SessionId);
                         }, 25000)})
@@ -145,6 +159,7 @@ angular.module('RestaurantApp.services', [])
                     .then(function () {
                         modal.scope.inAPIcall = 0;
                     })
+*/
             };
 
             modal.scope.checkStatus = function(sessionId)

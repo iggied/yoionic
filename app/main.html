@@ -56,9 +56,11 @@
     <script src="vendor/ionic/release/js/ionic.js"></script>
     <script src="vendor/ionic/release/js/ionic-angular.js"></script>
     <script src="vendor/underscore/underscore.js"></script>
+    <script src="vendor/firebase/firebase.js"></script>
+    <script src="vendor/angularfire/dist/angularfire.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    
+
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="src/scripts/app.js"></script>
     <script src="src/scripts/services.js"></script>
@@ -540,6 +542,8 @@
             </ion-header-bar>
             <ion-content>
                 <div>
+                  <div>{{firebaseData | json}}</div>
+
                     <div class="row">
                         <div class="col col-80">
                             <label class="item item-input">
